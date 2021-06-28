@@ -1,6 +1,6 @@
 # Denzven-Graphing-Api-Bot
 ### Welcome! this is an Example Bot made for showcasing the abilties of [Denzven-Graphing-Api](https://denzven.pythonanywhere.com/)
-
+### [invite mee!!](dsc.gg/denzven-graphing-api-bot)
 ### 1. About the Api:
 
 Denzven-Graphing-Api is my first flask project that plots graphs of formulas/Equations using python. i have also made and [Api-Wrapper](https://pypi.org/project/Denzven-Graphing-Api-Wrapper) (mostly for practice) to make life easy and to use this Api.
