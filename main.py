@@ -126,6 +126,29 @@ async def pythonanywhere_graph_beta(ctx, *, stuff):
             python_anywhere_beta_BASEURL = python_anywhere_beta_BASEURL + f"&{e}"
     await ctx.send(python_anywhere_beta_BASEURL)
 
+@bot.command(
+    aliases = ['pybem']
+)
+async def pythonanywhere_graph_beta_embed(ctx, *, stuff):
+    python_anywhere_beta_BASEURL = "http://denzven.pythonanywhere.com/DenzGraphingApi/v1/flat_graph/test/plot"
+    #url = python_anywhere_beta_BASEURL + "http://denzven.pythonanywhere.com/DenzGraphingApi/v1/flat_graph/test/plot"
+    params = stuff.split(' ')
+    i = 0
+    for e in params:
+        if i == 0:
+            e = urllib.parse.quote(e, safe='')
+            python_anywhere_beta_BASEURL = python_anywhere_beta_BASEURL + f"?formula={e}"
+        else:
+            python_anywhere_beta_BASEURL = python_anywhere_beta_BASEURL + f"&{e}"
+        i += 1
+
+    url = python_anywhere_beta_BASEURL
+    embed = discord.Embed(title = f'the graph',color = discord.Color.green(),url = url)
+    embed.set_image(url = url)
+    embed.timestamp = datetime.datetime.utcnow()
+    embed.set_footer(text=f'rendered by {ctx.author.name}',icon_url=ctx.author.avatar_url)
+    await ctx.send(embed=embed)
+
 @bot.command()
 async def examples(ctx):
     await ctx.send(API_Formula_Examples)
