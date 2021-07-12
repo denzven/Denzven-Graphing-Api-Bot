@@ -9,11 +9,13 @@ import discord
 from discord.ext import commands
 import os
 import urllib.parse
+import random
 import aiohttp
+import asyncio
+from statuslist import inputstatus
 #from keep_alive import keep_alive
-#from API_Formula_Examples import API_Formula_Examples
 import datetime
-import Denzven_Graphing_Api_Wrapper as GraphingApi #pip install
+#import Denzven_Graphing_Api_Wrapper as GraphingApi #pip install
 
 #################################################################################################################
 
@@ -25,22 +27,37 @@ bot = commands.Bot(
     command_prefix=commands.when_mentioned_or(">"),
     intents=discord.Intents.all(),
     case_insensitive=True,
-    strip_after_prefix=True,
+    strip_after_prefix=False,
     allowed_mentions=discord.AllowedMentions.none())
 
 ApiBaseUrl = "https://denzven.pythonanywhere.com"
 
 #################################################################################################################
 
+async def status_task():
+	while True:
+		random_status = random.choice(inputstatus)
+		await bot.change_presence(activity=discord.Game(
+		    name=
+		    f">help | Guilds: {len(bot.guilds)} | Members: {len(bot.users)}"))
+		await asyncio.sleep(30)
+		await bot.change_presence(activity=discord.Activity(
+		    type=discord.ActivityType.playing, name=f"{random_status}"))
+		await asyncio.sleep(30)
+
+bot.load_extension('jishaku') # pip install -U jishaku
+
 @bot.event
 async def on_connect():
-	print("the bot is ready")
+    print('+--------------------------------------------------+')
+    print('|                 Bot has Connected                |')
+    print('+--------------------------------------------------+')
 
 @bot.event
 async def on_ready():
+    bot.loop.create_task(status_task())
     global CommandNumber
     CommandNumber = 0
-    print('\n\n\n')
     print('+--------------------------------------------------+')
     print('|                 Bot has Started                  |')
     print('+--------------------------------------------------+')
@@ -63,16 +80,16 @@ async def on_command(ctx):
     command = ctx.command
     print(f'\n\n\n')
     print(f'+--------------------------------------------------+')
-    print(f'| {server} > {channel} > {user} > {command} ')
+    print(f'| {server} > {channel} > {user} > {command}         ')
     print(f'+--------------------------------------------------+')
-    print(f'| Bot-Usage: {bot.user}                     ')
+    print(f'| Bot-Usage: {bot.user}                             ')
     print(f'+--------------------------------------------------+')
-    print(f'| Server: {server}                          ')
-    print(f'| Channel: {channel}                        ')
-    print(f'| User: {user}                              ')
-    print(f'| Command: {command}                        ') 
-    print(f'| Command content: {ctx.message.content}    ')
-    print(f'| Command Number: {CommandNumber}           ')
+    print(f'| Server: {server}                                  ')
+    print(f'| Channel: {channel}                                ')
+    print(f'| User: {user}                                      ')
+    print(f'| Command: {command}                                ') 
+    print(f'| Command content: {ctx.message.content}            ')
+    print(f'| Command Number: {CommandNumber}                   ')
     print(f'+--------------------------------------------------+')
     print(f'\n\n\n')
 
@@ -100,7 +117,7 @@ async def on_command_error(ctx, error):
 #################################################################################################################
 
 @bot.command(
-    aliases = ['fgr']
+    aliases = ['flatgraph','flatgr','fgraph','fgr']
 )
 async def Flat_graph(ctx, *, input_params):
     ApiBaseUrl_FlatGraph = ApiBaseUrl + "/DenzGraphingApi/v1/flat_graph/test/plot"
@@ -111,14 +128,15 @@ async def Flat_graph(ctx, *, input_params):
             e = urllib.parse.quote(e, safe='')
             ReqUrl_Flat = ApiBaseUrl_FlatGraph + f"?formula={e}"
             i += 1
-        if i != 0:
+        else:
             ReqUrl_Flat = ReqUrl_Flat + f"&{e}"
+
     await ctx.reply(ReqUrl_Flat)
 
 ############
 
 @bot.command(
-    aliases = ['fgrem']
+    aliases = ['flatgraphembed','flatgrembed','fgraphembed','fgrem']
 )
 async def Flat_graph_embed(ctx, *, input_params):
     ApiBaseUrl_FlatGraph = ApiBaseUrl + "/DenzGraphingApi/v1/flat_graph/test/plot"
@@ -129,7 +147,7 @@ async def Flat_graph_embed(ctx, *, input_params):
             e = urllib.parse.quote(e, safe='')
             ReqUrl_Flat = ApiBaseUrl_FlatGraph + f"?formula={e}"
             i += 1
-        if i != 0:
+        else:
             ReqUrl_Flat = ReqUrl_Flat + f"&{e}"
 
     url = ReqUrl_Flat
@@ -142,7 +160,7 @@ async def Flat_graph_embed(ctx, *, input_params):
 #################################################################################################################
 
 @bot.command(
-    aliases = ['pgr']
+    aliases = ['poargraph','polargr','pgraph','pgr']
 )
 async def Polar_graph(ctx, *, input_params):
     ApiBaseUrl_PolarGraph = ApiBaseUrl + "/DenzGraphingApi/v1/polar_graph/test/plot"
@@ -153,14 +171,15 @@ async def Polar_graph(ctx, *, input_params):
             e = urllib.parse.quote(e, safe='')
             ReqUrl_Polar = ApiBaseUrl_PolarGraph + f"?formula={e}"
             i += 1
-        if i != 0:
+        else:
             ReqUrl_Polar = ReqUrl_Polar + f"&{e}"
+
     await ctx.reply(ReqUrl_Polar)
 
 ###############
 
 @bot.command(
-    aliases = ['pgrem']
+    aliases = ['polatgraphembed','polargrembed','pgraphembed','pgrem']
 )
 async def Polar_graph_embed(ctx, *, input_params):
     ApiBaseUrl_PolarGraph = ApiBaseUrl + "/DenzGraphingApi/v1/polar_graph/test/plot"
@@ -171,7 +190,7 @@ async def Polar_graph_embed(ctx, *, input_params):
             e = urllib.parse.quote(e, safe='')
             ReqUrl_Polar = ApiBaseUrl_PolarGraph + f"?formula={e}"
             i += 1
-        if i != 0:
+        else:
             ReqUrl_Polar = ReqUrl_Polar + f"&{e}"
 
     url = ReqUrl_Polar
@@ -183,7 +202,7 @@ async def Polar_graph_embed(ctx, *, input_params):
 
 #################################################################################################################
 @bot.command(
-    aliases = ['3dgr']
+     aliases = ['threeDgraph','threeDgr','3dgraph','3dgr']
 )
 async def threeD_graph(ctx, *, input_params):
     ApiBaseUrl_3DGraph = ApiBaseUrl + "/DenzGraphingApi/v1/threeD_graph/test/plot"
@@ -194,14 +213,15 @@ async def threeD_graph(ctx, *, input_params):
             e = urllib.parse.quote(e, safe='')
             ReqUrl_3D = ApiBaseUrl_3DGraph + f"?formula={e}"
             i += 1
-        if i != 0:
+        else:
             ReqUrl_3D = ReqUrl_3D + f"&{e}"
+
     await ctx.reply(ReqUrl_3D)
 
 #############
 
 @bot.command(
-    aliases = ['3dgrem']
+    aliases = ['threeDgraphembed','3dgrembed','3dgraphembed','3dgrem']
 )
 async def threeD_graph_embed(ctx, *, input_params):
     ApiBaseUrl_3DGraph = ApiBaseUrl + "/DenzGraphingApi/v1/threeD_graph/test/plot"
@@ -212,7 +232,7 @@ async def threeD_graph_embed(ctx, *, input_params):
             e = urllib.parse.quote(e, safe='')
             ReqUrl_3D = ApiBaseUrl_3DGraph + f"?formula={e}"
             i += 1
-        if i != 0:
+        else:
             ReqUrl_3D = ReqUrl_3D + f"&{e}"
 
     url = ReqUrl_3D
@@ -221,6 +241,33 @@ async def threeD_graph_embed(ctx, *, input_params):
     embed.timestamp = datetime.datetime.utcnow()
     embed.set_footer(text=f'rendered by {ctx.author.name}',icon_url=ctx.author.avatar_url)
     await ctx.reply(embed=embed)
+
+#################################################################################################################
+
+@bot.command(
+    aliases = ['attr']
+)
+async def attributes(ctx):
+    attr = '''
+```
+grid_value=<1|2|3>
+plot_style=<0-25>
+x_coord=<any>
+y_coord=<any>
+spine_top=<hex without #>
+spine_bottom=<hex without #>
+spine_left=<hex without #>
+spine_right=<hex without #>
+line_style=<hex without #>
+grid_lines_major=<hex without #>
+grid_lines_minor=<hex without #>
+tick_colors=<hex without #>
+axfacecolor=<hex without #>
+figfacecolor=<hex without #>
+title_text=<any text>  
+```
+    '''
+    await ctx.reply(attr)
 
 #################################################################################################################
 
