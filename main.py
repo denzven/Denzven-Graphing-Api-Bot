@@ -95,7 +95,6 @@ async def on_command(ctx):
 
 @bot.event
 async def on_command_error(ctx, error):
-	#raise error
     if isinstance(error,commands.BadArgument):
         await ctx.send('BadArgument')
     if isinstance(error, commands.errors.CommandInvokeError):
@@ -113,7 +112,7 @@ async def on_command_error(ctx, error):
         if error.missing_perms[0] == 'send_messages':
             return
         await ctx.reply(f"BotMissingPermissions **{' '.join(error.missing_perms[0].split('_')).title()}**")
-
+    raise error
 #################################################################################################################
 
 @bot.command(
@@ -131,7 +130,21 @@ async def Flat_graph(ctx, *, input_params):
         else:
             ReqUrl_Flat = ReqUrl_Flat + f"&{e}"
 
-    await ctx.reply(ReqUrl_Flat)
+    try:
+        async with aiohttp.ClientSession() as session:
+            async with session.get(ReqUrl_Flat) as r:
+                if "image/png" in r.headers["Content-Type"]:
+                    file = open("flat_graph.png", "wb")
+                    file.write(await r.read())
+                    file.close()
+                    await ctx.reply(file=discord.File('flat_graph.png'))
+                if "application/json" in r.headers["Content-Type"]:
+                    json_out = await r.json()
+                    await ctx.reply(f"**Error!** \n error = {json_out['error']} \n error_id = {json_out['error_id']} \n fix = {json_out['fix']}")
+
+                
+    except Exception as e:
+        print(str(e))
 
 ############
 
@@ -174,7 +187,21 @@ async def Polar_graph(ctx, *, input_params):
         else:
             ReqUrl_Polar = ReqUrl_Polar + f"&{e}"
 
-    await ctx.reply(ReqUrl_Polar)
+    try:
+        async with aiohttp.ClientSession() as session:
+            async with session.get(ReqUrl_Polar) as r:
+                if "image/png" in r.headers["Content-Type"]:
+                    file = open("polar_graph.png", "wb")
+                    file.write(await r.read())
+                    file.close()
+                    await ctx.reply(file=discord.File('polar_graph.png'))
+                if "application/json" in r.headers["Content-Type"]:
+                    json_out = await r.json()
+                    await ctx.reply(f"**Error!** \n error = {json_out['error']} \n error_id = {json_out['error_id']} \n fix = {json_out['fix']}")
+
+                
+    except Exception as e:
+        print(str(e))
 
 ###############
 
@@ -216,7 +243,21 @@ async def threeD_graph(ctx, *, input_params):
         else:
             ReqUrl_3D = ReqUrl_3D + f"&{e}"
 
-    await ctx.reply(ReqUrl_3D)
+    try:
+        async with aiohttp.ClientSession() as session:
+            async with session.get(ReqUrl_3D) as r:
+                if "image/png" in r.headers["Content-Type"]:
+                    file = open("threeD_graph.png", "wb")
+                    file.write(await r.read())
+                    file.close()
+                    await ctx.reply(file=discord.File('threeD_graph.png'))
+                if "application/json" in r.headers["Content-Type"]:
+                    json_out = await r.json()
+                    await ctx.reply(f"**Error!** \n error = {json_out['error']} \n error_id = {json_out['error_id']} \n fix = {json_out['fix']}")
+
+                
+    except Exception as e:
+        print(str(e))
 
 #############
 
