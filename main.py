@@ -12,10 +12,48 @@ import urllib.parse
 import random
 import aiohttp
 import asyncio
-from statuslist import inputstatus
-#from keep_alive import keep_alive
 import datetime
+import re
+import json
 #import Denzven_Graphing_Api_Wrapper as GraphingApi #pip install
+
+from list.statuslist import inputstatus
+from list.cog_list import cogs
+#from keep_alive import keep_alive
+
+#################################################################################################################
+
+class GraphingBot(commands.Bot):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.CommandNumber = 0
+        self.prefixes_cache = [] 
+
+    async def fetch_prefix(self, message: discord.Message):
+        if not message.guild:
+            return ">"
+
+        guild_id = message.guild.id
+        prefix_cache = self.prefixes_cache
+
+        for ee in prefix_cache:
+            if ee['_id'] == guild_id:
+                return ee['prefix']
+
+        return ">"
+
+    async def get_custom_prefix(self, message: discord.Message):
+        prefix = await self.fetch_prefix(message)
+        bot_id = self.user.id
+        prefixes = [prefix, f"<@{bot_id}> ", f"<@!{bot_id}> "]
+
+        comp = re.compile(
+            "^(" + "|".join(re.escape(p) for p in prefixes) + ").*", flags=re.I
+        )
+        match = comp.match(message.content)
+        if match is not None:
+            return match.group(1)
+        return prefix
 
 #################################################################################################################
 
@@ -23,8 +61,9 @@ description = 'description'
 intents = discord.Intents.all()
 intents.members = True
 intents.presences = True
-bot = commands.Bot(
-    command_prefix=commands.when_mentioned_or(">"),
+bot = GraphingBot(
+    #command_prefix=commands.when_mentioned_or(">"),
+    command_prefix=GraphingBot.get_custom_prefix,
     intents=discord.Intents.all(),
     case_insensitive=True,
     strip_after_prefix=False,
@@ -56,8 +95,6 @@ async def on_connect():
 @bot.event
 async def on_ready():
     bot.loop.create_task(status_task())
-    global CommandNumber
-    CommandNumber = 0
     print('+--------------------------------------------------+')
     print('|                 Bot has Started                  |')
     print('+--------------------------------------------------+')
@@ -69,248 +106,31 @@ async def on_ready():
     print('| Join my chill server: https://dsc.gg/chilly_place|')
     print('+--------------------------------------------------+')
     print('\n\n\n')
+    with open("prefixes.json","r") as f:
+        GraphingBot.prefixes_cache = json.load(f)
+        print(GraphingBot.prefixes_cache)
 
-@bot.event
-async def on_command(ctx):
-    global CommandNumber
-    CommandNumber += 1
-    server = ctx.guild.name
-    channel = ctx.channel
-    user = ctx.author
-    command = ctx.command
-    print(f'\n\n\n')
-    print(f'+--------------------------------------------------+')
-    print(f'| {server} > {channel} > {user} > {command}         ')
-    print(f'+--------------------------------------------------+')
-    print(f'| Bot-Usage: {bot.user}                             ')
-    print(f'+--------------------------------------------------+')
-    print(f'| Server: {server}                                  ')
-    print(f'| Channel: {channel}                                ')
-    print(f'| User: {user}                                      ')
-    print(f'| Command: {command}                                ') 
-    print(f'| Command content: {ctx.message.content}            ')
-    print(f'| Command Number: {CommandNumber}                   ')
-    print(f'+--------------------------------------------------+')
-    print(f'\n\n\n')
-
-@bot.event
-async def on_command_error(ctx, error):
-    if isinstance(error,commands.BadArgument):
-        await ctx.send('BadArgument')
-    if isinstance(error, commands.errors.CommandInvokeError):
-        await ctx.reply("CommandInvokeError")
-    if isinstance(error, commands.CommandNotFound):
-        await ctx.reply("CommandNotFound")
-    if isinstance(error,commands.errors.CommandOnCooldown):
-        await ctx.reply(f"CommandOnCooldown retry after {error.retry_after:.2f}s.")
-    if isinstance(error, commands.errors.MissingPermissions):
-        await ctx.reply(f"MissingPermissions {' '.join(error.missing_perms[0].split('_')).title()}")
-        return
-    if isinstance(error,commands.MissingRequiredArgument):
-        await ctx.reply('MissingRequiredArgument')
-    if isinstance(error, commands.BotMissingPermissions):
-        if error.missing_perms[0] == 'send_messages':
-            return
-        await ctx.reply(f"BotMissingPermissions **{' '.join(error.missing_perms[0].split('_')).title()}**")
-    raise error
-#################################################################################################################
-
-@bot.command(
-    aliases = ['flatgraph','flatgr','fgraph','fgr']
-)
-async def Flat_graph(ctx, *, input_params):
-    ApiBaseUrl_FlatGraph = ApiBaseUrl + "/DenzGraphingApi/v1/flat_graph/test/plot"
-    params = input_params.split(' ')
-    i = 0
-    for e in params:
-        if i == 0:
-            e = urllib.parse.quote(e, safe='')
-            ReqUrl_Flat = ApiBaseUrl_FlatGraph + f"?formula={e}"
-            i += 1
-        else:
-            ReqUrl_Flat = ReqUrl_Flat + f"&{e}"
-
-    try:
-        async with aiohttp.ClientSession() as session:
-            async with session.get(ReqUrl_Flat) as r:
-                if "image/png" in r.headers["Content-Type"]:
-                    file = open("flat_graph.png", "wb")
-                    file.write(await r.read())
-                    file.close()
-                    await ctx.reply(file=discord.File('flat_graph.png'))
-                if "application/json" in r.headers["Content-Type"]:
-                    json_out = await r.json()
-                    await ctx.reply(f"**Error!** \n error = {json_out['error']} \n error_id = {json_out['error_id']} \n fix = {json_out['fix']}")
-
-                
-    except Exception as e:
-        print(str(e))
-
-############
-
-@bot.command(
-    aliases = ['flatgraphembed','flatgrembed','fgraphembed','fgrem']
-)
-async def Flat_graph_embed(ctx, *, input_params):
-    ApiBaseUrl_FlatGraph = ApiBaseUrl + "/DenzGraphingApi/v1/flat_graph/test/plot"
-    params = input_params.split(' ')
-    i = 0
-    for e in params:
-        if i == 0:
-            e = urllib.parse.quote(e, safe='')
-            ReqUrl_Flat = ApiBaseUrl_FlatGraph + f"?formula={e}"
-            i += 1
-        else:
-            ReqUrl_Flat = ReqUrl_Flat + f"&{e}"
-
-    url = ReqUrl_Flat
-    embed = discord.Embed(title = f'the graph',color = discord.Color.green(),url = url)
-    embed.set_image(url = url)
-    embed.timestamp = datetime.datetime.utcnow()
-    embed.set_footer(text=f'rendered by {ctx.author.name}',icon_url=ctx.author.avatar_url)
-    await ctx.reply(embed=embed)
+    for cog in cogs:
+        try:
+            bot.load_extension(cog)
+            print(f"{cog}")
+        except Exception as e:
+            print(e)
 
 #################################################################################################################
 
-@bot.command(
-    aliases = ['poargraph','polargr','pgraph','pgr']
-)
-async def Polar_graph(ctx, *, input_params):
-    ApiBaseUrl_PolarGraph = ApiBaseUrl + "/DenzGraphingApi/v1/polar_graph/test/plot"
-    params = input_params.split(' ')
-    i = 0
-    for e in params:
-        if i == 0:
-            e = urllib.parse.quote(e, safe='')
-            ReqUrl_Polar = ApiBaseUrl_PolarGraph + f"?formula={e}"
-            i += 1
-        else:
-            ReqUrl_Polar = ReqUrl_Polar + f"&{e}"
+@bot.command()
+async def prefix(ctx,prefix):
 
-    try:
-        async with aiohttp.ClientSession() as session:
-            async with session.get(ReqUrl_Polar) as r:
-                if "image/png" in r.headers["Content-Type"]:
-                    file = open("polar_graph.png", "wb")
-                    file.write(await r.read())
-                    file.close()
-                    await ctx.reply(file=discord.File('polar_graph.png'))
-                if "application/json" in r.headers["Content-Type"]:
-                    json_out = await r.json()
-                    await ctx.reply(f"**Error!** \n error = {json_out['error']} \n error_id = {json_out['error_id']} \n fix = {json_out['fix']}")
+    with open("prefixes.json","r") as f:
+        GraphingBot.prefixes_cache = json.load(f)
 
-                
-    except Exception as e:
-        print(str(e))
+    GraphingBot.prefixes_cache[str(ctx.guild.id)] = prefix
+    
+    with open("prefixes.json","w") as f:
+        json.dump(GraphingBot.prefixes_cache,f)
 
-###############
 
-@bot.command(
-    aliases = ['polatgraphembed','polargrembed','pgraphembed','pgrem']
-)
-async def Polar_graph_embed(ctx, *, input_params):
-    ApiBaseUrl_PolarGraph = ApiBaseUrl + "/DenzGraphingApi/v1/polar_graph/test/plot"
-    params = input_params.split(' ')
-    i = 0
-    for e in params:
-        if i == 0:
-            e = urllib.parse.quote(e, safe='')
-            ReqUrl_Polar = ApiBaseUrl_PolarGraph + f"?formula={e}"
-            i += 1
-        else:
-            ReqUrl_Polar = ReqUrl_Polar + f"&{e}"
-
-    url = ReqUrl_Polar
-    embed = discord.Embed(title = f'the graph',color = discord.Color.green(),url = url)
-    embed.set_image(url = url)
-    embed.timestamp = datetime.datetime.utcnow()
-    embed.set_footer(text=f'rendered by {ctx.author.name}',icon_url=ctx.author.avatar_url)
-    await ctx.reply(embed=embed)
-
-#################################################################################################################
-@bot.command(
-     aliases = ['threeDgraph','threeDgr','3dgraph','3dgr']
-)
-async def threeD_graph(ctx, *, input_params):
-    ApiBaseUrl_3DGraph = ApiBaseUrl + "/DenzGraphingApi/v1/threeD_graph/test/plot"
-    params = input_params.split(' ')
-    i = 0
-    for e in params:
-        if i == 0:
-            e = urllib.parse.quote(e, safe='')
-            ReqUrl_3D = ApiBaseUrl_3DGraph + f"?formula={e}"
-            i += 1
-        else:
-            ReqUrl_3D = ReqUrl_3D + f"&{e}"
-
-    try:
-        async with aiohttp.ClientSession() as session:
-            async with session.get(ReqUrl_3D) as r:
-                if "image/png" in r.headers["Content-Type"]:
-                    file = open("threeD_graph.png", "wb")
-                    file.write(await r.read())
-                    file.close()
-                    await ctx.reply(file=discord.File('threeD_graph.png'))
-                if "application/json" in r.headers["Content-Type"]:
-                    json_out = await r.json()
-                    await ctx.reply(f"**Error!** \n error = {json_out['error']} \n error_id = {json_out['error_id']} \n fix = {json_out['fix']}")
-
-                
-    except Exception as e:
-        print(str(e))
-
-#############
-
-@bot.command(
-    aliases = ['threeDgraphembed','3dgrembed','3dgraphembed','3dgrem']
-)
-async def threeD_graph_embed(ctx, *, input_params):
-    ApiBaseUrl_3DGraph = ApiBaseUrl + "/DenzGraphingApi/v1/threeD_graph/test/plot"
-    params = input_params.split(' ')
-    i = 0
-    for e in params:
-        if i == 0:
-            e = urllib.parse.quote(e, safe='')
-            ReqUrl_3D = ApiBaseUrl_3DGraph + f"?formula={e}"
-            i += 1
-        else:
-            ReqUrl_3D = ReqUrl_3D + f"&{e}"
-
-    url = ReqUrl_3D
-    embed = discord.Embed(title = f'the graph',color = discord.Color.green(),url = url)
-    embed.set_image(url = url)
-    embed.timestamp = datetime.datetime.utcnow()
-    embed.set_footer(text=f'rendered by {ctx.author.name}',icon_url=ctx.author.avatar_url)
-    await ctx.reply(embed=embed)
-
-#################################################################################################################
-
-@bot.command(
-    aliases = ['attr']
-)
-async def attributes(ctx):
-    attr = '''
-```
-grid_value=<1|2|3>
-plot_style=<0-25>
-x_coord=<any>
-y_coord=<any>
-spine_top=<hex without #>
-spine_bottom=<hex without #>
-spine_left=<hex without #>
-spine_right=<hex without #>
-line_style=<hex without #>
-grid_lines_major=<hex without #>
-grid_lines_minor=<hex without #>
-tick_colors=<hex without #>
-axfacecolor=<hex without #>
-figfacecolor=<hex without #>
-title_text=<any text>  
-```
-    '''
-    await ctx.reply(attr)
-
-#################################################################################################################
 
 @bot.command()
 async def ping(ctx):
