@@ -10,4 +10,8 @@ cogs = [
     "events.on_error",
 
     "commands.commands",
+    "commands.help",
+    "commands.prefix",
+
+    "task.status_task",
 ]
