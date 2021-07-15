@@ -6,4 +6,17 @@ inputstatus =   [
     "with Graphs",
     "with lines,parabolas and circles",
     "hmmmm... what to plot today?",
+    "Star me on GitHub pls! >github",
+    "Do i make you feel like plotting some graphs?",
+    "Eating RealityProgrammer's Brain",
+    "Checking errors",
+    "with Styles!",
+    "Python is pogg!",
+    "Eating tortillas with 69 others",
+    "My favorite number is 01000101",
+    "I'm being stuck under a basement",
+    "Send help",
+    "What does this piece of code do? while (trueeeeeeeeeeeeeeeeeeeeee...",
+    "Imagine using eval(), could not be me... Sob internally",
+    
 ]

@@ -8,12 +8,9 @@
 import discord
 from discord.ext import commands
 import os
-import random
-import asyncio
 import json
 #import Denzven_Graphing_Api_Wrapper as GraphingApi #pip install
 
-from list.statuslist import inputstatus
 from list.cog_list import cogs
 #from keep_alive import keep_alive
 
@@ -37,7 +34,7 @@ class GraphingBot(commands.Bot):
 
 #################################################################################################################
 
-description = 'description'
+description = 'A Graphing-Bot that uses Denzven-Graphing-Api made by Denzven#2004'
 intents = discord.Intents.all()
 intents.members = True
 intents.presences = True
@@ -59,6 +56,7 @@ async def on_connect():
     print('+--------------------------------------------------+')
     print('|                 Bot has Connected                |')
     print('+--------------------------------------------------+')
+    print('\n')
 
 @bot.event
 async def on_ready():
@@ -73,43 +71,23 @@ async def on_ready():
     print('| Bot made by: @Denzven#2004                       |')
     print('| Join my chill server: https://dsc.gg/chilly_place|')
     print('+--------------------------------------------------+')
-    print('\n\n\n')
+    print('\n')
+    print('+--------------------------------------------------+')
+    print('|                     Cogs:                        |')
+    print('+--------------------------------------------------+')
     with open("prefixes.json","r") as f:
         GraphingBot.prefixes_cache = json.load(f)
-        print('prefixes havs loaded')
+        print('| prefixes havs loaded')
 
     for cog in cogs:
         try:
             bot.load_extension(cog)
-            print(f"{cog} has loaded")
+            print(f"| {cog} has loaded")
         except Exception as e:
-            print(f"{cog} has not been loaded")
+            print(f"| {cog} has not been loaded")
             print(e)
-
-#################################################################################################################
-
-@bot.command()
-async def ping(ctx):
-    bot.ping = round(bot.latency * 1000)
-    await ctx.send(f"ping ---> {bot.ping} ms")
-@bot.command()
-async def github(ctx):
-    await ctx.send("https://github.com/denzven/Denzven-Graphing-Api")
-@bot.command()
-async def docs(ctx):
-    await ctx.send("https://denzven.pythonanywhere.com/docs")
-@bot.command()
-async def website(ctx):
-    await ctx.send("https://denzven.pythonanywhere.com")
-@bot.command()
-async def pypi(ctx):
-    await ctx.send("https://pypi.org/project/DenzGraphingApiWrapper-py/")
-@bot.command()
-async def test_pypi(ctx):
-    await ctx.send("https://test.pypi.org/project/DenzGraphingApiWrapper-py-denzven/")
-@bot.command()
-async def code(ctx):
-    await ctx.send(file = discord.File(r'main.py'), content = "Here is the Code of This Bot")
+    print('+--------------------------------------------------+')    
+    print('\n')
 
 #################################################################################################################
 

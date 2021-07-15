@@ -28,5 +28,29 @@ class Command(commands.Cog):
         embed.add_field(name="title_text=<any text>", value="sets title", inline=True)
         await ctx.reply(embed=embed)
 
+    @commands.command()
+    async def ping(self,ctx):
+        self.bot.ping = round(self.bot.latency * 1000)
+        await ctx.send(f"ping ---> {self.bot.ping} ms")
+    @commands.command()
+    async def github(self,ctx):
+        await ctx.send("https://github.com/denzven/Denzven-Graphing-Api")
+    @commands.command()
+    async def docs(self,ctx):
+        await ctx.send("https://denzven.pythonanywhere.com/docs")
+    @commands.command()
+    async def website(self,ctx):
+        await ctx.send("https://denzven.pythonanywhere.com")
+    @commands.command()
+    async def pypi(self,ctx):
+        await ctx.send("https://pypi.org/project/DenzGraphingApiWrapper-py/")
+    @commands.command()
+    async def test_pypi(self,ctx):
+        await ctx.send("https://test.pypi.org/project/DenzGraphingApiWrapper-py-denzven/")
+    @commands.command()
+    async def code(self,ctx):
+        await ctx.send(file = discord.File(r'main.py'), content = "Here is the Code of This Bot")
+
+
 def setup(bot):
 	bot.add_cog(Command(bot))
