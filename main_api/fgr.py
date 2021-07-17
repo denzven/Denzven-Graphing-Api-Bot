@@ -8,7 +8,8 @@ class GraphingCommand(commands.Cog):
         self.bot = bot
 
     @commands.command(
-        aliases = ['flatgraph','flatgr','fgraph','fgr']
+        aliases = ['flatgraph','flatgr','fgraph','fgr'],
+        help = ('Plot Flat graphs providing a formuala with x and y')
     )
     async def flat_graph(self,ctx, *, input_params):
         ApiBaseUrl = "https://denzven.pythonanywhere.com"

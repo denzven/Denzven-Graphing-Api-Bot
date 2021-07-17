@@ -8,7 +8,8 @@ class GraphingCommand(commands.Cog):
         self.bot = bot
 
     @commands.command(
-         aliases = ['threeDgraph','threeDgr','3dgraph','3dgr']
+         aliases = ['threeDgraph','threeDgr','3dgraph','3dgr'],
+         help = ('Plot three-dimensional graphs providing a formuala with x and y (z is NOT supported)')
     )
     async def threeD_graph(self,ctx, *, input_params):
         ApiBaseUrl = "https://denzven.pythonanywhere.com"

@@ -9,7 +9,8 @@ class GraphingCommandEmbed(commands.Cog):
         self.bot = bot
 
     @commands.command(
-        aliases = ['polatgraphembed','polargrembed','pgraphembed','pgrem']
+        aliases = ['polatgraphembed','polargrembed','pgraphembed','pgrem'],
+        help = ('Plot Polar graphs providing a formuala with x and y inside beautiful embeds')    
     )
     async def polar_graph_embed(self,ctx, *, input_params):
         ApiBaseUrl = "https://denzven.pythonanywhere.com"

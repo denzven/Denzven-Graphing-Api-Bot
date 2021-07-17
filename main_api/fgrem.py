@@ -9,7 +9,8 @@ class GraphingCommandEmbed(commands.Cog):
         self.bot = bot
 
     @commands.command(
-        aliases = ['flatgraphembed','flatgrembed','fgraphembed','fgrem']
+        aliases = ['flatgraphembed','flatgrembed','fgraphembed','fgrem'],
+        help = ('Plot Flat graphs providing a formuala with x and y, inside cool looking embeds')
     )
     async def flat_graph_embed(self,ctx, *, input_params):
         ApiBaseUrl = "https://denzven.pythonanywhere.com"

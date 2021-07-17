@@ -8,7 +8,9 @@ class GraphingCommand(commands.Cog):
         self.bot = bot
 
     @commands.command(
-        aliases = ['polargraph','polargr','pgraph','pgr']
+        aliases = ['polargraph','polargr','pgraph','pgr'],
+        help = ('Plot Polar graphs providing a formuala with x and y')
+
     )
     async def polar_graph(self,ctx, *, input_params):
         ApiBaseUrl = "https://denzven.pythonanywhere.com"

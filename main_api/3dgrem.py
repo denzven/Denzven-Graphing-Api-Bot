@@ -9,7 +9,8 @@ class GraphingCommandEmbed(commands.Cog):
         self.bot = bot
 
     @commands.command(
-        aliases = ['threeDgraphembed','3dgrembed','3dgraphembed','3dgrem']
+        aliases = ['threeDgraphembed','3dgrembed','3dgraphembed','3dgrem'],
+        help = ('Plot three-dimensional graphs providing a formuala with x and y insude beautiful embeds (z is NOT supported)')
     )
     async def threeD_graph_embed(self,ctx, *, input_params):
         ApiBaseUrl = "https://denzven.pythonanywhere.com"
