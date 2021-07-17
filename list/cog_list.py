@@ -8,6 +8,7 @@ cogs = [
     "main_api.fgrem",
     "main_api.pgr",
     "main_api.pgrem",
+    "main_api.kill",
 
 #------------------------
 
@@ -18,6 +19,7 @@ cogs = [
 
     "commands.commands",
     "commands.help",
+    "commands.help_test",
     "commands.prefix",
 
 #-----------------------

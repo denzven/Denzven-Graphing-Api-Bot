@@ -4,7 +4,7 @@ import urllib
 import aiohttp
 import datetime
 
-class fgrem(commands.Cog):
+class GraphingCommandEmbed(commands.Cog):
     def __init__(self, bot, **kwargs):
         self.bot = bot
 
@@ -33,7 +33,7 @@ class fgrem(commands.Cog):
                         file.write(await r.read())
                         file.close()
 
-                        embed = discord.Embed(title = f'the graph',color=0x00ff00,url = ReqUrl_flat)
+                        embed = discord.Embed(title = f'the graph',color=0x11ffcc,url = ReqUrl_flat)
                         file = discord.File("renders/flat_graph.png")
                         embed.set_image(url="attachment://flat_graph.png")
                         embed.timestamp = datetime.datetime.utcnow()
@@ -55,4 +55,4 @@ class fgrem(commands.Cog):
             print(str(e))
 
 def setup(bot):
-    bot.add_cog(fgrem(bot))
+    bot.add_cog(GraphingCommandEmbed(bot))

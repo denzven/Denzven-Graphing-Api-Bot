@@ -45,6 +45,7 @@ bot = GraphingBot(
     case_insensitive=True,
     strip_after_prefix=False,
     allowed_mentions=discord.AllowedMentions.none())
+bot.remove_command('help')
 
 
 #################################################################################################################

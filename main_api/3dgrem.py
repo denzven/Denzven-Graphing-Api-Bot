@@ -4,7 +4,7 @@ import urllib
 import aiohttp
 import datetime
 
-class threeDgrem(commands.Cog):
+class GraphingCommandEmbed(commands.Cog):
     def __init__(self, bot, **kwargs):
         self.bot = bot
 
@@ -33,7 +33,7 @@ class threeDgrem(commands.Cog):
                         file.write(await r.read())
                         file.close()
 
-                        embed = discord.Embed(title = f'the graph',color=0x00ff00,url = ReqUrl_3D)
+                        embed = discord.Embed(title = f'the graph',color=0x11ffcc,url = ReqUrl_3D)
                         file = discord.File("renders/3D_graph.png")
                         embed.set_image(url="attachment://3D_graph.png")
                         embed.timestamp = datetime.datetime.utcnow()
@@ -55,4 +55,4 @@ class threeDgrem(commands.Cog):
             print(str(e))
 
 def setup(bot):
-    bot.add_cog(threeDgrem(bot))
+    bot.add_cog(GraphingCommandEmbed(bot))

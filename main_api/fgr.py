@@ -3,7 +3,7 @@ import discord
 import urllib
 import aiohttp
 
-class fgr(commands.Cog):
+class GraphingCommand(commands.Cog):
     def __init__(self, bot, **kwargs):
         self.bot = bot
 
@@ -39,4 +39,4 @@ class fgr(commands.Cog):
             print(str(e))
 
 def setup(bot):
-    bot.add_cog(fgr(bot))
+    bot.add_cog(GraphingCommand(bot))
