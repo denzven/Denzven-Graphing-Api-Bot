@@ -19,7 +19,7 @@ class MyHelpCommand(commands.HelpCommand):
             embed.add_field( name = "OwnerCommands"         , value=">jsk"                                                                          , inline=False)
             #for command in ctx.bot.commands:
             #    embed.add_field(name=command.cog_name, value=f"{command.qualified_name}", inline=False)
-            await ctx.reply(content=f"**Help has arrived!** \n the prefix for this is server is ``prefix``", embed=embed)
+            await ctx.reply(content=f"**Help has arrived!** \n run `>prefix` to find out the prefix", embed=embed)
 
     
     # This function triggers when someone type `<prefix>help <cog>`

@@ -20,7 +20,7 @@ class GraphingBot(commands.Bot):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.CommandNumber = 0
-        self.prefixes_cache = []
+        self.prefixes_cache = {}
         self.ping = 0
         self.ApiBaseUrl = "https://denzven.pythonanywhere.com"
 

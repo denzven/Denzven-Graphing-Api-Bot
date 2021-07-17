@@ -10,8 +10,9 @@ class Prefix(commands.Cog):
     async def prefix(self,ctx,prefix=None):
         if prefix is None:
             try:
-                await ctx.reply(f'My prefix for this server is `{self.GraphingBot.prefixes_cache[str(ctx.guild.id)]}`')
-            except:
+                await ctx.reply(f'My prefix for this server is `{self.bot.prefixes_cache[str(ctx.guild.id)]}`')
+            except Exception as e:
+                print(e)
                 await ctx.reply('No Prefix has been set for this server, the default prefix is `>`')
         else:
             print(self.bot.prefixes_cache)
@@ -20,6 +21,7 @@ class Prefix(commands.Cog):
             self.bot.prefixes_cache[str(ctx.guild.id)] = prefix
             with open("prefixes.json","w") as f:
                 json.dump(self.bot.prefixes_cache,f)
+                await ctx.reply(f'The Prefix has been set to `{self.bot.prefixes_cache[str(ctx.guild.id)]}`')
 
 def setup(bot):
 	bot.add_cog(Prefix(bot))
