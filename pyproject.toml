@@ -9,7 +9,6 @@ python = "^3.8"
 discord = "^1.0.1"
 flask = "^2.0.1"
 Denzven-Graphing-Api-Wrapper = "^0.0.0"
-prettytable = "^2.1.0"
 jishaku = "^2.1.0"
 PyNaCl = "^1.4.0"
 

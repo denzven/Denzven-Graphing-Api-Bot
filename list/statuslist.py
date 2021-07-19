@@ -16,7 +16,7 @@ inputstatus =   [
     "My favorite number is 01000101",
     "I'm being stuck under a basement",
     "Send help",
-    "What does this piece of code do? while (trueeeeeeeeeeeeeeeeeeeeee...",
+    "What does this piece of code do? while trueeeeeeeeeeeeeeeeeeeeee...",
     "Imagine using eval(), could not be me... Sob internally",
     
 ]

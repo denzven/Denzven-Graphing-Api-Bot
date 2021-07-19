@@ -1,5 +1,6 @@
 from discord.ext import commands
 import discord
+from config import *
 
 class Command(commands.Cog):
     def __init__(self, bot):
@@ -9,7 +10,7 @@ class Command(commands.Cog):
         aliases = ['attr']
     )
     async def attributes(self,ctx):
-        embed=discord.Embed(title="Attributes:", description="these are the possible attributes for a given graph. There are a total of 15 of them", color=0x11ffcc)
+        embed=discord.Embed(title="Attributes:", description="these are the possible attributes for a given graph. There are a total of 15 of them", color=MAIN_COLOR)
         embed.set_author(name = "Help has arrived!", url="https://denzven.pythonanywhere.com/docs")
         embed.add_field( name = "grid=<1|2|3>",                     value = "adds grids to the graph",            inline = True )
         embed.add_field( name = "plot_style=<0-25>",                value = "determines the plot_style (boring)", inline = True )
@@ -26,32 +27,32 @@ class Command(commands.Cog):
         embed.add_field( name = "axfacecolor=<hex without #>",      value = "applies color to foreground",        inline = True )
         embed.add_field( name = "figfacecolor=<hex without #>",     value = "applies color to background",        inline = True )
         embed.add_field( name = "title_text=<any text>",            value = "sets title",                         inline = True )
-        await ctx.reply(embed = embed)
+        await ctx.reply(embed = embed, allowed_mentions=discord.AllowedMentions.none())
 
     @commands.command()
     async def ping(self,ctx):
         self.bot.ping = round(self.bot.latency * 1000)
-        await ctx.reply(f"ping ---> {self.bot.ping} ms")
+        await ctx.reply(f"ping ---> {self.bot.ping} ms", allowed_mentions=discord.AllowedMentions.none())
 
     @commands.command()
     async def github(self,ctx):
-        await ctx.reply("https://github.com/denzven/Denzven-Graphing-Api")
+        await ctx.reply(API_GITHUB_LINK, allowed_mentions=discord.AllowedMentions.none())
 
     @commands.command()
     async def invite(self,ctx):
-        await ctx.reply("https://discord.com/oauth2/authorize?client_id=851532461061308438&permissions=117760&scope=bot")
+        await ctx.reply(BOT_INVITE_LINK, allowed_mentions=discord.AllowedMentions.none())
 
     @commands.command()
     async def invite2(self,ctx):
-        await ctx.reply("https://dsc.gg/Denzven-Graphing-Api-Bot")
+        await ctx.reply(FANCY_BOT_INVITE_LINK, allowed_mentions=discord.AllowedMentions.none())
 
     @commands.command()
     async def docs(self,ctx):
-        await ctx.reply("https://denzven.pythonanywhere.com/docs")
+        await ctx.reply("https://denzven.pythonanywhere.com/docs", allowed_mentions=discord.AllowedMentions.none())
 
     @commands.command()
     async def website(self,ctx):
-        await ctx.reply("https://denzven.pythonanywhere.com")
+        await ctx.reply(API_BASE_LINK, allowed_mentions=discord.AllowedMentions.none())
 
     @commands.command()
     async def pypi(self,ctx):
@@ -59,7 +60,7 @@ class Command(commands.Cog):
 
     @commands.command()
     async def src(self,ctx):
-        await ctx.reply("https://github.com/denzven/Denzven-Graphing-Api-Bot")
+        await ctx.reply(BOT_GITHUB_LINK)
 
 def setup(bot):
 	bot.add_cog(Command(bot))

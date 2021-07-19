@@ -12,6 +12,7 @@ import json
 #import Denzven_Graphing_Api_Wrapper as GraphingApi #pip install
 
 from list.cog_list import cogs
+from config import *
 #from keep_alive import keep_alive
 
 #################################################################################################################
@@ -22,19 +23,19 @@ class GraphingBot(commands.Bot):
         self.CommandNumber = 0
         self.prefixes_cache = {}
         self.ping = 0
-        self.ApiBaseUrl = "https://denzven.pythonanywhere.com"
+        self.ApiBaseUrl = API_BASE_LINK
 
     async def get_custom_prefix(bot, message):
         prefixes_ = [f'<@{bot.user.id}> ', f'<@!{bot.user.id}> ']
         with open("prefixes.json") as f:
             prefixes = json.load(f)
 
-        prefixes_.append(">" if str(message.guild.id) not in prefixes else prefixes[str(message.guild.id)])
+        prefixes_.append(DEFAULT_PREFIX if str(message.guild.id) not in prefixes else prefixes[str(message.guild.id)])
         return prefixes_
 
 #################################################################################################################
 
-description = 'A Graphing-Bot that uses Denzven-Graphing-Api made by Denzven#2004'
+description = BOT_DESCRIPTION
 intents = discord.Intents.all()
 intents.members = True
 intents.presences = True
@@ -45,8 +46,8 @@ bot = GraphingBot(
     case_insensitive=True,
     strip_after_prefix=False,
     allowed_mentions=discord.AllowedMentions.none())
+    
 bot.remove_command('help')
-
 
 #################################################################################################################
 
@@ -67,11 +68,11 @@ async def on_ready():
     print('+--------------------------------------------------+')
     print('|                 Bot has Started                  |')
     print('+--------------------------------------------------+')
-    print('| logged in as: {}   |'.format(bot.user))
+    print('| logged in as: {}               |'.format(bot.user))
     print('+--------------------------------------------------+')
     print('| No. of Servers: {}                                |'.format(len(bot.guilds)))
-    print('| No. of Users: {}                                |'.format(len(bot.users)))
-    print('| Bot Prefix: ">"                                  |')
+    print('| No. of Users: {}                               |'.format(len(bot.users)))
+    print('| Bot Prefix: "{}"                                  |'.format(DEFAULT_PREFIX))
     print('| Bot made by: @Denzven#2004                       |')
     print('| Join my chill server: https://dsc.gg/chilly_place|')
     print('+--------------------------------------------------+')
@@ -92,6 +93,7 @@ async def on_ready():
     print('\n')
 
 #################################################################################################################
+
 
 #keep_alive()	
 bot.run(os.environ['bottoken'])

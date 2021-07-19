@@ -3,6 +3,7 @@ import discord
 import urllib
 import aiohttp
 import datetime
+from config import *
 
 class GraphingCommandEmbed(commands.Cog):
     def __init__(self, bot, **kwargs):
@@ -13,7 +14,7 @@ class GraphingCommandEmbed(commands.Cog):
         help = ('Plot three-dimensional graphs providing a formuala with x and y insude beautiful embeds (z is NOT supported)')
     )
     async def threeD_graph_embed(self,ctx, *, input_params):
-        ApiBaseUrl = "https://denzven.pythonanywhere.com"
+        ApiBaseUrl = API_BASE_LINK
         ApiBaseUrl_3DGraph = ApiBaseUrl + "/DenzGraphingApi/v1/threeD_graph/test/plot"
         params = input_params.split(' ')
         i = 0
@@ -34,7 +35,7 @@ class GraphingCommandEmbed(commands.Cog):
                         file.write(await r.read())
                         file.close()
 
-                        embed = discord.Embed(title = f'the graph',color=0x11ffcc,url = ReqUrl_3D)
+                        embed = discord.Embed(title = f'the graph',color=MAIN_COLOR,url = ReqUrl_3D)
                         file = discord.File("renders/3D_graph.png")
                         embed.set_image(url="attachment://3D_graph.png")
                         embed.timestamp = datetime.datetime.utcnow()
@@ -44,7 +45,7 @@ class GraphingCommandEmbed(commands.Cog):
                     if "application/json" in r.headers["Content-Type"]:
                         json_out = await r.json()
 
-                        embed=discord.Embed(color=0xff0000)
+                        embed=discord.Embed(color=ERROR_COLOR)
                         embed.add_field(name="Error:", value=f"{json_out['error']}", inline=False)
                         embed.add_field(name="Error_ID:", value=f"{json_out['error_id']}", inline=False)
                         embed.add_field(name="Fix:", value=f"{json_out['fix']}", inline=False)

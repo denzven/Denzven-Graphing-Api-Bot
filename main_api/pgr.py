@@ -2,6 +2,7 @@ from discord.ext import commands
 import discord
 import urllib
 import aiohttp
+from config import *
 
 class GraphingCommand(commands.Cog):
     def __init__(self, bot, **kwargs):
@@ -13,7 +14,7 @@ class GraphingCommand(commands.Cog):
 
     )
     async def polar_graph(self,ctx, *, input_params):
-        ApiBaseUrl = "https://denzven.pythonanywhere.com"
+        ApiBaseUrl = API_BASE_LINK
         ApiBaseUrl_polar = ApiBaseUrl + "/DenzGraphingApi/v1/polar_graph/test/plot"
         params = input_params.split(' ')
         i = 0

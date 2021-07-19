@@ -2,6 +2,7 @@ from discord.ext import commands
 import discord
 import urllib
 import aiohttp
+from config import *
 
 class GraphingCommand(commands.Cog):
     def __init__(self, bot, **kwargs):
@@ -12,7 +13,7 @@ class GraphingCommand(commands.Cog):
          help = ('Plot three-dimensional graphs providing a formuala with x and y (z is NOT supported)')
     )
     async def threeD_graph(self,ctx, *, input_params):
-        ApiBaseUrl = "https://denzven.pythonanywhere.com"
+        ApiBaseUrl = API_BASE_LINK
         ApiBaseUrl_3DGraph = ApiBaseUrl + "/DenzGraphingApi/v1/threeD_graph/test/plot"
         params = input_params.split(' ')
         i = 0
@@ -34,7 +35,7 @@ class GraphingCommand(commands.Cog):
                         await ctx.reply(file=discord.File('renders/3D_graph.png'))
                     if "application/json" in r.headers["Content-Type"]:
                         json_out = await r.json()
-                        await ctx.reply(f"**Error!** \n error = {json_out['error']} \n error_id = {json_out['error_id']} \n fix = {json_out['fix']}")
+                        await ctx.reply(f"**Error!** \n error = {json_out['error']} \n error_id = {json_out['error_id']} \n fix = {json_out['fix']}", allowed_mentions=discord.AllowedMentions.none())
 
         except Exception as e:
             print(str(e))

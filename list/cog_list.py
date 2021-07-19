@@ -21,6 +21,7 @@ cogs = [
     "commands.help",
     "commands.help_test",
     "commands.prefix",
+    "commands.calc",
 
 #-----------------------
 

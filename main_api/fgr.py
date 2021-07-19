@@ -2,6 +2,7 @@ from discord.ext import commands
 import discord
 import urllib
 import aiohttp
+from config import *
 
 class GraphingCommand(commands.Cog):
     def __init__(self, bot, **kwargs):
@@ -12,7 +13,7 @@ class GraphingCommand(commands.Cog):
         help = ('Plot Flat graphs providing a formuala with x and y')
     )
     async def flat_graph(self,ctx, *, input_params):
-        ApiBaseUrl = "https://denzven.pythonanywhere.com"
+        ApiBaseUrl = API_BASE_LINK
         ApiBaseUrl_Flat = ApiBaseUrl + "/DenzGraphingApi/v1/flat_graph/test/plot"
         params = input_params.split(' ')
         i = 0

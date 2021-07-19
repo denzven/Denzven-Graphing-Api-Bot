@@ -1,6 +1,7 @@
 from discord.ext import commands
 import discord
 import datetime
+from config import *
 
 class Command(commands.Cog):
     def __init__(self, bot):
@@ -39,7 +40,7 @@ class Command(commands.Cog):
             embed.add_field( name = "GraphingCommandsEmbed" , value=">fgrem <input_formula> [attr] \n>pgrem <input_formula> [attr] \n>3dgrem <input_formula> [attr] \n"                                    , inline=False)
             embed.add_field( name = "OtherCommands"         , value=">attr \n>docs \n>github \n>ping \n>pypi  \n>src \n>website \n>prefix \n>attr \n", inline=False)
             embed.add_field( name = "OwnerCommands"         , value=">jsk"                                                                          , inline=False)
-            await ctx.reply(content=f"**Help has arrived!** \n the prefix for this is server is ``prefix``", embed=embed)
+            await ctx.reply(content=f"**Help has arrived!** \n the prefix for this is server is ``prefix``", embed=embed, allowed_mentions=discord.AllowedMentions.none())
             #await ctx.send(embed=embed)
         else:
             await ctx.send_help(command)
