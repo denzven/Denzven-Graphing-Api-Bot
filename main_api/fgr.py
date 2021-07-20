@@ -4,7 +4,7 @@ import urllib
 import aiohttp
 from config import *
 
-class GraphingCommand(commands.Cog):
+class GraphingCommand_flat(commands.Cog):
     def __init__(self, bot, **kwargs):
         self.bot = bot
 
@@ -41,4 +41,4 @@ class GraphingCommand(commands.Cog):
             print(str(e))
 
 def setup(bot):
-    bot.add_cog(GraphingCommand(bot))
+    bot.add_cog(GraphingCommand_flat(bot))

@@ -1,9 +1,9 @@
 from discord.ext import tasks
 import random
-from list.statuslist import inputstatus
 from discord.ext import commands
 import discord
 import asyncio
+from config import *
 
 class Tasks(commands.Cog):
     def __init__(self, bot):

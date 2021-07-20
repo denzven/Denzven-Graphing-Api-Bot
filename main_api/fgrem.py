@@ -5,7 +5,7 @@ import aiohttp
 import datetime
 from config import *
 
-class GraphingCommandEmbed(commands.Cog):
+class GraphingCommandEmbed_flat(commands.Cog):
     def __init__(self, bot, **kwargs):
         self.bot = bot
 
@@ -57,4 +57,4 @@ class GraphingCommandEmbed(commands.Cog):
             print(str(e))
 
 def setup(bot):
-    bot.add_cog(GraphingCommandEmbed(bot))
+    bot.add_cog(GraphingCommandEmbed_flat(bot))

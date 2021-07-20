@@ -1,8 +1,9 @@
 from discord.ext import commands
 import discord
+import datetime
 from config import *
 
-class Command(commands.Cog):
+class OtherCommands(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
@@ -28,6 +29,31 @@ class Command(commands.Cog):
         embed.add_field( name = "figfacecolor=<hex without #>",     value = "applies color to background",        inline = True )
         embed.add_field( name = "title_text=<any text>",            value = "sets title",                         inline = True )
         await ctx.reply(embed = embed, allowed_mentions=discord.AllowedMentions.none())
+
+    @commands.cooldown(1, 5, commands.BucketType.user)
+    @commands.command()
+    async def botinfo(self, ctx):
+        embed = discord.Embed(title = "**Bot Info**", description = f"I am {BOT_DESCRIPTION}. My help command is `>help`. I am currently in `{len(self.bot.guilds)}` servers, and i have more than `{len(set(self.bot.get_all_members()))}` users. I have a total of `{TOTAL_CMDS}` commands.", color = 0x00FFFF)
+        embed.set_thumbnail(url=BOT_AVATAR)
+        embed.add_field(name = "**Invite GraphingBot**",
+                        value = f"[Click Here]({BOT_INVITE_LINK})",
+                        inline = True)
+        embed.add_field(name = "**Support Server**",
+                        value = f"[Click Here]({SUPPORT_SERVER_LINK})",
+                        inline = True)
+        embed.add_field(name = "**Bug Report**",
+                        value = f"[Click Here]({GOOGLE_FORM})",
+                        inline = True)
+        embed.add_field(name = "**Vote GraphingBot**",
+                        value = f"[Click Here]({BOT_VOTE})",
+                        inline = True)
+        embed.add_field(name = "**Our Website**",
+                        value = f"[Click Here]({API_BASE_LINK})",
+                        inline = True)
+        embed.set_footer(text=f"{ctx.guild}", icon_url=f"{ctx.guild.icon.url}")
+        embed.timestamp = datetime.datetime.utcnow()
+
+        await ctx.send(embed = embed)
 
     @commands.command()
     async def ping(self,ctx):
@@ -63,4 +89,4 @@ class Command(commands.Cog):
         await ctx.reply(BOT_GITHUB_LINK)
 
 def setup(bot):
-	bot.add_cog(Command(bot))
+	bot.add_cog(OtherCommands(bot))

@@ -11,7 +11,6 @@ import os
 import json
 #import Denzven_Graphing_Api_Wrapper as GraphingApi #pip install
 
-from list.cog_list import cogs
 from config import *
 #from keep_alive import keep_alive
 
