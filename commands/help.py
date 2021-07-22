@@ -13,8 +13,6 @@ HELP_BTNS_OPTIONS = [
 
 
 async def get_command_help(command,context):
-        print(command)
-        print(context)
         #command = context.bot.get_command_help(command)
         embed = discord.Embed(
             colour=MAIN_COLOR,
@@ -57,7 +55,7 @@ class BotHelpSelect(discord.ui.Select):
         self.ctx = ctx
 
     async def callback(self, i):
-        await i.response.send_message(embed =await get_command_help(self.values[0],self.ctx)
+        await i.response.send_message(embed =await get_command_help(self.ctx.bot.get_command(self.values[0]),self.ctx)
         #await i.response.send_message(type(await self.ctx.send_help(self.values[0]))
         , ephemeral=True)
 
@@ -107,7 +105,6 @@ class MyHelpCommand(commands.HelpCommand):
             return embed,view_ui
             #await ctx.reply(content=f"**Help has arrived!** \n run `>prefix` to find out the prefix", embed=embed,view=view_ui)
     async def send_command_help(self, command):
-        print(command)
         embed = await get_command_help(command,self.context)
         await self.context.reply(embed = embed)
 
