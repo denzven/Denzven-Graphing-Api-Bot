@@ -88,5 +88,17 @@ class OtherCommands(commands.Cog):
     async def src(self,ctx):
         await ctx.reply(BOT_GITHUB_LINK)
 
+    @commands.command(
+        aliases = ['bl']
+    )
+    async def botlists(self,ctx):
+        embed=discord.Embed(title="Bot-Lists:", description="these are the websites the bot is currently uploaded to", color=MAIN_COLOR)
+        embed.set_author(name = "Roll in the Lists!")
+        embed.add_field( name = "Top.gg",                           value = "https://top.gg/bot/851532461061308438",            inline = False )
+        embed.add_field( name = "discordbotlist",                   value = "https://discordbotlist.com/bots/graphingbot",      inline = False )
+        embed.add_field( name = "botlists.com",                     value = "https://botlists.com/bot/851532461061308438",      inline = False )
+        embed.add_field( name = "discord.bots.gg",                  value = "https://discord.bots.gg/bots/851532461061308438",  inline = False )
+        await ctx.reply(embed = embed, allowed_mentions=discord.AllowedMentions.none())
+    
 def setup(bot):
 	bot.add_cog(OtherCommands(bot))

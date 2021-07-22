@@ -2,11 +2,97 @@ import discord
 from discord.ext import commands
 import datetime
 from config import *
+HELP_BTNS_OPTIONS = [
+    discord.SelectOption(label = 'fgr'    ,value = 'flat_graph'   ,description = 'qq' ),
+    discord.SelectOption(label = 'fgrem'  ,value = 'fgrem' ,description = 'qq' ),
+    discord.SelectOption(label = 'pgr'    ,value = 'pgr'   ,description = 'qq' ),
+    discord.SelectOption(label = 'pgrem'  ,value = 'pgrem' ,description = 'qq' ),
+    discord.SelectOption(label = '3dgr'   ,value = '3dgr'  ,description = 'qq' ),
+    discord.SelectOption(label = '3dgrem' ,value = '3dgrem',description = 'qq' ),
+]
+
+
+async def get_command_help(command,context):
+        print(command)
+        print(context)
+        #command = context.bot.get_command_help(command)
+        embed = discord.Embed(
+            colour=MAIN_COLOR,
+            title=f'{command.qualified_name}'
+            )
+        use = ""
+        aliases = ""
+        for cancer in command.clean_params:
+            use += f"<{cancer}> "
+        for alias in command.aliases:
+            aliases += f"`{alias}` "
+        embed=discord.Embed(
+            title=f"{command.name.title()} Help",
+            description=f"""
+    {command.help}
+    
+    **Usage:**
+    ```
+{command.name} {use}
+    ```
+    **Aliases:** {aliases if len(aliases) > 0 else "None"}
+    **Cooldown:** {0 if command._buckets._cooldown == None else command._buckets._cooldown.per} seconds
+                            """,
+            color=MAIN_COLOR,
+            timestamp=datetime.datetime.utcnow()
+            ).set_footer(text=f"Requested by {context.author}"
+            ).set_author(name=context.bot.user.name, icon_url=BOT_AVATAR
+            ).set_thumbnail(url=BOT_AVATAR
+            ).add_field(name='‎‎', value=f"[Invite Me]({BOT_INVITE_LINK}) | [Support Server]({SUPPORT_SERVER_LINK})", inline=False)
+        return embed
+            #await ctx.reply(embed=embed, allowed_mentions=discord.AllowedMentions.none())
+ 
+
+class BotHelpSelect(discord.ui.Select):
+    def __init__(self, placeholder, options, ctx):
+        super().__init__(
+            placeholder=placeholder,
+            options=HELP_BTNS_OPTIONS,
+        )
+        self.ctx = ctx
+
+    async def callback(self, i):
+        await i.response.send_message(embed =await get_command_help(self.values[0],self.ctx)
+        #await i.response.send_message(type(await self.ctx.send_help(self.values[0]))
+        , ephemeral=True)
+
 
 class MyHelpCommand(commands.HelpCommand):
-        # This function triggers when somone type `<prefix>help`
-    async def send_bot_help(self, mapping):
-            ctx = self.context
+    async def send_bot_help(self, cog):
+        embed,view_ui = await self.get_bot_help(self.context)
+        await self.context.reply(embed = embed,view=view_ui)
+
+    #async def get_bot_help(self, mapping):
+    async def get_bot_help(cog, context):
+            ctx = context
+            #views = 
+            view_ui = discord.ui.View(timeout=None)
+            select = BotHelpSelect(
+                placeholder="Select a category.",
+                options=HELP_BTNS_OPTIONS,
+                ctx=ctx
+            )
+            view_ui.add_item(select)
+            view_ui.add_item(discord.ui.Button(
+                style=discord.ButtonStyle.url,
+                url=API_BASE_LINK,
+                label="website",
+            ))
+            view_ui.add_item(discord.ui.Button(
+                style=discord.ButtonStyle.url,
+                url=SUPPORT_SERVER_LINK,
+                label="support server",
+            ))
+            view_ui.add_item(discord.ui.Button(
+                style=discord.ButtonStyle.url,
+                url=BOT_GITHUB_LINK,
+                label="github (src)",
+            ))
             embed = discord.Embed(
                 title="Denzven-Graphing-Api-Bot", 
                 colour=MAIN_COLOR, 
@@ -18,8 +104,12 @@ class MyHelpCommand(commands.HelpCommand):
             embed.add_field( name = "GraphingCommandsEmbed" , value=">fgrem <input_formula> [attr] \n>pgrem <input_formula> [attr] \n>3dgrem <input_formula> [attr] \n"                                    , inline=False)
             embed.add_field( name = "OtherCommands"         , value=">attr \n>docs \n>github \n>ping \n>pypi  \n>src \n>website \n>prefix \n>attr \n", inline=False)
             embed.add_field( name = "OwnerCommands"         , value=">jsk"                                                                          , inline=False)
-            await ctx.reply(content=f"**Help has arrived!** \n run `>prefix` to find out the prefix", embed=embed)
-
+            return embed,view_ui
+            #await ctx.reply(content=f"**Help has arrived!** \n run `>prefix` to find out the prefix", embed=embed,view=view_ui)
+    async def send_command_help(self, command):
+        print(command)
+        embed = await get_command_help(command,self.context)
+        await self.context.reply(embed = embed)
 
     # This function triggers when someone type `<prefix>help <cog>`
     async def send_cog_help(self, cog):
@@ -33,38 +123,7 @@ class MyHelpCommand(commands.HelpCommand):
                             embed.add_field(name=thing.qualified_name, value=f'Description: {thing.help}\nUsage: {self.clean_prefix}{thing.qualified_name} {thing.signature}', inline=False)
                     await ctx.send(embed=embed)
             # Do what you want to do here
-    
-    async def send_command_help(self, command):
-            ctx = self.context
-            embed = discord.Embed(
-                colour=MAIN_COLOR,
-                title=f'{command.qualified_name}'
-                )
-            use = ""
-            aliases = ""
-            for cancer in command.clean_params:
-                use += f"<{cancer}> "
-            for alias in command.aliases:
-                aliases += f"`{alias}` "
-            embed=discord.Embed(
-                title=f"{command.name.title()} Help",
-                description=f"""
-    {command.help}
-    
-    **Usage:**
-    ```
-{command.name} {use}
-    ```
-    **Aliases:** {aliases if len(aliases) > 0 else "None"}
-    **Cooldown:** {0 if command._buckets._cooldown == None else command._buckets._cooldown.per} seconds
-                            """,
-                color=MAIN_COLOR,
-                timestamp=datetime.datetime.utcnow()
-            ).set_footer(text=f"Requested by {self.context.author}"
-            ).set_author(name=self.context.bot.user.name, icon_url=BOT_AVATAR
-            ).set_thumbnail(url=BOT_AVATAR
-            ).add_field(name='‎‎', value=f"[Invite Me]({BOT_INVITE_LINK}) | [Support Server]({SUPPORT_SERVER_LINK})", inline=False)
-            await ctx.reply(embed=embed, allowed_mentions=discord.AllowedMentions.none())
+
 
     async def send_group_help(self, group):
             ctx = self.context
@@ -94,6 +153,7 @@ class Help(commands.Cog):
                 
         # Setting help command to the previous help command so if this cog unloads the help command restores to previous
         self.bot.help_command = self.bot._original_help_command
+
 
 def setup(bot):
         bot.add_cog(Help(bot))

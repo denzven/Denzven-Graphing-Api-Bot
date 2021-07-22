@@ -39,7 +39,7 @@ intents = discord.Intents.all()
 intents.members = True
 intents.presences = True
 bot = GraphingBot(
-    #command_prefix=commands.when_mentioned_or(">"),
+    #command_prefix=commands.when_mentioned_or(DEFAULT_PREFIX),
     command_prefix=GraphingBot.get_custom_prefix,
     intents=discord.Intents.all(),
     case_insensitive=True,
@@ -95,4 +95,4 @@ async def on_ready():
 
 
 #keep_alive()	
-bot.run(os.environ['bottoken'])
+bot.run(BOT_TOKEN)

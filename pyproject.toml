@@ -9,6 +9,7 @@ python = "^3.8"
 jishaku = "^2.1.0"
 "discord.py" = { git = "https://github.com/Rapptz/discord.py", branch = "master" }
 aiohttp = "^3.7.4"
+Flask = "^2.0.1"
 
 [tool.poetry.dev-dependencies]
 

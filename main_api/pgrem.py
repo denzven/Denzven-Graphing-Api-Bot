@@ -39,7 +39,7 @@ class GraphingCommandEmbed_polar(commands.Cog):
                         file = discord.File("renders/polar_graph.png")
                         embed.set_image(url="attachment://polar_graph.png")
                         embed.timestamp = datetime.datetime.utcnow()
-                        embed.set_footer(text=f'rendered by {ctx.author.name}',icon_url=ctx.author.avatar_url)
+                        embed.set_footer(text=f'rendered by {ctx.author.name}',icon_url=ctx.author.avatar.url)
                         await ctx.reply(embed=embed, file=file)
 
                     if "application/json" in r.headers["Content-Type"]:
@@ -50,7 +50,7 @@ class GraphingCommandEmbed_polar(commands.Cog):
                         embed.add_field(name="Error_ID:", value=f"{json_out['error_id']}", inline=False)
                         embed.add_field(name="Fix:", value=f"{json_out['fix']}", inline=False)
                         embed.timestamp = datetime.datetime.utcnow()
-                        embed.set_footer(text=f'rendered by {ctx.author.name}',icon_url=ctx.author.avatar_url)
+                        embed.set_footer(text=f'rendered by {ctx.author.name}',icon_url=ctx.author.avatar.url)
                         await ctx.reply(embed=embed)
 
         except Exception as e:

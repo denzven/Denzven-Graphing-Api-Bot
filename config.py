@@ -1,10 +1,14 @@
+import os
+import discord
 # This is the Config file... most commonly used strings/colors etc are set here for easy acsess
+
 
 # Not gonna change often
 MAIN_COLOR = 0x11ffcc
 SECONDARY_COLOR = 0x8ebd9d
 ERROR_COLOR = 0xff0000
 DEFAULT_PREFIX = '>'
+BOT_TOKEN = os.environ['bottoken']
 API_BASE_LINK = 'https://denzven.pythonanywhere.com'
 API_GITHUB_LINK = 'https://github.com/denzven/Denzven-Graphing-Api'
 BOT_GITHUB_LINK = 'https://github.com/denzven/Denzven-Graphing-Api-Bot'
