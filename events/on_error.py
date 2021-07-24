@@ -7,13 +7,17 @@ class Error(commands.Cog):
 
     @commands.Cog.listener()
     async def on_command_error(self,ctx, error):
-        print(error)
+        server = ctx.guild.name
+        channel = ctx.channel
+        user = ctx.author
+        command = ctx.command
+        print(f'{server} > {channel} > {user} > {command} > {error}')
         if isinstance(error,commands.BadArgument):
             await ctx.send('BadArgument', allowed_mentions=discord.AllowedMentions.none())
         if isinstance(error, commands.errors.CommandInvokeError):
             await ctx.reply("CommandInvokeError", allowed_mentions=discord.AllowedMentions.none())
-        if isinstance(error, commands.CommandNotFound):
-            await ctx.reply("CommandNotFound", allowed_mentions=discord.AllowedMentions.none())
+        #if isinstance(error, commands.CommandNotFound):
+        #    await ctx.reply("CommandNotFound", allowed_mentions=discord.AllowedMentions.none())
         if isinstance(error,commands.errors.CommandOnCooldown):
             await ctx.reply(f"CommandOnCooldown retry after {error.retry_after:.2f}s.", allowed_mentions=discord.AllowedMentions.none())
         if isinstance(error, commands.errors.MissingPermissions):

@@ -11,9 +11,12 @@ class GraphingCommandEmbed_polar(commands.Cog):
 
     @commands.command(
         aliases = ['polatgraphembed','polargrembed','pgraphembed','pgrem'],
-        help = ('Plot Polar graphs providing a formuala with x and y inside beautiful embeds')    
+        help = ('Plot Polar graphs providing a formuala with x and y inside beautiful embeds'),
+        name = 'Polar_Graph_Embed',
+        description = 'Plot Polar Graphs in Embeds with this command',        
     )
     async def polar_graph_embed(self,ctx, *, input_params):
+        await ctx.message.add_reaction(WAITING_EMOJI)
         ApiBaseUrl = API_BASE_LINK
         ApiBaseUrl_polar = ApiBaseUrl + "/DenzGraphingApi/v1/polar_graph/test/plot"
         params = input_params.split(' ')
@@ -41,7 +44,9 @@ class GraphingCommandEmbed_polar(commands.Cog):
                         embed.timestamp = datetime.datetime.utcnow()
                         embed.set_footer(text=f'rendered by {ctx.author.name}',icon_url=ctx.author.avatar.url)
                         await ctx.reply(embed=embed, file=file)
-
+                        pass
+                        await ctx.message.add_reaction(DONE_EMOJI)
+                        
                     if "application/json" in r.headers["Content-Type"]:
                         json_out = await r.json()
 
@@ -52,6 +57,8 @@ class GraphingCommandEmbed_polar(commands.Cog):
                         embed.timestamp = datetime.datetime.utcnow()
                         embed.set_footer(text=f'rendered by {ctx.author.name}',icon_url=ctx.author.avatar.url)
                         await ctx.reply(embed=embed)
+                        pass
+                        await ctx.message.add_reaction(ERROR_EMOJI)
 
         except Exception as e:
             print(str(e))

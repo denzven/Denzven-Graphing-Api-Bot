@@ -11,9 +11,13 @@ class GraphingCommandEmbed_3d(commands.Cog):
 
     @commands.command(
         aliases = ['threeDgraphembed','3dgrembed','3dgraphembed','3dgrem'],
-        help = ('Plot three-dimensional graphs providing a formuala with x and y insude beautiful embeds (z is NOT supported)')
+        help = ('Plot three-dimensional graphs providing a formuala with x and y insude beautiful embeds (z is NOT supported)'),
+        name = '3D_Graph_Embed',
+        description = 'Plot 3D Graphs in Embeds with this command',
     )
     async def threeD_graph_embed(self,ctx, *, input_params):
+        await ctx.message.add_reaction(WAITING_EMOJI)
+        pass
         ApiBaseUrl = API_BASE_LINK
         ApiBaseUrl_3DGraph = ApiBaseUrl + "/DenzGraphingApi/v1/threeD_graph/test/plot"
         params = input_params.split(' ')
@@ -41,6 +45,8 @@ class GraphingCommandEmbed_3d(commands.Cog):
                         embed.timestamp = datetime.datetime.utcnow()
                         embed.set_footer(text=f'rendered by {ctx.author.name}',icon_url=ctx.author.avatar.url)
                         await ctx.reply(embed=embed, file=file)
+                        pass
+                        await ctx.message.add_reaction(DONE_EMOJI)
 
                     if "application/json" in r.headers["Content-Type"]:
                         json_out = await r.json()
@@ -52,6 +58,9 @@ class GraphingCommandEmbed_3d(commands.Cog):
                         embed.timestamp = datetime.datetime.utcnow()
                         embed.set_footer(text=f'rendered by {ctx.author.name}',icon_url=ctx.author.avatar.url)
                         await ctx.reply(embed=embed)
+                        pass
+                        await ctx.message.add_reaction(ERROR_EMOJI)
+
 
         except Exception as e:
             print(str(e))

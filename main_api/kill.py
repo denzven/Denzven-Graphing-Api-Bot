@@ -9,7 +9,8 @@ class Kill(commands.Cog):
         self.bot = bot
 
     @commands.command(
-         aliases = ['kill_switch','reset']
+        aliases = ['kill_switch','reset'],
+        hidden=True
     )
     @commands.is_owner()
     async def Kill(self,ctx):

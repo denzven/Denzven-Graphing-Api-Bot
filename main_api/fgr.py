@@ -10,9 +10,12 @@ class GraphingCommand_flat(commands.Cog):
 
     @commands.command(
         aliases = ['flatgraph','flatgr','fgraph','fgr'],
-        help = ('Plot Flat graphs providing a formuala with x and y')
+        help = ('Plot Flat graphs providing a formuala with x and y'),
+        name = 'Flat_Graph',
+        description = 'Plot Flat Graphs with this command',
     )
     async def flat_graph(self,ctx, *, input_params):
+        await ctx.message.add_reaction(WAITING_EMOJI)
         ApiBaseUrl = API_BASE_LINK
         ApiBaseUrl_Flat = ApiBaseUrl + "/DenzGraphingApi/v1/flat_graph/test/plot"
         params = input_params.split(' ')
@@ -33,10 +36,15 @@ class GraphingCommand_flat(commands.Cog):
                         file.write(await r.read())
                         file.close()
                         await ctx.reply(file=discord.File('renders/flat_graph.png'))
+                        pass
+                        await ctx.message.add_reaction(DONE_EMOJI)
+                        
                     if "application/json" in r.headers["Content-Type"]:
                         json_out = await r.json()
                         await ctx.reply(f"**Error!** \n error = {json_out['error']} \n error_id = {json_out['error_id']} \n fix = {json_out['fix']}")
-
+                        pass
+                        await ctx.message.add_reaction(ERROR_EMOJI)
+                        
         except Exception as e:
             print(str(e))
 

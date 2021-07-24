@@ -10,7 +10,7 @@ from discord.ext import commands
 import os
 import json
 #import Denzven_Graphing_Api_Wrapper as GraphingApi #pip install
-
+os.environ.setdefault("JISHAKU_HIDE", "1")
 from config import *
 #from keep_alive import keep_alive
 
@@ -69,8 +69,8 @@ async def on_ready():
     print('+--------------------------------------------------+')
     print('| logged in as: {}               |'.format(bot.user))
     print('+--------------------------------------------------+')
-    print('| No. of Servers: {}                                |'.format(len(bot.guilds)))
-    print('| No. of Users: {}                               |'.format(len(bot.users)))
+    print('| No. of Servers: {}                               |'.format(len(bot.guilds)))
+    print('| No. of Users: {}                              |'.format(len(bot.users)))
     print('| Bot Prefix: "{}"                                  |'.format(DEFAULT_PREFIX))
     print('| Bot made by: @Denzven#2004                       |')
     print('| Join my chill server: https://dsc.gg/chilly_place|')
@@ -80,7 +80,6 @@ async def on_ready():
     print('|                     Cogs:                        |')
     print('+--------------------------------------------------+')
 
-
     for cog in cogs:
         try:
             bot.load_extension(cog)
@@ -88,11 +87,18 @@ async def on_ready():
         except Exception as e:
             print(f"| {cog} has not been loaded")
             print(e)
-    print('+--------------------------------------------------+')    
+    print('+--------------------------------------------------+') 
+    print('\n')    
+    print('+--------------------------------------------------+')
+    print('|                     servers:                     |')
+    print('+--------------------------------------------------+')   
+    for guild in bot.guilds:
+        print(f'| name:{guild.name}\n| guild id:{guild.id}\n| no. of members:{len(guild.members)}\n| GuildOwner:{str(guild.owner)}')
+        print('+--------------------------------------------------+')   
+
     print('\n')
 
 #################################################################################################################
-
 
 #keep_alive()	
 bot.run(BOT_TOKEN)

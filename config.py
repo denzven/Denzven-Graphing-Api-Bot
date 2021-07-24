@@ -21,12 +21,60 @@ API_COVER_PIC = 'https://opengraph.githubassets.com/9f69f5225e6394f4d3f5213bf5d8
 BOT_AVATAR = 'https://cdn.discordapp.com/avatars/851532461061308438/ebb1bb6821da8d47a8559a6a4fb95ec6.png?size=256'
 TOTAL_CMDS = 15
 GOOGLE_FORM = ''
-BOT_VOTE = ''
+BOT_VOTE = 'https://top.gg/bot/851532461061308438/vote'
+EMPTY_CHAR = '‎‎'
+SUGGEST_CHANNEL = 854953071393898537
+WAITING_EMOJI = '⏱️'
+DONE_EMOJI = '✅'
+ERROR_EMOJI = '‼️'
+THX_EMOJI = '🙏' 
+UPVOTE_EMOJI = '👍'
+DOWNVOTE_EMOJI = '👎'
+
 #################################################################################################################
+
+EMOJI_FOR_CMDS = {
+    '3D_Graph'         : '<:3D_Graph:868552735891529759>',
+    '3D_Graph_Embed'   : '<:3D_Graph:868552735891529759>',
+    'Flat_Graph'       : '🧻',
+    'Flat_Graph_Embed' : '🧻',
+    'Polar_Graph'      : '🐻‍❄️',
+    'Polar_Graph_Embed': '🐻‍❄️',
+    'Graph_Attributes' : '<:graph:868554000281239563>',
+    'Bot_Info'         : '🤖',
+    'Ping'             : '<a:typing:868554352141402133>',
+    'GitHub'           : '<:GitHubWhite:868554626079785020>',
+    'Invite'           : '<:invite:868554868372148244>',
+    'Invite2'          : '<:invite:868554868372148244>',
+    'Docs'             : '<:readthedocs:868555051214463057>',
+    'Website'          : '🕸️',
+    'Source_Code'      : '<:Python:868556292875227146>',
+    'Vote'             : '<:MH_UwUlove:868556594785427516>',
+    'BotLists'         : '<:list:868555435756650526>',
+    'Suggest'          : '<:cp_flooshed:868555789638467664>',
+    'help'             : '<:WindowsHelp:868556843557978173>',
+    'Prefix'           : '<:code:868557140036571177>',
+    'Change_Log'       : '<:code:868557140036571177>',
+}
+
+#################################################################################################################
+
 CHANGE_LOG = '''
-lotta strs hmmm
+Bot got approved on top.gg!
+
+ [-]Started using Discord.py Beta
+ [-]Added cool btns
+ [-]Added Prefixes
+ [-]Added Attr
+ [-]Added Reactions to know if the cmd is in process or not
+ [-]general Bug fixes
+ [-]Added Botlists
+
 '''
+BOT_VERSION = 'v0.0.1'
+
 #################################################################################################################
+
 cogs = [
 #----------main api cmds--------------
     "main_api.3dgr",
@@ -43,12 +91,13 @@ cogs = [
     "commands.commands",
     "commands.help",
     "commands.prefix",
-    "commands.btns",
 #-----------tasks------------
     "task.status_task",
 #------------------------
         ]
+
 #################################################################################################################
+
 inputstatus =   [
     "Busy plotting Graphs",
     "Rendering Equations",
@@ -67,7 +116,8 @@ inputstatus =   [
     "My favorite number is 01000101",
     "I'm being stuck under a basement",
     "Send help",
-    "What does this piece of code do? while trueeeeeeeeeeeeeeeeeeeeee...",
     "Imagine using eval(), could not be me... Sob internally",
-    
+    "Vote For meeeee!!!",
+    "I Got approved on Top.gg!!",
+    "Maths is fun when you know what you are doing"
 ]
