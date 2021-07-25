@@ -1,7 +1,12 @@
+# this is the cog that handles three-D graphs (without embeds)
+
+# imports
 from discord.ext import commands
 import discord
 import urllib
 import aiohttp
+
+# Config
 from config import *
 
 class GraphingCommand_3d(commands.Cog):
@@ -14,23 +19,27 @@ class GraphingCommand_3d(commands.Cog):
         name = '3D_Graph',
         description = 'Plot 3D Graphs with this command',
     )
+    
     async def threeD_graph(self,ctx, *, input_params):
         await ctx.message.add_reaction(WAITING_EMOJI)
         ApiBaseUrl = API_BASE_LINK
         ApiBaseUrl_3DGraph = ApiBaseUrl + "/DenzGraphingApi/v1/threeD_graph/test/plot"
         params = input_params.split(' ')
         i = 0
+
         for e in params:
             if i == 0:
                 e = urllib.parse.quote(e, safe='')
                 ReqUrl_3D = ApiBaseUrl_3DGraph + f"?formula={e}"
                 i += 1
+                
             else:
                 ReqUrl_3D = ReqUrl_3D + f"&{e}"
 
         try:
             async with aiohttp.ClientSession() as session:
                 async with session.get(ReqUrl_3D) as r:
+
                     if "image/png" in r.headers["Content-Type"]:
                         file = open("renders/3D_graph.png", "wb")
                         file.write(await r.read())
@@ -44,6 +53,7 @@ class GraphingCommand_3d(commands.Cog):
                         await ctx.reply(f"**Error!** \n error = {json_out['error']} \n error_id = {json_out['error_id']} \n fix = {json_out['fix']}", allowed_mentions=discord.AllowedMentions.none())
                         pass
                         await ctx.message.add_reaction(ERROR_EMOJI)
+
         except Exception as e:
             print(str(e))
 

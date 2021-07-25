@@ -1,8 +1,13 @@
+# this is the cog that handles Flat graphs (with embeds)
+
+# Imports
 from discord.ext import commands
 import discord
 import urllib
 import aiohttp
 import datetime
+
+# Config
 from config import *
 
 class GraphingCommandEmbed_flat(commands.Cog):
@@ -15,17 +20,20 @@ class GraphingCommandEmbed_flat(commands.Cog):
         name = 'Flat_Graph_Embed',
         description = 'Plot Flat Graphs in Embeds with this command',
     )
+
     async def flat_graph_embed(self,ctx, *, input_params):
         await ctx.message.add_reaction(WAITING_EMOJI)
         ApiBaseUrl = API_BASE_LINK
         ApiBaseUrl_flat = ApiBaseUrl + "/DenzGraphingApi/v1/flat_graph/test/plot"
         params = input_params.split(' ')
         i = 0
+
         for e in params:
             if i == 0:
                 e = urllib.parse.quote(e, safe='')
                 ReqUrl_flat = ApiBaseUrl_flat + f"?formula={e}"
                 i += 1
+                
             else:
                 ReqUrl_flat = ReqUrl_flat + f"&{e}"
 

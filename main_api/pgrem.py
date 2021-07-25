@@ -1,8 +1,13 @@
+# this is the cog that handles Polar graphs (with embeds)
+
+# Imports
 from discord.ext import commands
 import discord
 import urllib
 import aiohttp
 import datetime
+
+# Config
 from config import *
 
 class GraphingCommandEmbed_polar(commands.Cog):
@@ -15,6 +20,7 @@ class GraphingCommandEmbed_polar(commands.Cog):
         name = 'Polar_Graph_Embed',
         description = 'Plot Polar Graphs in Embeds with this command',        
     )
+
     async def polar_graph_embed(self,ctx, *, input_params):
         await ctx.message.add_reaction(WAITING_EMOJI)
         ApiBaseUrl = API_BASE_LINK
@@ -22,10 +28,12 @@ class GraphingCommandEmbed_polar(commands.Cog):
         params = input_params.split(' ')
         i = 0
         for e in params:
+
             if i == 0:
                 e = urllib.parse.quote(e, safe='')
                 ReqUrl_polar = ApiBaseUrl_polar + f"?formula={e}"
                 i += 1
+                
             else:
                 ReqUrl_polar = ReqUrl_polar + f"&{e}"
 

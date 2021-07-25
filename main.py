@@ -5,17 +5,20 @@
 # for doubts and queries Join the support/chill server: 
 # https://dsc.gg/chilly_place
 
+#importing Modules
 import discord
 from discord.ext import commands
 import os
 import json
 #import Denzven_Graphing_Api_Wrapper as GraphingApi #pip install
-os.environ.setdefault("JISHAKU_HIDE", "1")
+
+#importing the config files
 from config import *
 #from keep_alive import keep_alive
 
 #################################################################################################################
 
+# making a bot sub-class
 class GraphingBot(commands.Bot):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -24,6 +27,7 @@ class GraphingBot(commands.Bot):
         self.ping = 0
         self.ApiBaseUrl = API_BASE_LINK
 
+    # A function to get the custom prefix if set,from a server
     async def get_custom_prefix(bot, message):
         prefixes_ = [f'<@{bot.user.id}> ', f'<@!{bot.user.id}> ']
         with open("prefixes.json") as f:
@@ -34,6 +38,7 @@ class GraphingBot(commands.Bot):
 
 #################################################################################################################
 
+# Defining the Bot
 description = BOT_DESCRIPTION
 intents = discord.Intents.all()
 intents.members = True
@@ -46,12 +51,15 @@ bot = GraphingBot(
     strip_after_prefix=False,
     allowed_mentions=discord.AllowedMentions.none())
     
-bot.remove_command('help')
+bot.remove_command('help') #Removing the Default Help
 
 #################################################################################################################
 
+# Hinding and Loading Jishaku for debugging
+os.environ.setdefault("JISHAKU_HIDE", "1")
 bot.load_extension('jishaku') # pip install -U jishaku
 
+# On_connect Info
 @bot.event
 async def on_connect():
     print('+--------------------------------------------------+')
@@ -62,6 +70,7 @@ async def on_connect():
         GraphingBot.prefixes_cache = json.load(f)
         print('| prefixes havs loaded')
 
+#On_ready Info
 @bot.event
 async def on_ready():
     print('+--------------------------------------------------+')
@@ -80,6 +89,7 @@ async def on_ready():
     print('|                     Cogs:                        |')
     print('+--------------------------------------------------+')
 
+    # Loads in the Cogs
     for cog in cogs:
         try:
             bot.load_extension(cog)
@@ -91,7 +101,9 @@ async def on_ready():
     print('\n')    
     print('+--------------------------------------------------+')
     print('|                     servers:                     |')
-    print('+--------------------------------------------------+')   
+    print('+--------------------------------------------------+')
+
+    #Gets the Server Names   
     for guild in bot.guilds:
         print(f'| name:{guild.name}\n| guild id:{guild.id}\n| no. of members:{len(guild.members)}\n| GuildOwner:{str(guild.owner)}')
         print('+--------------------------------------------------+')   
@@ -100,5 +112,5 @@ async def on_ready():
 
 #################################################################################################################
 
-#keep_alive()	
+#keep_alive()	# Funtion for keeping replit alive
 bot.run(BOT_TOKEN)

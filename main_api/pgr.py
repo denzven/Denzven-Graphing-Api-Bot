@@ -1,7 +1,12 @@
+# this is the cog that handles Polar graphs (without embeds)
+
+# Imports
 from discord.ext import commands
 import discord
 import urllib
 import aiohttp
+
+# Config 
 from config import *
 
 class GraphingCommand_polar(commands.Cog):
@@ -14,6 +19,7 @@ class GraphingCommand_polar(commands.Cog):
         name = 'Polar_Graph',
         description = 'Plot Polar Graphs with this command',
     )
+
     async def polar_graph(self,ctx, *, input_params):
         await ctx.message.add_reaction(WAITING_EMOJI)
         ApiBaseUrl = API_BASE_LINK
@@ -21,16 +27,19 @@ class GraphingCommand_polar(commands.Cog):
         params = input_params.split(' ')
         i = 0
         for e in params:
+
             if i == 0:
                 e = urllib.parse.quote(e, safe='')
                 ReqUrl_polar = ApiBaseUrl_polar + f"?formula={e}"
                 i += 1
+
             else:
                 ReqUrl_polar = ReqUrl_polar + f"&{e}"
 
         try:
             async with aiohttp.ClientSession() as session:
                 async with session.get(ReqUrl_polar) as r:
+                    
                     if "image/png" in r.headers["Content-Type"]:
                         file = open("renders/polar_graph.png", "wb")
                         file.write(await r.read())

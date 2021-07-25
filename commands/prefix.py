@@ -1,8 +1,15 @@
+# this deals with setting a custom prefix and writing it to a json file 
+# (not the best way, but works)
+
+# Imports
 from discord.ext import commands
 import discord
 import json
+
+#config
 from config import *
 
+# cog class
 class Prefix(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
@@ -27,5 +34,6 @@ class Prefix(commands.Cog):
             with open("prefixes.json","w") as f:
                 json.dump(self.bot.prefixes_cache,f)
                 await ctx.reply(f'The Prefix has been set to `{self.bot.prefixes_cache[str(ctx.guild.id)]}`', allowed_mentions=discord.AllowedMentions.none())
+                
 def setup(bot):
 	bot.add_cog(Prefix(bot))

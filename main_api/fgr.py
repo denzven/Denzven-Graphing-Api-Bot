@@ -1,7 +1,12 @@
+# this is the cog that handles Flat graphs (without embeds)
+
+# Imports
 from discord.ext import commands
 import discord
 import urllib
 import aiohttp
+
+# Config
 from config import *
 
 class GraphingCommand_flat(commands.Cog):
@@ -14,23 +19,27 @@ class GraphingCommand_flat(commands.Cog):
         name = 'Flat_Graph',
         description = 'Plot Flat Graphs with this command',
     )
+
     async def flat_graph(self,ctx, *, input_params):
         await ctx.message.add_reaction(WAITING_EMOJI)
         ApiBaseUrl = API_BASE_LINK
         ApiBaseUrl_Flat = ApiBaseUrl + "/DenzGraphingApi/v1/flat_graph/test/plot"
         params = input_params.split(' ')
         i = 0
+
         for e in params:
             if i == 0:
                 e = urllib.parse.quote(e, safe='')
                 ReqUrl_Flat = ApiBaseUrl_Flat + f"?formula={e}"
                 i += 1
+
             else:
                 ReqUrl_Flat = ReqUrl_Flat + f"&{e}"
 
         try:
             async with aiohttp.ClientSession() as session:
                 async with session.get(ReqUrl_Flat) as r:
+                    
                     if "image/png" in r.headers["Content-Type"]:
                         file = open("renders/flat_graph.png", "wb")
                         file.write(await r.read())

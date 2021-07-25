@@ -1,8 +1,17 @@
+# This is Help cmd, some parts are dynamic, 
+# but most of it is hard coded (i have to make it more dynamic but meh)
+
+# Imports
 import discord
 from discord.ext import commands
 import datetime
+
+# Config
 from config import *
 
+#################################################################################################################
+
+# a funtion to get the command_help Embed
 async def get_command_help(command,context):
         embed = discord.Embed(
             colour=MAIN_COLOR,
@@ -33,7 +42,10 @@ async def get_command_help(command,context):
             ).set_thumbnail(url=BOT_AVATAR
             ).add_field(name=EMPTY_CHAR, value=f"[Invite Me]({BOT_INVITE_LINK}) | [Support Server]({SUPPORT_SERVER_LINK})", inline=False)
         return embed
+
+#################################################################################################################
  
+# Button Class
 class BotHelpSelect(discord.ui.Select):
     def __init__(self, placeholder, options, ctx):
         super().__init__(
@@ -46,8 +58,12 @@ class BotHelpSelect(discord.ui.Select):
         await i.response.send_message(embed =await get_command_help(self.ctx.bot.get_command(self.values[0]),self.ctx)
         , ephemeral=True)
 
+#################################################################################################################
+
+# Sub-Classing the Help Command
 class MyHelpCommand(commands.HelpCommand):
-    async def send_bot_help(self, mapping):
+
+    async def send_bot_help(self, mapping): # works at >help
         options = []
         try:
             for cogs, commands in mapping.items():
@@ -64,7 +80,9 @@ class MyHelpCommand(commands.HelpCommand):
         embed,view_ui = await self.get_bot_help(self.context,options)
         await self.context.reply(embed = embed,view=view_ui)
 
-    async def get_bot_help(cog, context,options):
+#################################################################################################################
+
+    async def get_bot_help(cog, context,options): # gives the help cmd Embed
         ctx = context
         view_ui = discord.ui.View(timeout=None)
         select = BotHelpSelect(
@@ -86,33 +104,43 @@ class MyHelpCommand(commands.HelpCommand):
             url=API_BASE_LINK,
             label="website",
         ))
+
         view_ui.add_item(discord.ui.Button(
             style=discord.ButtonStyle.url,
             url=SUPPORT_SERVER_LINK,
             label="support server",
         ))
+
         view_ui.add_item(discord.ui.Button(
             style=discord.ButtonStyle.url,
             url=BOT_GITHUB_LINK,
             label="github (src)",
         ))
+
         embed = discord.Embed(
-            title="Denzven-Graphing-Api-Bot", 
-            colour=MAIN_COLOR, 
-            description="This Bot is a showcase of the use of Denzven-Graphing-Api \n```py\n try using >help <command> at each of the below sections```\n\n\n", timestamp=datetime.datetime.utcnow())
+                title="Denzven-Graphing-Api-Bot", 
+                colour=MAIN_COLOR, 
+                description="This Bot is a showcase of the use of Denzven-Graphing-Api \n```py\n try using >help <command> at each of the below sections```\n\n\n", timestamp=datetime.datetime.utcnow()
+                )
+
         embed.set_image(url=API_COVER_PIC)
         embed.set_thumbnail(url=BOT_AVATAR)
         embed.set_footer(text=f'rendered by {ctx.author.name}',icon_url=ctx.author.avatar.url)
-        embed.add_field( name = "GraphingCommands"      , value=">fgr <input_formula> [attr] \n>pgr <input_formula> [attr] \n>3dgr <input_formula> [attr] \n"                                          , inline=False)
-        embed.add_field( name = "GraphingCommandsEmbed" , value=">fgrem <input_formula> [attr] \n>pgrem <input_formula> [attr] \n>3dgrem <input_formula> [attr] \n"                                    , inline=False)
-        embed.add_field( name = "OtherCommands"         , value=">attr \n>docs \n>github \n>ping \n>pypi  \n>src \n>website \n>prefix \n>attr \n", inline=False)
-        embed.add_field( name = "OwnerCommands"         , value=">jsk"                                                                          , inline=False)
-        return embed,view_ui
-    async def send_command_help(self, command):
-        embed = await get_command_help(command,self.context)
+        embed.add_field( name = "GraphingCommands"      , value=">fgr <input_formula> [attr] \n>pgr <input_formula> [attr] \n>3dgr <input_formula> [attr] \n"      , inline=False)
+        embed.add_field( name = "GraphingCommandsEmbed" , value=">fgrem <input_formula> [attr] \n>pgrem <input_formula> [attr] \n>3dgrem <input_formula> [attr] \n", inline=False)
+        embed.add_field( name = "OtherCommands"         , value=">attr \n>docs \n>github \n>ping \n>pypi  \n>src \n>website \n>prefix \n>attr \n"                  , inline=False)
+        embed.add_field( name = "OwnerCommands"         , value=">jsk"                                                                                             , inline=False)
+        return embed,view_ui # also btns, if i forgot to say that
+
+#################################################################################################################
+
+    async def send_command_help(self, command): # works at >help <cmd> 
+        embed = await get_command_help(command,self.context) # calls the embed thingy.. so yea
         await self.context.reply(embed = embed)
 
-    async def send_cog_help(self, cog):
+#################################################################################################################
+
+    async def send_cog_help(self, cog): # works at >help <cog> (wont use it tho)
             ctx = self.context
             if cog == 'help':
                 return
@@ -123,23 +151,31 @@ class MyHelpCommand(commands.HelpCommand):
                         embed.add_field(name=thing.qualified_name, value=f'Description: {thing.help}\nUsage: {self.clean_prefix}{thing.qualified_name} {thing.signature}', inline=False)
                 await ctx.send(embed=embed)
 
-    async def send_group_help(self, group):
+#################################################################################################################
+
+    async def send_group_help(self, group): # works at >help <grp> (mostly for jsk actually)
             ctx = self.context
             embed = discord.Embed(color=MAIN_COLOR)
             embed.set_author(name=f'{group.qualified_name} Help')
             for thing in group.commands:
                 embed.add_field(name=thing.qualified_name, value=f'Description: {thing.help}\nUsage: {thing.qualified_name} {thing.signature}', inline=False)
             await ctx.send(embed=embed)
+
+#################################################################################################################
             
-class Help(commands.Cog):
+class Help(commands.Cog): 
     """Shows this command, allows for in-depth explanations."""
-    def __init__(self, bot):
+
+    def __init__(self, bot): # Some essential stuff that i have no idea about
         self.bot = bot
         self.bot._original_help_command = bot.help_command
         bot.help_command = MyHelpCommand()
         bot.help_command.cog = self
+
     def cog_unload(self):
         self.bot.help_command = self.bot._original_help_command
+        
+#################################################################################################################
 
 def setup(bot):
         bot.add_cog(Help(bot))

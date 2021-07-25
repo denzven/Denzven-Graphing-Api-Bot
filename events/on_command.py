@@ -1,4 +1,10 @@
+# This is a On_command Event for Logging the cmds
+
+# Imports
 from discord.ext import commands
+
+# Config
+from config import *
 
 class Command(commands.Cog):
     def __init__(self, bot):

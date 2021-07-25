@@ -1,3 +1,8 @@
+# this is the "keep alive" file,
+# used to keep the replit alive..
+# not in use rn
+
+
 from flask import Flask
 from threading import Thread
 

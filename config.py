@@ -1,14 +1,18 @@
+# this is the almighty config file,
+# where all the necessary variables are dumped
+# this file is imported in every file
+# so changes here is almost universal
+
+# Imports 
 import os
-import discord
-# This is the Config file... most commonly used strings/colors etc are set here for easy acsess
 
-
-# Not gonna change often
+# Standard Variables
 MAIN_COLOR = 0x11ffcc
 SECONDARY_COLOR = 0x8ebd9d
 ERROR_COLOR = 0xff0000
 DEFAULT_PREFIX = '>'
 BOT_TOKEN = os.environ['bottoken']
+VOTER_API_LINK = 'https://top.gg/api/bots/851532461061308438/votes'
 API_BASE_LINK = 'https://denzven.pythonanywhere.com'
 API_GITHUB_LINK = 'https://github.com/denzven/Denzven-Graphing-Api'
 BOT_GITHUB_LINK = 'https://github.com/denzven/Denzven-Graphing-Api-Bot'
@@ -30,9 +34,10 @@ ERROR_EMOJI = '‼️'
 THX_EMOJI = '🙏' 
 UPVOTE_EMOJI = '👍'
 DOWNVOTE_EMOJI = '👎'
+TOPGG_TOKEN = os.environ['topgg_token']
 
 #################################################################################################################
-
+# Lists
 EMOJI_FOR_CMDS = {
     '3D_Graph'         : '<:3D_Graph:868552735891529759>',
     '3D_Graph_Embed'   : '<:3D_Graph:868552735891529759>',
@@ -58,7 +63,7 @@ EMOJI_FOR_CMDS = {
 }
 
 #################################################################################################################
-
+# Change log
 CHANGE_LOG = '''
 Bot got approved on top.gg!
 
@@ -91,6 +96,7 @@ cogs = [
     "commands.commands",
     "commands.help",
     "commands.prefix",
+    "commands.topgg",
 #-----------tasks------------
     "task.status_task",
 #------------------------

@@ -1,12 +1,23 @@
+# you can invite the bot here: https://dsc.gg/denzven-graphing-api-bot
+# for doubts and queries Join the support/chill server: 
+# https://dsc.gg/chilly_place
+
+# These are all the "sub-commands" of the bot,
+# Like, attr, botinfo, suggest ,vote etc..
+
+# Imports Stuff
 from discord.ext import commands
 import discord
 import datetime
 from config import *
 
+# Cog Class
 class OtherCommands(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
+#################################################################################################################
 
+    # attr cmd
     @commands.command(
         aliases = ['attr'],
         help = ('A list of all the attributes in the graphs'),
@@ -33,6 +44,9 @@ class OtherCommands(commands.Cog):
         embed.add_field( name = "title_text=<any text>",            value = "sets title",                         inline = True )
         await ctx.reply(embed = embed, allowed_mentions=discord.AllowedMentions.none())
 
+#################################################################################################################
+
+    # Botinfo cmd
     @commands.cooldown(1, 5, commands.BucketType.user)
     @commands.command(
         aliases = ['btinfo','botinfo'],
@@ -62,6 +76,9 @@ class OtherCommands(commands.Cog):
         embed.timestamp = datetime.datetime.utcnow()
         await ctx.send(embed = embed)
 
+#################################################################################################################
+
+    # The Almighty Ping cmd
     @commands.command(
         help = ('Well.. the almighty ping cmd'),
         name = 'Ping',
@@ -71,6 +88,9 @@ class OtherCommands(commands.Cog):
         self.bot.ping = round(self.bot.latency * 1000)
         await ctx.reply(f"ping ---> {self.bot.ping} ms", allowed_mentions=discord.AllowedMentions.none())
 
+#################################################################################################################
+
+    # Github cmd
     @commands.command(
         aliases = ['gh'],
         help = ('GitHub Repo of the Denzven-Graphing-Api'),
@@ -80,6 +100,9 @@ class OtherCommands(commands.Cog):
     async def github(self,ctx):
         await ctx.reply(API_GITHUB_LINK, allowed_mentions=discord.AllowedMentions.none())
 
+#################################################################################################################
+
+    # Invite cmd
     @commands.command(
         aliases = ['inv'],
         help = ('Invite the Bot in your Server!'),
@@ -89,6 +112,9 @@ class OtherCommands(commands.Cog):
     async def invite(self,ctx):
         await ctx.reply(BOT_INVITE_LINK, allowed_mentions=discord.AllowedMentions.none())
 
+#################################################################################################################
+
+    # a fancier invite
     @commands.command(
         aliases = ['inv2'],
         help = ('Invite the Bot in your Server! with a fancy link!'),
@@ -98,6 +124,9 @@ class OtherCommands(commands.Cog):
     async def invite2(self,ctx):
         await ctx.reply(FANCY_BOT_INVITE_LINK, allowed_mentions=discord.AllowedMentions.none())
 
+#################################################################################################################
+
+    # Docs cmd
     @commands.command(
         help = ('Get the Docs of the Denzven-Graphing-Api'),
         name = 'Docs',
@@ -106,6 +135,9 @@ class OtherCommands(commands.Cog):
     async def docs(self,ctx):
         await ctx.reply("https://denzven.pythonanywhere.com/docs", allowed_mentions=discord.AllowedMentions.none())
 
+#################################################################################################################
+
+    # Website cmd
     @commands.command(
         aliases = ['web'],
         help = ('Visit the website of Denzven-Graphing-Api'),
@@ -115,10 +147,16 @@ class OtherCommands(commands.Cog):
     async def website(self,ctx):
         await ctx.reply(API_BASE_LINK, allowed_mentions=discord.AllowedMentions.none())
 
+#################################################################################################################
+
+    # Pypi cmd (in process)
     #@commands.command()
     #async def pypi(self,ctx):
     #    await ctx.reply("https://pypi.org/project/Denzven-Graphing-Api-Wrapper (not currently developed)")
 
+#################################################################################################################
+
+    # Github repo of bot
     @commands.command(
         aliases = ['source'],
         help = ('Get the Source Code of the Bot'),
@@ -128,14 +166,24 @@ class OtherCommands(commands.Cog):
     async def src(self,ctx):
         await ctx.reply(BOT_GITHUB_LINK)
 
+#################################################################################################################
+
+    # Vote cmd
     @commands.command(
         help = ('Vote the Bot on top.gg!!'),
         name = 'Vote',
         description = 'Vote the Bot on top.gg!!',
     )
     async def vote(self,ctx):
-        await ctx.reply(BOT_VOTE)
+        embed = discord.Embed(title="Vote for GraphBot", url=BOT_VOTE, description="vote me on top.gg!")
+        embed.set_thumbnail(url = BOT_AVATAR)
+        embed.set_footer(text=f"{ctx.guild}", icon_url=f"{ctx.guild.icon.url}")
+        embed.timestamp = datetime.datetime.utcnow()
+        await ctx.send(embed=embed)
 
+#################################################################################################################
+
+    # Botlists cmd
     @commands.command(
         aliases = ['bl'],
         help = ('Get the lists of the BotLists the Bot has enrolled'),
@@ -151,17 +199,23 @@ class OtherCommands(commands.Cog):
         embed.add_field( name = "discord.bots.gg",                  value = "https://discord.bots.gg/bots/851532461061308438",  inline = False )
         await ctx.reply(embed = embed, allowed_mentions=discord.AllowedMentions.none())
     
+#################################################################################################################
+
+    # Chnagelog cmd
     @commands.command(
         aliases = ['cl'],
         help = ('Get the ChangeLog of the latest update!'),
         name = 'Change_Log',
         description = 'Get the ChangeLog of the latest update!',
     )
-    async def botlists(self,ctx):
+    async def chnage_log(self,ctx):
         embed=discord.Embed(title="Change Log", description=CHANGE_LOG, color=MAIN_COLOR)
         embed.set_footer(text = BOT_VERSION)
         await ctx.reply(embed = embed, allowed_mentions=discord.AllowedMentions.none())
     
+#################################################################################################################
+
+    # Suggest cmd
     @commands.command(
         aliases = ['s'],
         help = ('Suggest suggestions for the Bot!'),
@@ -196,5 +250,7 @@ class OtherCommands(commands.Cog):
             await suggestion.add_reaction(DOWNVOTE_EMOJI)
             await ctx.reply(embed = embed2,view=view_ui, allowed_mentions=discord.AllowedMentions.none())
     
+#################################################################################################################
+
 def setup(bot):
 	bot.add_cog(OtherCommands(bot))
