@@ -1,5 +1,109 @@
 {
   "files": {
+    "commands/help.py": [
+      {
+        "id": "3a786a32-7728-4f5e-bd13-1d492c94be1d",
+        "line": 22,
+        "version": 3854,
+        "index": 594
+      },
+      {
+        "id": "fdbac8fa-ba2f-443b-a617-63cec186868a",
+        "line": 43,
+        "version": 3854,
+        "index": 1389
+      },
+      {
+        "id": "fdea4d1d-01f5-491c-b11d-8edd86795d13",
+        "line": 58,
+        "version": 3854,
+        "index": 1965
+      },
+      {
+        "id": "b6046b5b-adef-4506-a5bf-13478316936f",
+        "line": 61,
+        "version": 3854,
+        "index": 2141
+      },
+      {
+        "id": "2103df7f-f00d-4c0d-92d3-6162d363d5d4",
+        "line": 64,
+        "version": 3854,
+        "index": 2312
+      },
+      {
+        "id": "7fee19c3-07ff-4654-97f0-9849027494ea",
+        "line": 66,
+        "version": 3854,
+        "index": 2416
+      },
+      {
+        "id": "e7bc44ef-e710-4d3e-824e-fca94cfdb1d6",
+        "line": 68,
+        "version": 3854,
+        "index": 2419
+      },
+      {
+        "id": "2185ada0-938a-44aa-911e-864411d129f4",
+        "line": 70,
+        "version": 3854,
+        "index": 2534
+      },
+      {
+        "id": "9d627ab5-b7a6-4318-942b-2cb292c9c62f",
+        "line": 70,
+        "version": 3854,
+        "index": 2564
+      },
+      {
+        "id": "b98b344f-e10e-4973-a9c6-722a2c19116e",
+        "line": 74,
+        "version": 3854,
+        "index": 2684
+      },
+      {
+        "id": "56b6d72c-14a0-4f2f-a1bd-1960f9b97a7d",
+        "line": 76,
+        "version": 3854,
+        "index": 2751
+      },
+      {
+        "id": "5689282c-9dfa-4878-9037-5d4dc44f8b49",
+        "line": 86,
+        "version": 3854,
+        "index": 3269
+      },
+      {
+        "id": "b597c9da-4bac-4897-9494-6f4aa35f3aa9",
+        "line": 97,
+        "version": 3854,
+        "index": 3765
+      },
+      {
+        "id": "aabcac1d-7e10-4b9a-8908-48a8bdfdd6ed",
+        "line": 99,
+        "version": 3854,
+        "index": 3843
+      },
+      {
+        "id": "7fa29095-974a-4586-90f8-8764edb8be45",
+        "line": 117,
+        "version": 3854,
+        "index": 4283
+      },
+      {
+        "id": "86c9d387-55b2-449c-81a9-ce764b456fde",
+        "line": 119,
+        "version": 3854,
+        "index": 4363
+      },
+      {
+        "id": "b6ab38c2-40b9-45e1-baee-d0d450cda408",
+        "line": 162,
+        "version": 3854,
+        "index": 6947
+      }
+    ],
     "commands/help_test.py": [
       {
         "id": "3d02fcad-6e59-48c1-afbd-2cf73e2417e9",

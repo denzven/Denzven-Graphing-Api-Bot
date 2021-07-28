@@ -13,7 +13,7 @@ Using the Bot is as simple as sending >help or a cmd with some params such as th
 
 #### Example of a cmd:
 
->fgrem x+y grid=1 line_style=ccff00>fgrem x+y grid=1 line_style=ccff00
+\>fgrem x+y grid=1 line_style=ccff00
 
 
 ![Bot Showcase](https://cdn.discordapp.com/attachments/814689404341059584/866261391396438026/unknown.png)

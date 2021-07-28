@@ -55,36 +55,44 @@ class BotHelpSelect(discord.ui.Select):
         )
         self.ctx = ctx
     async def callback(self, i):
-        await i.response.send_message(embed =await get_command_help(self.ctx.bot.get_command(self.values[0]),self.ctx)
-        , ephemeral=True)
+        if i.user == self.ctx.author:
+            try:
+                await i.response.send_message(await self.ctx.invoke(self.ctx.bot.get_command(self.values[0])))
+            except:
+                await i.response.send_message(embed=await get_command_help(self.ctx.bot.get_command(self.values[0]),self.ctx),ephemeral=True)
+        else:
+            await i.response.send_message("This is not your Help msg, Kindly run >help to continue",ephemeral=True)
+
+
 
 #################################################################################################################
 
 # Sub-Classing the Help Command
 class MyHelpCommand(commands.HelpCommand):
 
-    async def send_bot_help(self, mapping): # works at >help
-        options = []
-        try:
-            for cogs, commands in mapping.items():
-                for command in commands:
-                    if not command.hidden:
-                        options.append(discord.SelectOption(
-                        label=command.qualified_name.title(),
-                        description=command.description,
-                        value=command.qualified_name,
-                        emoji=EMOJI_FOR_CMDS[command.name]
-                        ))            
-        except Exception as e:
-            print(e)
-        embed,view_ui = await self.get_bot_help(self.context,options)
-        await self.context.reply(embed = embed,view=view_ui)
+    async def send_bot_help(self, mapping):# works at >help
+        async with self.context.typing(): 
+            options = []
+            try:
+                for cogs, commands in mapping.items():
+                    for command in commands:
+                        if not command.hidden:
+                            options.append(discord.SelectOption(
+                            label=command.qualified_name.title(),
+                            description=command.description,
+                            value=command.qualified_name,
+                            emoji=EMOJI_FOR_CMDS[command.name]
+                            ))            
+            except Exception as e:
+                print(e)
+            embed,view_ui = await self.get_bot_help(self.context,options)
+            await self.context.reply(embed = embed,view=view_ui)
 
 #################################################################################################################
 
     async def get_bot_help(cog, context,options): # gives the help cmd Embed
         ctx = context
-        view_ui = discord.ui.View(timeout=None)
+        view_ui = discord.ui.View(timeout=60)
         select = BotHelpSelect(
             placeholder="Get Help on a Commmand.",
             options=options,
@@ -128,15 +136,16 @@ class MyHelpCommand(commands.HelpCommand):
         embed.set_footer(text=f'rendered by {ctx.author.name}',icon_url=ctx.author.avatar.url)
         embed.add_field( name = "GraphingCommands"      , value=">fgr <input_formula> [attr] \n>pgr <input_formula> [attr] \n>3dgr <input_formula> [attr] \n"      , inline=False)
         embed.add_field( name = "GraphingCommandsEmbed" , value=">fgrem <input_formula> [attr] \n>pgrem <input_formula> [attr] \n>3dgrem <input_formula> [attr] \n", inline=False)
-        embed.add_field( name = "OtherCommands"         , value=">attr \n>docs \n>github \n>ping \n>pypi  \n>src \n>website \n>prefix \n>attr \n"                  , inline=False)
+        embed.add_field( name = "OtherCommands"         , value=">attr \n>docs \n>github \n>ping \n>vote  \n>src \n>website \n>prefix \n>changelog \n>botlist \nbotinfo \n"                  , inline=False)
         embed.add_field( name = "OwnerCommands"         , value=">jsk"                                                                                             , inline=False)
         return embed,view_ui # also btns, if i forgot to say that
 
 #################################################################################################################
 
-    async def send_command_help(self, command): # works at >help <cmd> 
-        embed = await get_command_help(command,self.context) # calls the embed thingy.. so yea
-        await self.context.reply(embed = embed)
+    async def send_command_help(self, command): # works at >help <cmd>
+        async with self.context.typing(): 
+            embed = await get_command_help(command,self.context) # calls the embed thingy.. so yea
+            await self.context.reply(embed = embed)
 
 #################################################################################################################
 

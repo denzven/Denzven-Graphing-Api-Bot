@@ -25,24 +25,25 @@ class OtherCommands(commands.Cog):
         description = 'A list of all the attributes in the graphs',
     )
     async def attributes(self,ctx):
-        embed=discord.Embed(title="Attributes:", description="these are the possible attributes for a given graph. There are a total of 15 of them", color=MAIN_COLOR)
-        embed.set_author(name = "Help has arrived!", url="https://denzven.pythonanywhere.com/docs")
-        embed.add_field( name = "grid=<1|2|3>",                     value = "adds grids to the graph",            inline = True )
-        embed.add_field( name = "plot_style=<0-25>",                value = "determines the plot_style (boring)", inline = True )
-        embed.add_field( name = "x_coord=<any>",                    value = "fixes the value of the x_coord",     inline = True )
-        embed.add_field( name = "y_coord=<any>",                    value = "fixes the value of the y_coord",     inline = True )
-        embed.add_field( name = "spine_top=<hex without #>",        value = "top-spine color",                    inline = True )
-        embed.add_field( name = "spine_bottom=<hex without #>",     value = "bottom-spine color",                 inline = True )
-        embed.add_field( name = "spine_left=<hex without #>",       value = "left-spine color",                   inline = True )
-        embed.add_field( name = "spine_right=<hex without #>",      value = "right-spine color",                  inline = True )
-        embed.add_field( name = "line_style=<hex without #>",       value = "change the color of the plot line",  inline = True )
-        embed.add_field( name = "grid_lines_major=<hex without #>", value = "applies color to major girds",       inline = True )
-        embed.add_field( name = "grid_lines_minor=<hex without #>", value = "applies color to minor girds",       inline = True )
-        embed.add_field( name = "tick_colors=<hex without #>",      value = "applies color to ticks",             inline = True )
-        embed.add_field( name = "axfacecolor=<hex without #>",      value = "applies color to foreground",        inline = True )
-        embed.add_field( name = "figfacecolor=<hex without #>",     value = "applies color to background",        inline = True )
-        embed.add_field( name = "title_text=<any text>",            value = "sets title",                         inline = True )
-        await ctx.reply(embed = embed, allowed_mentions=discord.AllowedMentions.none())
+        async with ctx.typing():
+            embed=discord.Embed(title="Attributes:", description="these are the possible attributes for a given graph. There are a total of 15 of them", color=MAIN_COLOR)
+            embed.set_author(name = "Help has arrived!", url="https://denzven.pythonanywhere.com/docs")
+            embed.add_field( name = "grid=<1|2|3>",                     value = "adds grids to the graph",            inline = True )
+            embed.add_field( name = "plot_style=<0-25>",                value = "determines the plot_style (boring)", inline = True )
+            embed.add_field( name = "x_coord=<any>",                    value = "fixes the value of the x_coord",     inline = True )
+            embed.add_field( name = "y_coord=<any>",                    value = "fixes the value of the y_coord",     inline = True )
+            embed.add_field( name = "spine_top=<hex without #>",        value = "top-spine color",                    inline = True )
+            embed.add_field( name = "spine_bottom=<hex without #>",     value = "bottom-spine color",                 inline = True )
+            embed.add_field( name = "spine_left=<hex without #>",       value = "left-spine color",                   inline = True )
+            embed.add_field( name = "spine_right=<hex without #>",      value = "right-spine color",                  inline = True )
+            embed.add_field( name = "line_style=<hex without #>",       value = "change the color of the plot line",  inline = True )
+            embed.add_field( name = "grid_lines_major=<hex without #>", value = "applies color to major girds",       inline = True )
+            embed.add_field( name = "grid_lines_minor=<hex without #>", value = "applies color to minor girds",       inline = True )
+            embed.add_field( name = "tick_colors=<hex without #>",      value = "applies color to ticks",             inline = True )
+            embed.add_field( name = "axfacecolor=<hex without #>",      value = "applies color to foreground",        inline = True )
+            embed.add_field( name = "figfacecolor=<hex without #>",     value = "applies color to background",        inline = True )
+            embed.add_field( name = "title_text=<any text>",            value = "sets title",                         inline = True )
+            await ctx.reply(embed = embed, allowed_mentions=discord.AllowedMentions.none())
 
 #################################################################################################################
 
@@ -54,27 +55,28 @@ class OtherCommands(commands.Cog):
         name = 'Bot_Info',
         description = 'All the neccessary info about the bot',
     )
-    async def botinfo(self, ctx):
-        embed = discord.Embed(title = "**Bot Info**", description = f"I am {BOT_DESCRIPTION}. My help command is `>help`. I am currently in `{len(self.bot.guilds)}` servers, and i have more than `{len(set(self.bot.get_all_members()))}` users. I have a total of `{TOTAL_CMDS}` commands.", color = 0x00FFFF)
-        embed.set_thumbnail(url=BOT_AVATAR)
-        embed.add_field(name = "**Invite GraphingBot**",
-                        value = f"[Click Here]({BOT_INVITE_LINK})",
-                        inline = True)
-        embed.add_field(name = "**Support Server**",
-                        value = f"[Click Here]({SUPPORT_SERVER_LINK})",
-                        inline = True)
-        embed.add_field(name = "**Bug Report**",
-                        value = f"[Click Here]({GOOGLE_FORM})",
-                        inline = True)
-        embed.add_field(name = "**Vote GraphingBot**",
-                        value = f"[Click Here]({BOT_VOTE})",
-                        inline = True)
-        embed.add_field(name = "**Our Website**",
-                        value = f"[Click Here]({API_BASE_LINK})",
-                        inline = True)
-        embed.set_footer(text=f"{ctx.guild}", icon_url=f"{ctx.guild.icon.url}")
-        embed.timestamp = datetime.datetime.utcnow()
-        await ctx.send(embed = embed)
+    async def botinfo(self,ctx):
+        async with ctx.typing():
+            embed = discord.Embed(title = "**Bot Info**", description = f"I am {BOT_DESCRIPTION}. My help command is `>help`. I am currently in `{len(self.bot.guilds)}` servers, and i have more than `{len(set(self.bot.get_all_members()))}` users. I have a total of `{TOTAL_CMDS}` commands.", color = 0x00FFFF)
+            embed.set_thumbnail(url=BOT_AVATAR)
+            embed.add_field(name = "**Invite GraphingBot**",
+                            value = f"[Click Here]({BOT_INVITE_LINK})",
+                            inline = True)
+            embed.add_field(name = "**Support Server**",
+                            value = f"[Click Here]({SUPPORT_SERVER_LINK})",
+                            inline = True)
+            embed.add_field(name = "**Bug Report**",
+                            value = f"[Click Here]({GOOGLE_FORM})",
+                            inline = True)
+            embed.add_field(name = "**Vote GraphingBot**",
+                            value = f"[Click Here]({BOT_VOTE})",
+                            inline = True)
+            embed.add_field(name = "**Our Website**",
+                            value = f"[Click Here]({API_BASE_LINK})",
+                            inline = True)
+            embed.set_footer(text=f"{ctx.guild}", icon_url=f"{ctx.guild.icon.url}")
+            embed.timestamp = datetime.datetime.utcnow()
+            await ctx.send(embed = embed)
 
 #################################################################################################################
 
@@ -158,7 +160,7 @@ class OtherCommands(commands.Cog):
 
     # Github repo of bot
     @commands.command(
-        aliases = ['source'],
+        aliases = ['source','src'],
         help = ('Get the Source Code of the Bot'),
         name = 'Source_Code',
         description = 'Get the Source Code of the Bot',
@@ -193,10 +195,12 @@ class OtherCommands(commands.Cog):
     async def botlists(self,ctx):
         embed=discord.Embed(title="Bot-Lists:", description="these are the websites the bot is currently uploaded to", color=MAIN_COLOR)
         embed.set_author(name = "Roll in the Lists!")
-        embed.add_field( name = "Top.gg",                           value = "https://top.gg/bot/851532461061308438",            inline = False )
-        embed.add_field( name = "discordbotlist",                   value = "https://discordbotlist.com/bots/graphingbot",      inline = False )
-        embed.add_field( name = "botlists.com",                     value = "https://botlists.com/bot/851532461061308438",      inline = False )
-        embed.add_field( name = "discord.bots.gg",                  value = "https://discord.bots.gg/bots/851532461061308438",  inline = False )
+        embed.add_field( name = "Top.gg ✅"             ,              value = "https://top.gg/bot/851532461061308438"              ,  inline = False )
+        embed.add_field( name = "discordbotlist"        ,              value = "https://discordbotlist.com/bots/graphingbot"        ,  inline = False )
+        embed.add_field( name = "botlists.com"          ,              value = "https://botlists.com/bot/851532461061308438"        ,  inline = False )
+        embed.add_field( name = "discord.bots.gg ✅"    ,              value = "https://discord.bots.gg/bots/851532461061308438"    ,  inline = False )
+        embed.add_field( name = "infinitybotlist.com"   ,              value = "https://infinitybotlist.com/bots/851532461061308438",  inline = False )
+        embed.add_field( name = "bots.discordlabs.org"  ,              value = "https://bots.discordlabs.org/bot/851532461061308438",  inline = False )
         await ctx.reply(embed = embed, allowed_mentions=discord.AllowedMentions.none())
     
 #################################################################################################################
@@ -224,33 +228,54 @@ class OtherCommands(commands.Cog):
     )
     @commands.cooldown(1, 15, commands.BucketType.user)
     async def suggest(self,ctx,*,suggestion=None):
-        if suggestion == None:
-            await ctx.reply("You cant have an Empty Suggestion!")
-        else:
-            await ctx.message.add_reaction(THX_EMOJI)
-            pass
-            embed=discord.Embed(title=f"{ctx.author} has sent a suggestion!", description=f"{suggestion}", color=MAIN_COLOR)
-            embed.set_footer(text=f"{ctx.guild}", icon_url=f"{ctx.guild.icon.url}")
-            embed.timestamp = datetime.datetime.utcnow()
-            channel = self.bot.get_channel(SUGGEST_CHANNEL)
-            
-            embed2 = discord.Embed(title="thx for the suggestion!", description="thnq for making the bot better!",color=MAIN_COLOR)
-            embed2.add_field(name="you sent:",value =f"{suggestion}")
-            embed2.set_footer(text=f"{ctx.guild}", icon_url=f"{ctx.guild.icon.url}")
-            embed2.timestamp = datetime.datetime.utcnow()
-
-            view_ui = discord.ui.View(timeout=None)
-            view_ui.add_item(discord.ui.Button(
-                style=discord.ButtonStyle.url,
-                url=SUPPORT_SERVER_LINK,
-                label="support server",
-            ))
-            suggestion = await channel.send(embed = embed)
-            await suggestion.add_reaction(UPVOTE_EMOJI)
-            await suggestion.add_reaction(DOWNVOTE_EMOJI)
-            await ctx.reply(embed = embed2,view=view_ui, allowed_mentions=discord.AllowedMentions.none())
+        async with ctx.typing():
+            if suggestion == None:
+                await ctx.reply("You cant have an Empty Suggestion!")
+            else:
+                await ctx.message.add_reaction(THX_EMOJI)
+                pass
+                embed=discord.Embed(title=f"{ctx.author} has sent a suggestion!", description=f"{suggestion}", color=MAIN_COLOR)
+                embed.set_footer(text=f"{ctx.guild}", icon_url=f"{ctx.guild.icon.url}")
+                embed.timestamp = datetime.datetime.utcnow()
+                channel = self.bot.get_channel(SUGGEST_CHANNEL)
+                
+                embed2 = discord.Embed(title="thx for the suggestion!", description="thnq for making the bot better!",color=MAIN_COLOR)
+                embed2.add_field(name="you sent:",value =f"{suggestion}")
+                embed2.set_footer(text=f"{ctx.guild}", icon_url=f"{ctx.guild.icon.url}")
+                embed2.timestamp = datetime.datetime.utcnow()
+    
+                view_ui = discord.ui.View(timeout=None)
+                view_ui.add_item(discord.ui.Button(
+                    style=discord.ButtonStyle.url,
+                    url=SUPPORT_SERVER_LINK,
+                    label="support server",
+                ))
+                suggestion = await channel.send(embed = embed)
+                await suggestion.add_reaction(UPVOTE_EMOJI)
+                await suggestion.add_reaction(DOWNVOTE_EMOJI)
+                await ctx.reply(embed = embed2,view=view_ui, allowed_mentions=discord.AllowedMentions.none())
     
 #################################################################################################################
 
+    @commands.command(
+        help = ('add showcasable formulas'),
+        name = 'Showcase',
+        description = 'Set Showcasable formulas in the list',
+    )
+    async def prefix(self,ctx,prefix=None):
+        if prefix is None:
+            try:
+                await ctx.reply(f'My prefix for this server is `{self.bot.prefixes_cache[str(ctx.guild.id)]}`', allowed_mentions=discord.AllowedMentions.none())
+            except Exception as e:
+                print(e)
+                await ctx.reply(f'No Prefix has been set for this server, the default prefix is `{DEFAULT_PREFIX}`', allowed_mentions=discord.AllowedMentions.none())
+        else:
+            print(self.bot.prefixes_cache)
+            with open("prefixes.json","r") as f:
+                self.bot.prefixes_cache = json.load(f)
+            self.bot.prefixes_cache[str(ctx.guild.id)] = prefix
+            with open("prefixes.json","w") as f:
+                json.dump(self.bot.prefixes_cache,f)
+                await ctx.reply(f'The Prefix has been set to `{self.bot.prefixes_cache[str(ctx.guild.id)]}`', allowed_mentions=discord.AllowedMentions.none())
 def setup(bot):
 	bot.add_cog(OtherCommands(bot))

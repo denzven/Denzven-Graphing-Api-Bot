@@ -65,10 +65,13 @@ async def on_connect():
     print('+--------------------------------------------------+')
     print('|                 Bot has Connected                |')
     print('+--------------------------------------------------+')
-    print('\n')
     with open("prefixes.json","r") as f:
         GraphingBot.prefixes_cache = json.load(f)
-        print('| prefixes havs loaded')
+        print(GraphingBot.prefixes_cache)
+        print('+--------------------------------------------------+')
+        print('|                  Prefixes have loaded            |')
+        print('+--------------------------------------------------+')
+        print('\n')
 
 #On_ready Info
 @bot.event
@@ -90,7 +93,7 @@ async def on_ready():
     print('+--------------------------------------------------+')
 
     # Loads in the Cogs
-    for cog in cogs:
+    for cog in COGS:
         try:
             bot.load_extension(cog)
             print(f"| {cog} has loaded")
