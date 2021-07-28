@@ -108,7 +108,7 @@ async def on_ready():
 
     #Gets the Server Names   
     for guild in bot.guilds:
-        print(f'| name:{guild.name}\n| guild id:{guild.id}\n| no. of members:{len(guild.members)}\n| GuildOwner:{str(guild.owner)}')
+        print(f'| name:{guild.name}\n| guild id:{guild.id}\n| no. of members:{len(guild.members)}\n| Bo: {len(list(filter(lambda m: not m.bot, guild.members)))}\n| Bots: {len(list(filter(lambda m: m.bot, guild.members)))}\n| GuildOwner:{str(guild.owner)}')
         print('+--------------------------------------------------+')   
 
     print('\n')
