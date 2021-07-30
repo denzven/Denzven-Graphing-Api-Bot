@@ -7,6 +7,7 @@ import discord
 
 # Config
 from config import *
+from utils.custom_checks import NotVotedError
 
 class Error(commands.Cog):
     def __init__(self, bot):
@@ -37,6 +38,10 @@ class Error(commands.Cog):
 
         if isinstance(error, commands.errors.MissingPermissions):
             await ctx.reply(f"MissingPermissions {' '.join(error.NotOwner[0].split('_')).title()}", allowed_mentions=discord.AllowedMentions.none())
+            return
+
+        if isinstance(error, NotVotedError):
+            await ctx.reply(f"NotVotedError (Beg for Votes)")
             return
 
         if isinstance(error, commands.errors.NotOwner):

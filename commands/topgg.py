@@ -28,6 +28,7 @@ class voter(commands.Cog):
                     if "application/json" in r.headers["Content-Type"]:
                         json_out = await r.json()
                         await ctx.reply(f"{json_out}")
+                        print(f"{json_out}")
                         pass
                         await ctx.message.add_reaction(ERROR_EMOJI)
                         

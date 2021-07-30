@@ -1,66 +1,35 @@
 from discord.ext import commands
-from config import TOP_GG_TOKEN, BOT_MOD_ROLE, EPICBOT_GUILD_ID, SUPPORTER_ROLE
+from config import *
 
 import aiohttp 
 
-class NotVoted(commands.CheckFailure):
-    pass
-
-class NotBotMod(commands.CheckFailure):
-    pass
-
-class OptedOut(commands.CheckFailure):
+class NotVotedError(commands.CheckFailure):
     pass
 
 async def check_voter(user_id):
-    async with aiohttp.ClientSession() as s:
-        async with s.get(f'https://top.gg/api/bots/751100444188737617/check?userId={user_id}', headers={'Authorization': TOP_GG_TOKEN}) as r:
-            pain = await r.json()
-            if pain['voted'] == 1:
-                return True
-            else:
-                return False
-
-async def check_supporter(ctx):
-    guild = ctx.bot.get_guild(EPICBOT_GUILD_ID)
-    if guild not in ctx.author.mutual_guilds:
-        return False
-    member = guild.get_member(ctx.author.id)
-    role = guild.get_role(SUPPORTER_ROLE)
-    if not member:
-        return False
-    if role not in member.roles:
-        return False
-    return True
+    CHECK_IF_VOTER_LINK = f'https://top.gg/api/bots/851532461061308438/check?userId={user_id}'
+    try:
+        headers = {
+           'Authorization': TOPGG_TOKEN 
+        }
+        async with aiohttp.ClientSession(headers=headers) as session:
+            async with session.get(CHECK_IF_VOTER_LINK) as r:
+                if "application/json" in r.headers["Content-Type"]:
+                    json_out = await r.json()
+                    if json_out['voted'] == 1:
+                        return True
+                    if json_out['voted'] == 0:
+                        return False
+                    else:
+                        return json_out
+                        
+    except Exception as e:
+        print(str(e))
 
 def voter_only():
     async def predicate(ctx):
         thing = await check_voter(ctx.author.id)
         if thing == False:
-            raise NotVoted('Please voted! PLSPLSPLSPLSPLSPLS')
+            raise NotVotedError('Beg for votes msg')
         return True
-    return commands.check(predicate)
-
-def bot_mods_only():
-    async def predicate(ctx: commands.Context):
-        guild = ctx.bot.get_guild(EPICBOT_GUILD_ID)
-        if guild not in ctx.author.mutual_guilds:
-            raise NotBotMod('h')
-        member = guild.get_member(ctx.author.id)
-        role = guild.get_role(BOT_MOD_ROLE)
-        if not member:
-            raise NotBotMod('h')
-        if role in member.roles:
-            return True
-        else:
-            raise NotBotMod('h')
-    return commands.check(predicate)
-
-def not_opted_out():
-    async def predicate(ctx: commands.Context):
-        user_profile = await ctx.bot.get_user_profile_(ctx.author.id)
-        if not user_profile['snipe']:
-            raise OptedOut('h')
-        else:
-            return True
     return commands.check(predicate)

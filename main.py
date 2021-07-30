@@ -119,12 +119,9 @@ async def on_ready():
 
 @bot.command()
 @voter_only()
-async def if_vote(ctx):
-    vote_info = await bot.check_if_voted(ctx.author.id)
-    if vote_info:
-        await ctx.send("voted")
-    if not vote_info:
-        await ctx.send("nope")
+async def ex(ctx):
+    await ctx.send("exclusive cmds hehe")
+
 
 #################################################################################################################
 
