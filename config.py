@@ -39,6 +39,7 @@ VOTE_SCRAPING_CHANNEL     = 868373815393128479
 VOTE_SENDING_CHANNEL      = 869060640529088632
 
 STATSCORD_KEY = os.environ['statscord_key']
+ATTR_LINK = 'https://denzven.pythonanywhere.com/DenzGraphingApi/v1/attr'
 #################################################################################################################
 # Lists
 EMOJI_FOR_CMDS = {
@@ -140,5 +141,8 @@ inputstatus =   [
 ]
 
 CUTE_EMOJIS = [
-
+'<:MH_UwUlove:868556594785427516>',
+'<a:hamsterSpin:755091479021486221>',
+'<a:qwerty:841934299284766730>'
 ]
+

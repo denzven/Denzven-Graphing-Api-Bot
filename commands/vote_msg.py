@@ -17,13 +17,16 @@ class VoteMsg(commands.Cog):
 
     @commands.Cog.listener("on_message")
     async def get_vote(self, message: discord.Message):
+        # print("msg recieved")
         if message.author.id != self.vote_tracking_bot_id:
+           # print("not from vtbot")
             return
         if message.channel.id != self.vote_scraping_channel_id:
+            print("not in the channel")
             return
-        if len(message.embeds) != 1:
-            print('no embed in msg recieved from bot in channel')
-            return
+        #if len(message.embeds) != 1:
+        #    print('no embed in msg recieved from bot in channel')
+        #    return
         try:
             voter_id = int(message.embeds[0].title)
             print(voter_id)

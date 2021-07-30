@@ -9,6 +9,9 @@
 from discord.ext import commands
 import discord
 import datetime
+import aiohttp
+
+# Config
 from config import *
 
 # Cog Class
@@ -26,24 +29,21 @@ class OtherCommands(commands.Cog):
     )
     async def attributes(self,ctx):
         async with ctx.typing():
-            embed=discord.Embed(title="Attributes:", description="these are the possible attributes for a given graph. There are a total of 15 of them", color=MAIN_COLOR)
-            embed.set_author(name = "Help has arrived!", url="https://denzven.pythonanywhere.com/docs")
-            embed.add_field( name = "grid=<1|2|3>",                     value = "adds grids to the graph",            inline = True )
-            embed.add_field( name = "plot_style=<0-25>",                value = "determines the plot_style (boring)", inline = True )
-            embed.add_field( name = "x_coord=<any>",                    value = "fixes the value of the x_coord",     inline = True )
-            embed.add_field( name = "y_coord=<any>",                    value = "fixes the value of the y_coord",     inline = True )
-            embed.add_field( name = "spine_top=<hex without #>",        value = "top-spine color",                    inline = True )
-            embed.add_field( name = "spine_bottom=<hex without #>",     value = "bottom-spine color",                 inline = True )
-            embed.add_field( name = "spine_left=<hex without #>",       value = "left-spine color",                   inline = True )
-            embed.add_field( name = "spine_right=<hex without #>",      value = "right-spine color",                  inline = True )
-            embed.add_field( name = "line_style=<hex without #>",       value = "change the color of the plot line",  inline = True )
-            embed.add_field( name = "grid_lines_major=<hex without #>", value = "applies color to major girds",       inline = True )
-            embed.add_field( name = "grid_lines_minor=<hex without #>", value = "applies color to minor girds",       inline = True )
-            embed.add_field( name = "tick_colors=<hex without #>",      value = "applies color to ticks",             inline = True )
-            embed.add_field( name = "axfacecolor=<hex without #>",      value = "applies color to foreground",        inline = True )
-            embed.add_field( name = "figfacecolor=<hex without #>",     value = "applies color to background",        inline = True )
-            embed.add_field( name = "title_text=<any text>",            value = "sets title",                         inline = True )
-            await ctx.reply(embed = embed, allowed_mentions=discord.AllowedMentions.none())
+            try:
+                async with aiohttp.ClientSession() as session:
+                    async with session.get(ATTR_LINK) as r:
+
+                        if "application/json" in r.headers["Content-Type"]:
+                            desc = await r.json()
+                            desc_ = " "
+                            for attr, description in desc.items():
+                                desc_ += f"`{attr}`={description}\n"
+                            embed=discord.Embed(title="Attributes:", description=desc_, color=MAIN_COLOR)
+                            embed.set_author(name = "Help has arrived!", url="https://denzven.pythonanywhere.com/docs")
+                            await ctx.reply(embed = embed, allowed_mentions=discord.AllowedMentions.none())
+
+            except Exception as e:
+                print(str(e))
 
 #################################################################################################################
 

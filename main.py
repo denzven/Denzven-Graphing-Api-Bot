@@ -10,10 +10,12 @@ import discord
 from discord.ext import commands
 import os
 import json
+import aiohttp
 #import Denzven_Graphing_Api_Wrapper as GraphingApi #pip install
 
 #importing the config files
 from config import *
+from utils.custom_checks import voter_only
 #from keep_alive import keep_alive
 
 #################################################################################################################
@@ -35,6 +37,8 @@ class GraphingBot(commands.Bot):
 
         prefixes_.append(DEFAULT_PREFIX if str(message.guild.id) not in prefixes else prefixes[str(message.guild.id)])
         return prefixes_
+
+
 
 #################################################################################################################
 
@@ -108,10 +112,19 @@ async def on_ready():
 
     #Gets the Server Names   
     for guild in bot.guilds:
-        print(f'| name:{guild.name}\n| guild id:{guild.id}\n| no. of members:{len(guild.members)}\n| Bo: {len(list(filter(lambda m: not m.bot, guild.members)))}\n| Bots: {len(list(filter(lambda m: m.bot, guild.members)))}\n| GuildOwner:{str(guild.owner)}')
+        print(f'| name:{guild.name}\n| guild id:{guild.id}\n| no. of members:{len(guild.members)}\n| Humans: {len(list(filter(lambda m: not m.bot, guild.members)))}\n| Bots: {len(list(filter(lambda m: m.bot, guild.members)))}\n| GuildOwner:{str(guild.owner)}')
         print('+--------------------------------------------------+')   
 
     print('\n')
+
+@bot.command()
+@voter_only()
+async def if_vote(ctx):
+    vote_info = await bot.check_if_voted(ctx.author.id)
+    if vote_info:
+        await ctx.send("voted")
+    if not vote_info:
+        await ctx.send("nope")
 
 #################################################################################################################
 

@@ -1,5 +1,13 @@
 {
   "files": {
+    "commands/commands.py": [
+      {
+        "id": "11a379b8-a646-4c1d-aae8-e6bcee01e32e",
+        "line": 47,
+        "version": 3280,
+        "index": 1741
+      }
+    ],
     "commands/help.py": [
       {
         "id": "3a786a32-7728-4f5e-bd13-1d492c94be1d",
