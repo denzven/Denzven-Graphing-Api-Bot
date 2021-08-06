@@ -38,8 +38,6 @@ class GraphingBot(commands.Bot):
         prefixes_.append(DEFAULT_PREFIX if str(message.guild.id) not in prefixes else prefixes[str(message.guild.id)])
         return prefixes_
 
-
-
 #################################################################################################################
 
 # Defining the Bot
@@ -121,7 +119,6 @@ async def on_ready():
 @voter_only()
 async def ex(ctx):
     await ctx.send("exclusive cmds hehe")
-
 
 #################################################################################################################
 

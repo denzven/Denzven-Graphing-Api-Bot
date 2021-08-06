@@ -49,6 +49,8 @@ EMOJI_FOR_CMDS = {
        'Flat_Graph_Embed' : '🧻',
        'Polar_Graph'      : '🐻‍❄️',
        'Polar_Graph_Embed': '🐻‍❄️',
+       'Derivative_Graph' : '🐻‍❄️',
+# 'derivative_Graph_Embed' : '🐻‍❄️',
        'Graph_Attributes' : '<:graph:868554000281239563>',
        'Bot_Info'         : '🤖',
        'Ping'             : '<a:typing:868554352141402133>',
@@ -97,6 +99,8 @@ COGS = [
     "main_api.pgr",
     "main_api.pgrem",
     "main_api.examples",
+    "main_api.derivatives",
+    "main_api.derivative_embed",
     "main_api.kill",
 #----------events--------------
     "events.on_command",
