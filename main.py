@@ -120,6 +120,13 @@ async def on_ready():
 async def ex(ctx):
     await ctx.send("exclusive cmds hehe")
 
+@bot.event
+async def on_message_edit(before,after):
+    if before.content == after.content:
+        return
+    if before.author.bot:
+        return
+    bot.dispatch("message", after)
 #################################################################################################################
 
 #keep_alive()	# Funtion for keeping replit alive
