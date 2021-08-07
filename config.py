@@ -79,9 +79,11 @@ Bot got approved on top.gg!
 
  [-]Started using Discord.py Beta
  [-]Added cool btns
+ [-]Added Derivative graph
  [-]Added Prefixes
  [-]Added Attr
  [-]Added Reactions to know if the cmd is in process or not
+ [-]Added Typing indicators
  [-]general Bug fixes
  [-]Added Botlists
 
@@ -91,31 +93,31 @@ BOT_VERSION = 'v0.0.1'
 #################################################################################################################
 
 COGS = [
-#----------main api cmds--------------
-    "main_api.3dgr",
-    "main_api.3dgrem",
-    "main_api.fgr",
-    "main_api.fgrem",
-    "main_api.pgr",
-    "main_api.pgrem",
-    "main_api.examples",
-    "main_api.derivatives",
-    "main_api.derivative_embed",
-    "main_api.kill",
-#----------events--------------
-    "events.on_command",
-    "events.on_error",
-    "events.on_guild_join",
-#------------other cmds------------
-    "commands.commands",
-    "commands.help",
-    "commands.prefix",
-    "commands.topgg",
-    "commands.vote_msg",
-    "commands.statscord",
-#-----------tasks------------
-    "task.status_task",
-#------------------------
+#----------Main API Commands--------------#                   
+        "main_api.3dgr",                  # 
+        "main_api.3dgrem",                #   
+        "main_api.fgr",                   #
+        "main_api.fgrem",                 #  
+        "main_api.pgr",                   #
+        "main_api.pgrem",                 #  
+        "main_api.examples",              #     
+        "main_api.derivatives",           #        
+        "main_api.derivative_embed",      #             
+        "main_api.kill",                  # 
+#--------------Events---------------------#                 
+        "events.on_command",              #    
+        "events.on_error",                #  
+        "events.on_guild_join",           #       
+#------------Other Commands---------------#                 
+        "commands.commands",              #    
+        "commands.help",                  #
+        "commands.prefix",                #  
+        "commands.topgg",                 # 
+        "commands.vote_msg",              #    
+        "commands.statscord",             #     
+#--------------Tasks----------------------#         
+        "task.status_task",               #   
+#-----------------------------------------#     
         ]
 
 #################################################################################################################
@@ -141,7 +143,30 @@ inputstatus =   [
     "Imagine using eval(), could not be me... Sob internally",
     "Vote For meeeee!!!",
     "I Got approved on Top.gg!!",
-    "Maths is fun when you know what you are doing"
+    "Maths is fun when you know what you are doing",
+    "Made by tears and suffering",
+    "Plotting equation of E",
+    "Invite me to E thread pls",
+    "Yo kid, wanna plot some graph?",
+    "Open a market of math equations, you will make a fortune",
+    "Can I buy the equation of infinity love?",
+    "If Quantum PC come out tomorrow, I'll be a goner",
+    "RealityProgrammer is being trapped under a basement, writing new status",
+    "Graph do be cool",
+    "Stage 1: Graph, Stage 2: Graphics, Stage 3: 3D Rendering in Discord, Stage 4: Minecraft in discord",
+    "Reality wants to do 3D on flat graph, but Denzven suk",
+    "Your day is better than those who forgot the -y and only see straight vertical lines",
+    "Reality is still waiting for actual multiple equation implementation",
+    "What's the chance of generate an EDM via a single equation?",
+    "Aeugh",
+    "I literally has the power of curing deadly desease, but instead, I was forced to do graph",
+    "Enlighten me with your graph",
+    "Overflow go brrrrrrr",
+    "I like your equation, nerdy boy",
+    "Every beautiful graph start with x-y=0`",
+    "Impress ur crush with your M A F F skill here",
+    "Inequality when?",
+    "Help I'm trapped in Backroom Level x-y=0",
 ]
 
 CUTE_EMOJIS = [
