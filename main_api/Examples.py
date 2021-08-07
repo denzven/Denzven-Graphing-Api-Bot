@@ -3,9 +3,6 @@
 # Imports
 from discord.ext import commands
 import discord
-import urllib
-import aiohttp
-import datetime
 
 # Config
 from config import *
@@ -16,9 +13,9 @@ class Examples(commands.Cog):
 
     @commands.command(
         aliases = [],
-        help = ('Examples'),
+        help = ('Get Examples'),
         name = 'Examples',
-        description = 'Get Examples',
+        description = 'get Examples',
     )
 
     async def Examples(self,ctx, *, input_params):
