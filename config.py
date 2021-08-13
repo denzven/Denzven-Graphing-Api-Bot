@@ -7,7 +7,7 @@
 import os
 
 # Standard Variables
-MAIN_COLOR                = 0x11ffcc
+MAIN_COLOR                = 0x01abe1
 SECONDARY_COLOR           = 0x8ebd9d
 ERROR_COLOR               = 0xff0000
 DEFAULT_PREFIX            = '>'

@@ -1,6 +1,6 @@
-# Denzven-Graphing-Api
+# [Denzven-Graphing-Api-Bot](https://discord.com/oauth2/authorize?client_id=851532461061308438&permissions=117760&scope=bot)
 ### Welcome! this is [Denzven-Graphing-Api](https://denzven.pythonanywhere.com/)
-
+### [Invite the bot!](https://discord.com/oauth2/authorize?client_id=851532461061308438&permissions=117760&scope=bot)
 ### 1. About the Bot:
 
 Denzven-Graphing-Api is my first flask project that plots graphs of formulas/Equations using python. i have also made an [Showcase Bot](https://github.com/denzven/Denzven-Graphing-Api-Bot) to show the abilties of the api 
