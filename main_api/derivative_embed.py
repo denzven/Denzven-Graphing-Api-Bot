@@ -18,7 +18,7 @@ class GraphingCommandEmbed_derivative(commands.Cog):
 
     @commands.command(
         aliases = ['derivativegraphembed','derivativegrembed','dgraphembed','dgrem'],
-        help = ('Plot derivative graphs providing a formuala with x and y, inside cool looking embeds'),
+        help = ('Plot derivative graphs providing a formula with x and y, inside cool looking embeds'),
         name = 'derivative_Graph_Embed',
         description = 'Plot derivative Graphs in Embeds with this command',
     )

@@ -4,6 +4,8 @@
 # Imports
 from discord.ext import commands
 import discord
+import datetime
+import traceback
 
 # Config
 from config import *
@@ -58,8 +60,22 @@ class Error(commands.Cog):
 
         if isinstance(error, commands.MissingRequiredArgument):
             await ctx.send_help(ctx.command) # Sends the help if the cmd isnt used properly
+        
+        error_text = "".join(traceback.format_exception(etype=type(error), value=error, tb=error.__traceback__))[:2000]
+
+        embed=discord.Embed(title=f"Error!", color=ERROR_COLOR)
+        embed.add_field(name="Error", value=f'```py\n{error_text}```',inline=False)
+        embed.add_field(name="Server", value=f'```{ctx.guild.name} ({ctx.guild.id})```',inline=False)
+        embed.add_field(name="Channel", value=f'```{ctx.channel.name} ({ctx.channel.id})```',inline=False)
+        embed.add_field(name="User", value=f'```{ctx.author.name} ({ctx.author.id})```',inline=False)
+        embed.add_field(name="Command", value=f'```{ctx.command}```',inline=False)
+        embed.add_field(name="Content", value=f'```{ctx.message.content}```',inline=False)
+        embed.timestamp = datetime.datetime.utcnow()
+        log_channel = self.bot.get_channel(LOG_ON_ERROR)
+        await log_channel.send(embed = embed)
 
         raise error # Spammer boi
+ 
         
 def setup(bot):
 	bot.add_cog(Error(bot))

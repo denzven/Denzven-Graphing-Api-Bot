@@ -15,7 +15,7 @@ class GraphingCommand_3d(commands.Cog):
 
     @commands.command(
         aliases = ['threeDgraph','threeDgr','3dgraph','3dgr'],
-        help = ('Plot three-dimensional graphs providing a formuala with x and y (z is NOT supported)'),
+        help = ('Plot three-dimensional graphs providing a formula with x and y (z is NOT supported)'),
         name = '3D_Graph',
         description = 'Plot 3D Graphs with this command',
     )

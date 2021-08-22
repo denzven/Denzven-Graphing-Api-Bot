@@ -134,10 +134,11 @@ class MyHelpCommand(commands.HelpCommand):
         embed.set_image(url=API_COVER_PIC)
         embed.set_thumbnail(url=BOT_AVATAR)
         embed.set_footer(text=f'rendered by {ctx.author.name}',icon_url=ctx.author.avatar.url)
-        embed.add_field( name = "GraphingCommands"      , value=">fgr <input_formula> [attr] \n>pgr <input_formula> [attr] \n>3dgr <input_formula> [attr] \n"      , inline=False)
-        embed.add_field( name = "GraphingCommandsEmbed" , value=">fgrem <input_formula> [attr] \n>pgrem <input_formula> [attr] \n>3dgrem <input_formula> [attr] \n", inline=False)
-        embed.add_field( name = "OtherCommands"         , value=">attr \n>docs \n>github \n>ping \n>vote  \n>src \n>website \n>prefix \n>changelog \n>botlist \nbotinfo \n"                  , inline=False)
-        embed.add_field( name = "OwnerCommands"         , value=">jsk"                                                                                             , inline=False)
+        p = DEFAULT_PREFIX
+        embed.add_field( name = "GraphingCommands"      , value=f"{p}fgr <input_formula> [attr] \n{p}pgr <input_formula> [attr] \n{p}3dgr <input_formula> [attr] \n{p}dgr <input_formula> \n"      , inline=False)
+        embed.add_field( name = "GraphingCommandsEmbed" , value=f"{p}fgrem <input_formula> [attr] \n{p}pgrem <input_formula> [attr] \n{p}3dgrem <input_formula> [attr] \n{p}dgrem <input_formula> \n", inline=False)
+        embed.add_field( name = "OtherCommands"         , value=f"{p}attr \n{p}docs \n{p}github \n{p}ping \n{p}vote  \n{p}src \n{p}website \n{p}prefix \n{p}changelog \n{p}botlist \n{p}botinfo \n"                  , inline=False)
+        embed.add_field( name = "OwnerCommands"         , value=f"{p}jsk"                                                                                             , inline=False)
         return embed,view_ui # also btns, if i forgot to say that
 
 #################################################################################################################

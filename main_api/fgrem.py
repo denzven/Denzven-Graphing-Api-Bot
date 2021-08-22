@@ -16,7 +16,7 @@ class GraphingCommandEmbed_flat(commands.Cog):
 
     @commands.command(
         aliases = ['flatgraphembed','flatgrembed','fgraphembed','fgrem'],
-        help = ('Plot Flat graphs providing a formuala with x and y, inside cool looking embeds'),
+        help = ('Plot Flat graphs providing a formula with x and y, inside cool looking embeds'),
         name = 'Flat_Graph_Embed',
         description = 'Plot Flat Graphs in Embeds with this command',
     )

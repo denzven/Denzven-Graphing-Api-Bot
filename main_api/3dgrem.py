@@ -16,7 +16,7 @@ class GraphingCommandEmbed_3d(commands.Cog):
 
     @commands.command(
         aliases = ['threeDgraphembed','3dgrembed','3dgraphembed','3dgrem'],
-        help = ('Plot three-dimensional graphs providing a formuala with x and y insude beautiful embeds (z is NOT supported)'),
+        help = ('Plot three-dimensional graphs providing a formula with x and y insude beautiful embeds (z is NOT supported)'),
         name = '3D_Graph_Embed',
         description = 'Plot 3D Graphs in Embeds with this command',
     )

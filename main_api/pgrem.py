@@ -16,7 +16,7 @@ class GraphingCommandEmbed_polar(commands.Cog):
 
     @commands.command(
         aliases = ['polatgraphembed','polargrembed','pgraphembed','pgrem'],
-        help = ('Plot Polar graphs providing a formuala with x and y inside beautiful embeds'),
+        help = ('Plot Polar graphs providing a formula with x and y inside beautiful embeds'),
         name = 'Polar_Graph_Embed',
         description = 'Plot Polar Graphs in Embeds with this command',        
     )

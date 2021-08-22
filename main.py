@@ -1,9 +1,16 @@
-# Welcome! This is an Example Bot in Dicord.py,
-# that showcases the use of the DenzGraphingApi,
-# to form embeds and send basic info
-# you can invite the bot here: https://dsc.gg/denzven-graphing-api-bot
-# for doubts and queries Join the support/chill server: 
-# https://dsc.gg/chilly_place
+'''
++------------------------------------------------------------------------+                                                                        
+|                                                                        |
+| Welcome! This is an Example Bot in Dicord.py,                          |                                              
+| that showcases the use of the DenzGraphingApi,                         |                                               
+| to form embeds and send basic info                                     |                                   
+| you can invite the bot here: https://dsc.gg/denzven-graphing-api-bot   |                                                                     
+| for doubts and queries Join the support/chill server:                  |                                                       
+| https://dsc.gg/chilly_place                                            |                            
+|                                                                        |
++------------------------------------------------------------------------+                                                                        
+
+'''
 
 #importing Modules
 import discord
@@ -11,6 +18,7 @@ from discord.ext import commands
 import os
 import json
 import aiohttp
+import datetime
 #import Denzven_Graphing_Api_Wrapper as GraphingApi #pip install
 
 #importing the config files
@@ -21,7 +29,7 @@ from utils.custom_checks import voter_only
 #################################################################################################################
 
 # making a bot sub-class
-class GraphingBot(commands.Bot):
+class GraphingBot(commands.AutoShardedBot):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.CommandNumber = 0
@@ -42,13 +50,12 @@ class GraphingBot(commands.Bot):
 
 # Defining the Bot
 description = BOT_DESCRIPTION
-intents = discord.Intents.all()
+intents = discord.Intents.default()
 intents.members = True
-intents.presences = True
 bot = GraphingBot(
     #command_prefix=commands.when_mentioned_or(DEFAULT_PREFIX),
     command_prefix=GraphingBot.get_custom_prefix,
-    intents=discord.Intents.all(),
+    intents=intents,
     case_insensitive=True,
     strip_after_prefix=False,
     allowed_mentions=discord.AllowedMentions.none())
@@ -78,6 +85,11 @@ async def on_connect():
 #On_ready Info
 @bot.event
 async def on_ready():
+    embed=discord.Embed(title=f"Bot has Connected", color=PASS_COLOR)
+    embed.timestamp = datetime.datetime.utcnow()
+    log_channel = bot.get_channel(LOG_ON_READY)
+    await log_channel.send(embed = embed)
+    pass
     print('+--------------------------------------------------+')
     print('|                 Bot has Started                  |')
     print('+--------------------------------------------------+')
@@ -108,57 +120,52 @@ async def on_ready():
     print('|                     servers:                     |')
     print('+--------------------------------------------------+')
 
-    groups = {}
-
+    #groups = {} 
+    #def func(e):
+    #    return len(list(filter(lambda m: not m.bot, e.members)))    
+    #for guild in bot.guilds:
+    #    if guild.member_count in groups:
+    #        hmph = groups[guild.member_count]
+    #        hmph.append(guild)
+    #        groups.update({guild.member_count: hmph})
+    #    else:
+    #        groups.update({guild.member_count: [guild]})    
+    #for count, group in groups.items():
+    #    groups.update({count: sorted(group, key=func)}) 
+    #amogus = {}
+    #for i in sorted(groups):
+    #    amogus.update({i: groups[i]})
+    #print(amogus)
+    #Gets the Server Names  
+    name = []
+    id = []
+    members = []
+    Humans = []
+    Bots = []
+    Owners = [] 
     def func(e):
         return len(list(filter(lambda m: not m.bot, e.members)))
-
-    for guild in bot.guilds:
-        if guild.member_count in groups:
-            hmph = groups[guild.member_count]
-            hmph.append(guild)
-            groups.update({guild.member_count: hmph})
-        else:
-            groups.update({guild.member_count: [guild]})
-
-    for count, group in groups.items():
-        groups.update({count: sorted(group, key=func)})
-
-    amogus = {}
-    for i in sorted(groups):
-        amogus.update({i: groups[i]})
-
-    print(amogus)
-    ##Gets the Server Names  
-    #name = []
-    #id = []
-    #members = []
-    #Humans = []
-    #Bots = []
-    #Owners = [] 
-    #def func(e):
-    #    return len(list(filter(lambda m: not m.bot, e.members)))
-    #sorted_guilds = bot.guilds 
-    #sorted_guilds = sorted(sorted_guilds, key=func)
-    ##import operator
-    ##sorted_guilds = sorted(bot.guilds, key=operator.attrgetter("member_count"))
-    ##sorted_guilds = sorted(bot.guilds, key = list(filter(lambda m: not m.bot, operator.attrgetter("members"))))
-    #for guild in sorted_guilds:
-    #    name.append(guild.name)
-    #    id.append(guild.id)
-    #    members.append(len(guild.members))
-    #    Humans.append(len(list(filter(lambda m: not m.bot, guild.members))))
-    #    Bots.append(len(list(filter(lambda m: m.bot, guild.members))))
-    #    Owners.append(str(guild.owner))
-    #    print(f'| name:{guild.name}\n| guild id:{guild.id}\n| no. of members:{len(guild.members)}\n| Humans: {len(list(filter(lambda m: not m.bot, guild.members)))}\n| Bots: {len(list(filter(lambda m: m.bot, guild.members)))}\n| GuildOwner:{str(guild.owner)}')
-    #    print('+--------------------------------------------------+')   
-    #print('\n')
-    #print(name)
-    #print(id)
-    #print(members)
-    #print(Humans)
-    #print(Bots)
-    #print(Owners)
+    sorted_guilds = bot.guilds 
+    sorted_guilds = sorted(sorted_guilds, key=func)
+    #import operator
+    #sorted_guilds = sorted(bot.guilds, key=operator.attrgetter("member_count"))
+    #sorted_guilds = sorted(bot.guilds, key = list(filter(lambda m: not m.bot, operator.attrgetter("members"))))
+    for guild in sorted_guilds:
+        name.append(guild.name)
+        id.append(guild.id)
+        members.append(len(guild.members))
+        Humans.append(len(list(filter(lambda m: not m.bot, guild.members))))
+        Bots.append(len(list(filter(lambda m: m.bot, guild.members))))
+        Owners.append(str(guild.owner))
+        print(f'| name:{guild.name}\n| guild id:{guild.id}\n| no. of members:{len(guild.members)}\n| Humans: {len(list(filter(lambda m: not m.bot, guild.members)))}\n| Bots: {len(list(filter(lambda m: m.bot, guild.members)))}\n| GuildOwner:{str(guild.owner)}')
+        print('+--------------------------------------------------+')   
+    print('\n')
+    print(name)
+    print(id)
+    print(members)
+    print(Humans)
+    print(Bots)
+    print(Owners)
 
 @bot.command()
 @voter_only()

@@ -16,7 +16,7 @@ class GraphingCommand_derivative(commands.Cog):
 
     @commands.command(
         aliases = ['dgr','derivative'],
-        help = ('Plot derivates of graphs providing a formuala with x'),
+        help = ('Plot derivates of graphs providing a formula with x'),
         name = 'Derivative_Graph',
         description = 'Plot derivatives with this command',
     )

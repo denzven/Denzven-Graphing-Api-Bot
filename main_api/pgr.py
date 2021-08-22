@@ -15,7 +15,7 @@ class GraphingCommand_polar(commands.Cog):
 
     @commands.command(
         aliases = ['polargraph','polargr','pgraph','pgr'],
-        help = ('Plot Polar graphs providing a formuala with x and y'),
+        help = ('Plot Polar graphs providing a formula with x and y'),
         name = 'Polar_Graph',
         description = 'Plot Polar Graphs with this command',
     )

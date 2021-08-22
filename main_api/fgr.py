@@ -15,7 +15,7 @@ class GraphingCommand_flat(commands.Cog):
 
     @commands.command(
         aliases = ['flatgraph','flatgr','fgraph','fgr'],
-        help = ('Plot Flat graphs providing a formuala with x and y'),
+        help = ('Plot Flat graphs providing a formula with x and y'),
         name = 'Flat_Graph',
         description = 'Plot Flat Graphs with this command',
     )

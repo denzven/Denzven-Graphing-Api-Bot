@@ -187,27 +187,30 @@ class OtherCommands(commands.Cog):
 
     # Botlists cmd
     @commands.command(
-        aliases = ['bl'],
+        aliases = ['bl','botlist'],
         help = ('Get the lists of the BotLists the Bot has enrolled'),
         name = 'BotLists',
         description = 'Get the lists of the BotLists the Bot has enrolled',
     )
     async def botlists(self,ctx):
-        embed=discord.Embed(title="Bot-Lists:", description="these are the websites the bot is currently uploaded to", color=MAIN_COLOR)
-        embed.set_author(name = "Roll in the Lists!")
-        embed.add_field( name = "Top.gg ✅"             ,              value = "https://top.gg/bot/851532461061308438"              ,  inline = False )
-        embed.add_field( name = "discordbotlist"        ,              value = "https://discordbotlist.com/bots/graphingbot"        ,  inline = False )
-        embed.add_field( name = "botlists.com"          ,              value = "https://botlists.com/bot/851532461061308438"        ,  inline = False )
-        embed.add_field( name = "discord.bots.gg ✅"    ,              value = "https://discord.bots.gg/bots/851532461061308438"    ,  inline = False )
-        embed.add_field( name = "infinitybotlist.com"   ,              value = "https://infinitybotlist.com/bots/851532461061308438",  inline = False )
-        embed.add_field( name = "bots.discordlabs.org"  ,              value = "https://bots.discordlabs.org/bot/851532461061308438",  inline = False )
+        description = """ 
+        These are the websites the Bot is currently uploaded to
+        
+        [Top.gg](https://top.gg/bot/851532461061308438)
+        [discordbotlist](https://discordbotlist.com/bots/graphingbot)
+        [botlists.com](https://botlists.com/bot/851532461061308438)
+        [discord.bots.gg](https://discord.bots.gg/bots/851532461061308438)
+        [infinitybotlist.com](https://infinitybotlist.com/bots/851532461061308438)
+        [bots.discordlabs.org](https://bots.discordlabs.org/bot/851532461061308438)
+        """
+        embed=discord.Embed(title="Bot-Lists:", description=description, color=MAIN_COLOR)
         await ctx.reply(embed = embed, allowed_mentions=discord.AllowedMentions.none())
     
 #################################################################################################################
 
-    # Chnagelog cmd
+    # Changelog cmd
     @commands.command(
-        aliases = ['cl'],
+        aliases = ['cl','changelog','changelogs'],
         help = ('Get the ChangeLog of the latest update!'),
         name = 'Change_Log',
         description = 'Get the ChangeLog of the latest update!',
@@ -238,6 +241,7 @@ class OtherCommands(commands.Cog):
                 embed.set_footer(text=f"{ctx.guild}", icon_url=f"{ctx.guild.icon.url}")
                 embed.timestamp = datetime.datetime.utcnow()
                 channel = self.bot.get_channel(SUGGEST_CHANNEL)
+                log_channel = self.bot.get_channel(LOG_SUGGESTION)
                 
                 embed2 = discord.Embed(title="thx for the suggestion!", description="thnq for making the bot better!",color=MAIN_COLOR)
                 embed2.add_field(name="you sent:",value =f"{suggestion}")
@@ -251,6 +255,7 @@ class OtherCommands(commands.Cog):
                     label="support server",
                 ))
                 suggestion = await channel.send(embed = embed)
+                log_suggestion = await log_channel.send(embed = embed)
                 await suggestion.add_reaction(UPVOTE_EMOJI)
                 await suggestion.add_reaction(DOWNVOTE_EMOJI)
                 await ctx.reply(embed = embed2,view=view_ui, allowed_mentions=discord.AllowedMentions.none())

@@ -5,11 +5,13 @@
 
 # Imports 
 import os
+from inputstatus import inputstatus
 
 # Standard Variables
 MAIN_COLOR                = 0x01abe1
 SECONDARY_COLOR           = 0x8ebd9d
 ERROR_COLOR               = 0xff0000
+PASS_COLOR                = 0x00ff00
 DEFAULT_PREFIX            = '>'
 BOT_TOKEN                 = os.environ['bottoken']
 VOTER_API_LINK            = 'https://top.gg/api/bots/851532461061308438/votes'
@@ -50,13 +52,13 @@ EMOJI_FOR_CMDS = {
        'Polar_Graph'      : '🐻‍❄️',
        'Polar_Graph_Embed': '🐻‍❄️',
        'Derivative_Graph' : '🐻‍❄️',
-# 'derivative_Graph_Embed' : '🐻‍❄️',
+ 'derivative_Graph_Embed' : '🐻‍❄️',
        'Graph_Attributes' : '<:graph:868554000281239563>',
        'Bot_Info'         : '🤖',
        'Ping'             : '<a:typing:868554352141402133>',
        'GitHub'           : '<:GitHubWhite:868554626079785020>',
        'Invite'           : '<:invite:868554868372148244>',
-       'Invite2'          : '<:invite:868554868372148244>',
+#       'Invite2'          : '<:invite:868554868372148244>',
        'Docs'             : '<:readthedocs:868555051214463057>',
        'Website'          : '🕸️',
        'Source_Code'      : '<:Python:868556292875227146>',
@@ -92,6 +94,8 @@ BOT_VERSION = 'v0.0.1'
 
 #################################################################################################################
 
+inputstatus = inputstatus
+
 COGS = [
 #----------Main API Commands--------------#                   
         "main_api.3dgr",                  # 
@@ -122,52 +126,7 @@ COGS = [
 
 #################################################################################################################
 
-inputstatus =   [
-    "Busy plotting Graphs",
-    "Rendering Equations",
-    "Matplotlib is awesome!",
-    "with Mathematics",
-    "with Graphs",
-    "with lines,parabolas and circles",
-    "hmmmm... what to plot today?",
-    "Star me on GitHub pls! >github",
-    "Do i make you feel like plotting some graphs?",
-    "Eating RealityProgrammer's Brain",
-    "Checking errors",
-    "with Styles!",
-    "Python is pogg!",
-    "Eating tortillas with 69 others",
-    "My favorite number is 01000101",
-    "I'm being stuck under a basement",
-    "Send help",
-    "Imagine using eval(), could not be me... Sob internally",
-    "Vote For meeeee!!!",
-    "I Got approved on Top.gg!!",
-    "Maths is fun when you know what you are doing",
-    "Made by tears and suffering",
-    "Plotting equation of E",
-    "Invite me to E thread pls",
-    "Yo kid, wanna plot some graph?",
-    "Open a market of math equations, you will make a fortune",
-    "Can I buy the equation of infinity love?",
-    "If Quantum PC come out tomorrow, I'll be a goner",
-    "RealityProgrammer is being trapped under a basement, writing new status",
-    "Graph do be cool",
-    "Stage 1: Graph, Stage 2: Graphics, Stage 3: 3D Rendering in Discord, Stage 4: Minecraft in discord",
-    "Reality wants to do 3D on flat graph, but Denzven suk",
-    "Your day is better than those who forgot the -y and only see straight vertical lines",
-    "Reality is still waiting for actual multiple equation implementation",
-    "What's the chance of generate an EDM via a single equation?",
-    "Aeugh",
-    "I literally has the power of curing deadly desease, but instead, I was forced to do graph",
-    "Enlighten me with your graph",
-    "Overflow go brrrrrrr",
-    "I like your equation, nerdy boy",
-    "Every beautiful graph start with x-y=0`",
-    "Impress ur crush with your M A F F skill here",
-    "Inequality when?",
-    "Help I'm trapped in Backroom Level x-y=0",
-]
+
 
 CUTE_EMOJIS = [
 '<:MH_UwUlove:868556594785427516>',
@@ -175,3 +134,13 @@ CUTE_EMOJIS = [
 '<a:qwerty:841934299284766730>'
 ]
 
+LOG_SERVER          = 877055490113306715
+LOG_ON_CMD          = 877056797469454357
+LOG_ON_GUILD_JOIN   = 877056911852331039
+LOG_ON_GUILD_REMOVE = 877058774676946944
+LOG_ON_ERROR        = 877057625441845288
+LOG_ON_CONNECT      = 877057755322646558
+LOG_ON_DISCONNECT   = 877058311239905300
+LOG_ON_READY        = 877057817830391849
+LOG_ON_DM           = 877059522622017536
+LOG_SUGGESTION      = 877060305119752232
