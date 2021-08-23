@@ -27,9 +27,11 @@ class Error(commands.Cog):
 
         if isinstance(error,commands.BadArgument):
             await ctx.send('BadArgument', allowed_mentions=discord.AllowedMentions.none())
+            pass
 
-        if isinstance(error, commands.errors.CommandInvokeError):
-            await ctx.reply("CommandInvokeError", allowed_mentions=discord.AllowedMentions.none())
+        #if isinstance(error, commands.errors.CommandInvokeError):
+        #    await ctx.reply("CommandInvokeError", allowed_mentions=discord.AllowedMentions.none())
+        #    pass
 
         # Gets annoying pretty quickly my bot got muted becasue of this...
         #if isinstance(error, commands.CommandNotFound): 
@@ -37,18 +39,21 @@ class Error(commands.Cog):
 
         if isinstance(error,commands.errors.CommandOnCooldown):
             await ctx.reply(f"CommandOnCooldown retry after {error.retry_after:.2f}s.", allowed_mentions=discord.AllowedMentions.none())
+            pass
 
         if isinstance(error, commands.errors.MissingPermissions):
-            await ctx.reply(f"MissingPermissions {' '.join(error.NotOwner[0].split('_')).title()}", allowed_mentions=discord.AllowedMentions.none())
-            return
+            await ctx.reply(f"MissingPermissions {' '.join(error.missing_permissions[0].split('_')).title()}", allowed_mentions=discord.AllowedMentions.none())
+            #return
+            pass
 
         if isinstance(error, NotVotedError):
             await ctx.reply(f"NotVotedError (Beg for Votes)")
-            return
+            #return
+            pass
 
         if isinstance(error, commands.errors.NotOwner):
             await ctx.reply(f"NotOwner {error}", allowed_mentions=discord.AllowedMentions.none())
-            return
+            #return
 
         #if isinstance(error,commands.MissingRequiredArgument):
         #    await ctx.reply('MissingRequiredArgument')
@@ -57,11 +62,13 @@ class Error(commands.Cog):
             if error.missing_perms[0] == 'send_messages':
                 return
             await ctx.reply(f"BotMissingPermissions **{' '.join(error.missing_perms[0].split('_')).title()}**", allowed_mentions=discord.AllowedMentions.none())
+            print(f"BotMissingPermissions **{' '.join(error.missing_permissions[0].split('_')).title()}**")
+            pass
 
         if isinstance(error, commands.MissingRequiredArgument):
             await ctx.send_help(ctx.command) # Sends the help if the cmd isnt used properly
         
-        error_text = "".join(traceback.format_exception(etype=type(error), value=error, tb=error.__traceback__))[:2000]
+        error_text = "".join(traceback.format_exception(etype=type(error), value=error, tb=error.__traceback__))[:1000]
 
         embed=discord.Embed(title=f"Error!", color=ERROR_COLOR)
         embed.add_field(name="Error", value=f'```py\n{error_text}```',inline=False)

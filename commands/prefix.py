@@ -19,6 +19,7 @@ class Prefix(commands.Cog):
         name = 'Prefix',
         description = 'Set a Custom prefix for the bot in this guild',
     )
+    @commands.has_permissions(manage_messages=True)  
     async def prefix(self,ctx,prefix=None):
         if prefix is None:
             try:
