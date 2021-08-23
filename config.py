@@ -102,6 +102,7 @@ COGS = [
         "main_api.examples",              #     
         "main_api.derivatives",           #        
         "main_api.derivative_embed",      #             
+        "main_api.latex",                 #             
         "main_api.kill",                  # 
 #--------------Events---------------------#                 
         "events.on_command",              #    
