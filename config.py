@@ -36,6 +36,7 @@ ERROR_EMOJI               = '‼️'
 THX_EMOJI                 = '🙏' 
 UPVOTE_EMOJI              = '👍'
 DOWNVOTE_EMOJI            = '👎'
+PLOT_EMOJI                = '📈'
 TOPGG_TOKEN               = os.environ['topgg_token']
 VOTE_SCRAPING_CHANNEL     = 868373815393128479
 VOTE_SENDING_CHANNEL      = 869060640529088632
@@ -77,20 +78,14 @@ EMOJI_FOR_CMDS = {
 #################################################################################################################
 # Change log
 CHANGE_LOG = '''
-Bot got approved on top.gg!
+Bot got Verified!!
+Bot crossed Over 100 guilds!! 
+Thx to all the voters and Supporters!
 
- [-]Started using Discord.py Beta
- [-]Added cool btns
- [-]Added Derivative graph
- [-]Added Prefixes
- [-]Added Attr
- [-]Added Reactions to know if the cmd is in process or not
- [-]Added Typing indicators
- [-]general Bug fixes
- [-]Added Botlists
-
+[-] Added VoterOnly Commands
+[-] added 
 '''
-BOT_VERSION = 'v0.0.1'
+BOT_VERSION = 'v1.0.0'
 
 #################################################################################################################
 

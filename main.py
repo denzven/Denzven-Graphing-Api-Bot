@@ -68,6 +68,8 @@ bot.remove_command('help') #Removing the Default Help
 os.environ.setdefault("JISHAKU_HIDE", "1")
 bot.load_extension('jishaku') # pip install -U jishaku
 
+#################################################################################################################
+
 # On_connect Info
 @bot.event
 async def on_connect():
@@ -82,14 +84,18 @@ async def on_connect():
         print('+--------------------------------------------------+')
         print('\n')
 
+#################################################################################################################
+
 #On_ready Info
 @bot.event
 async def on_ready():
+    #on_ready logging
     embed=discord.Embed(title=f"Bot has Connected", color=PASS_COLOR)
     embed.timestamp = datetime.datetime.utcnow()
     log_channel = bot.get_channel(LOG_ON_READY)
     await log_channel.send(embed = embed)
     pass
+
     print('+--------------------------------------------------+')
     print('|                 Bot has Started                  |')
     print('+--------------------------------------------------+')
@@ -101,11 +107,12 @@ async def on_ready():
     print('| Bot made by: @Denzven#2004                       |')
     print('| Join my chill server: https://dsc.gg/chilly_place|')
     print('+--------------------------------------------------+')
+
     print('\n')
+    
     print('+--------------------------------------------------+')
     print('|                     Cogs:                        |')
     print('+--------------------------------------------------+')
-
     # Loads in the Cogs
     for cog in COGS:
         try:
@@ -160,18 +167,16 @@ async def on_ready():
         print(f'| name:{guild.name}\n| guild id:{guild.id}\n| no. of members:{len(guild.members)}\n| Humans: {len(list(filter(lambda m: not m.bot, guild.members)))}\n| Bots: {len(list(filter(lambda m: m.bot, guild.members)))}\n| GuildOwner:{str(guild.owner)}')
         print('+--------------------------------------------------+')   
     print('\n')
-    print(name)
-    print(id)
-    print(members)
-    print(Humans)
-    print(Bots)
-    print(Owners)
+    #print(name)
+    #print(id)
+    #print(members)
+    #print(Humans)
+    #print(Bots)
+    #print(Owners)
 
-@bot.command()
-@voter_only()
-async def ex(ctx):
-    await ctx.send("exclusive cmds hehe")
+#################################################################################################################
 
+# Enabling edit to command too
 @bot.event
 async def on_message_edit(before,after):
     if before.content == after.content:
@@ -179,6 +184,7 @@ async def on_message_edit(before,after):
     if before.author.bot:
         return
     bot.dispatch("message", after)
+    
 #################################################################################################################
 
 #keep_alive()	# Funtion for keeping replit alive
