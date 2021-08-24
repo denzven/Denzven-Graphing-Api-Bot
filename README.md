@@ -1,3 +1,29 @@
+<h2 align="center">
+  <img src="https://cdn.discordapp.com/avatars/851532461061308438/ebb1bb6821da8d47a8559a6a4fb95ec6.png?size=256" height='100px' width='100px'>
+</h2>
+
+<h1 align="center">EpicBot 🏅</h1>
+<h4 align="center">A simple, multipurpose Discord bot.</h4>
+
+<h1 align="center">
+  <a href="https://top.gg/bot/851532461061308438">
+      <img src="https://top.gg/api/widget/status/851532461061308438.svg" alt="EpicBot 🏅" />
+  </a>
+  <a href="https://top.gg/bot/851532461061308438">
+      <img src="https://top.gg/api/widget/servers/851532461061308438.svg" alt="EpicBot 🏅" />
+  </a>
+  <a href="https://top.gg/bot/851532461061308438">
+      <img src="https://top.gg/api/widget/upvotes/851532461061308438.svg" alt="EpicBot 🏅" />
+  </a><br>
+  <img src="https://img.shields.io/badge/discord.py-2.0-blue?style=flat" />
+  <img src="https://img.shields.io/badge/Python-3.9-green?style=flat&logo=python" />
+</h1>
+
+<h2><img src="https://cdn.discordapp.com/emojis/766498653753049109.png?v=1" height="20px"> • Info</h2>
+
+<p>This is a Basic Graphing Bot and is a showcase of Denzven-Graphing-Api to plot flat,polar and 3-dimensional graphs using the input formula</p>
+
+
 # [Denzven-Graphing-Api-Bot](https://discord.com/oauth2/authorize?client_id=851532461061308438&permissions=117760&scope=bot)
 ### Welcome! this is [Denzven-Graphing-Api](https://denzven.pythonanywhere.com/)
 ### [Invite the bot!](https://discord.com/oauth2/authorize?client_id=851532461061308438&permissions=117760&scope=bot)
@@ -70,7 +96,7 @@ Some known ones:
 
 - Fork the repository
 
-> [fork the Api](https://github.com/denzven/Denzven-Graphing-Api/fork)  
+> [fork the Api](https://github.com/denzven/Denzven-Graphing-Api/fork) 
 > [fork the Bot](https://github.com/denzven/Denzven-Graphing-Api-Bot/fork)
 
 - Clone your fork: `git clone https://github.com/denzven/Denzven-Graphing-Api.git` or `git clone https://github.com/denzven/Denzven-Graphing-Api-Bot.git`
