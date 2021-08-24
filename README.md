@@ -69,8 +69,10 @@ Some known ones:
 ### 4. Contributing to the API & Bot (if you want to add changes/neaten up the code)
 
 - Fork the repository
->(https://github.com/denzven/Denzven-Graphing-Api/fork)(api)
->(https://github.com/denzven/Denzven-Graphing-Api-Bot/fork)(bot)
+
+> [fork the Api](https://github.com/denzven/Denzven-Graphing-Api/fork)  
+> [fork the Bot](https://github.com/denzven/Denzven-Graphing-Api-Bot/fork)
+
 - Clone your fork: `git clone https://github.com/denzven/Denzven-Graphing-Api.git` or `git clone https://github.com/denzven/Denzven-Graphing-Api-Bot.git`
 - Create your feature branch: `git checkout -b my-new-feature`
 - Commit your changes: `git commit -am 'Add some feature'`
