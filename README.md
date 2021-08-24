@@ -3,7 +3,7 @@
 </h2>
 
 <h1 align="center">[>]GraphBot</h1>
-<h4 align="center">A simple, multipurpose Discord bot.</h4>
+<h4 align="center">A simple Graphing Discord bot.</h4>
 
 <h1 align="center">
   <a href="https://top.gg/bot/851532461061308438">
