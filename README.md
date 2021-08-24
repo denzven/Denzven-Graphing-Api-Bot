@@ -7,13 +7,13 @@
 
 <h1 align="center">
   <a href="https://top.gg/bot/851532461061308438">
-      <img src="https://top.gg/api/widget/status/851532461061308438.svg" alt="EpicBot 🏅" />
+      <img src="https://top.gg/api/widget/status/851532461061308438.svg" alt="[>]GraphingBot" />
   </a>
   <a href="https://top.gg/bot/851532461061308438">
-      <img src="https://top.gg/api/widget/servers/851532461061308438.svg" alt="EpicBot 🏅" />
+      <img src="https://top.gg/api/widget/servers/851532461061308438.svg" alt="[>]GraphingBot" />
   </a>
   <a href="https://top.gg/bot/851532461061308438">
-      <img src="https://top.gg/api/widget/upvotes/851532461061308438.svg" alt="EpicBot 🏅" />
+      <img src="https://top.gg/api/widget/upvotes/851532461061308438.svg" alt="[>]GraphingBot" />
   </a><br>
   <img src="https://img.shields.io/badge/discord.py-2.0-blue?style=flat" />
   <img src="https://img.shields.io/badge/Python-3.9-green?style=flat&logo=python" />
