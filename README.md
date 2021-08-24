@@ -90,3 +90,6 @@ I am a 17 years old wierdo that hops on with tons of hobbies and gets bored easi
 you can find more info about me [here](https://denzven.pythonanywhere.com)
 
 Thank you! Hope You can tribute much needed support and enjoy using the api as much i did making it 😁
+
+
+[![Top.gg widget of GraphingBot](https://top.gg/api/widget/851532461061308438.svg)](https://top.gg/bot/851532461061308438)

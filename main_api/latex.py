@@ -38,10 +38,12 @@ class Latex(commands.Cog):
                     ReqUrl_Latex = ReqUrl_Latex + f"&{e}"
 
             try:
+                print(ReqUrl_Latex)
                 async with aiohttp.ClientSession() as session:
                     async with session.get(ReqUrl_Latex) as r:
 
                         if "image/png" in r.headers["Content-Type"]:
+                            print("gmmm")
                             file = open("renders/latex.png", "wb")
                             file.write(await r.read())
                             file.close()
