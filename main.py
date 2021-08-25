@@ -127,52 +127,52 @@ async def on_ready():
     print('|                     servers:                     |')
     print('+--------------------------------------------------+')
 
-    #groups = {} 
+    ##groups = {} 
+    ##def func(e):
+    ##    return len(list(filter(lambda m: not m.bot, e.members)))    
+    ##for guild in bot.guilds:
+    ##    if guild.member_count in groups:
+    ##        hmph = groups[guild.member_count]
+    ##        hmph.append(guild)
+    ##        groups.update({guild.member_count: hmph})
+    ##    else:
+    ##        groups.update({guild.member_count: [guild]})    
+    ##for count, group in groups.items():
+    ##    groups.update({count: sorted(group, key=func)}) 
+    ##amogus = {}
+    ##for i in sorted(groups):
+    ##    amogus.update({i: groups[i]})
+    ##print(amogus)
+    ##Gets the Server Names  
+    #name = []
+    #id = []
+    #members = []
+    #Humans = []
+    #Bots = []
+    #Owners = [] 
     #def func(e):
-    #    return len(list(filter(lambda m: not m.bot, e.members)))    
-    #for guild in bot.guilds:
-    #    if guild.member_count in groups:
-    #        hmph = groups[guild.member_count]
-    #        hmph.append(guild)
-    #        groups.update({guild.member_count: hmph})
-    #    else:
-    #        groups.update({guild.member_count: [guild]})    
-    #for count, group in groups.items():
-    #    groups.update({count: sorted(group, key=func)}) 
-    #amogus = {}
-    #for i in sorted(groups):
-    #    amogus.update({i: groups[i]})
-    #print(amogus)
-    #Gets the Server Names  
-    name = []
-    id = []
-    members = []
-    Humans = []
-    Bots = []
-    Owners = [] 
-    def func(e):
-        return len(list(filter(lambda m: not m.bot, e.members)))
-    sorted_guilds = bot.guilds 
-    sorted_guilds = sorted(sorted_guilds, key=func)
-    #import operator
-    #sorted_guilds = sorted(bot.guilds, key=operator.attrgetter("member_count"))
-    #sorted_guilds = sorted(bot.guilds, key = list(filter(lambda m: not m.bot, operator.attrgetter("members"))))
-    for guild in sorted_guilds:
-        name.append(guild.name)
-        id.append(guild.id)
-        members.append(len(guild.members))
-        Humans.append(len(list(filter(lambda m: not m.bot, guild.members))))
-        Bots.append(len(list(filter(lambda m: m.bot, guild.members))))
-        Owners.append(str(guild.owner))
-        print(f'| name:{guild.name}\n| guild id:{guild.id}\n| no. of members:{len(guild.members)}\n| Humans: {len(list(filter(lambda m: not m.bot, guild.members)))}\n| Bots: {len(list(filter(lambda m: m.bot, guild.members)))}\n| GuildOwner:{str(guild.owner)}')
-        print('+--------------------------------------------------+')   
-    print('\n')
-    #print(name)
-    #print(id)
-    #print(members)
-    #print(Humans)
-    #print(Bots)
-    #print(Owners)
+    #    return len(list(filter(lambda m: not m.bot, e.members)))
+    #sorted_guilds = bot.guilds 
+    #sorted_guilds = sorted(sorted_guilds, key=func)
+    ##import operator
+    ##sorted_guilds = sorted(bot.guilds, key=operator.attrgetter("member_count"))
+    ##sorted_guilds = sorted(bot.guilds, key = list(filter(lambda m: not m.bot, operator.attrgetter("members"))))
+    #for guild in sorted_guilds:
+    #    name.append(guild.name)
+    #    id.append(guild.id)
+    #    members.append(len(guild.members))
+    #    Humans.append(len(list(filter(lambda m: not m.bot, guild.members))))
+    #    Bots.append(len(list(filter(lambda m: m.bot, guild.members))))
+    #    Owners.append(str(guild.owner))
+    #    print(f'| name:{guild.name}\n| guild id:{guild.id}\n| no. of members:{len(guild.members)}\n| Humans: {len(list(filter(lambda m: not m.bot, guild.members)))}\n| Bots: {len(list(filter(lambda m: m.bot, guild.members)))}\n| GuildOwner:{str(guild.owner)}')
+    #    print('+--------------------------------------------------+')   
+    #print('\n')
+    ##print(name)
+    ##print(id)
+    ##print(members)
+    ##print(Humans)
+    ##print(Bots)
+    ##print(Owners)
 
 #################################################################################################################
 

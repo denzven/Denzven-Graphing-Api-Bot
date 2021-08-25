@@ -15,7 +15,15 @@ PASS_COLOR                = 0x00ff00
 DEFAULT_PREFIX            = '>'
 BOT_TOKEN                 = os.environ['bottoken']
 VOTER_API_LINK            = 'https://top.gg/api/bots/851532461061308438/votes'
+DEFAULT_SPLITTER          = ' '
 API_BASE_LINK             = 'https://denzven.pythonanywhere.com'
+
+API_PATH_FLAT_GRAPH       = '/DenzGraphingApi/v1/flat_graph/test/plot'
+API_PATH_POLAR_GRAPH      = '/DenzGraphingApi/v1/polar_graph/test/plot'
+API_PATH_3D_GRAPH         = '/DenzGraphingApi/v1/threeD_graph/test/plot'
+API_PATH_DERIVATIVE_GRAPH = '/DenzGraphingApi/v1/derivative_graph/test/plot'
+API_PATH_LATEX            = '/DenzGraphingApi/v1/latex/test/plot'
+
 API_GITHUB_LINK           = 'https://github.com/denzven/Denzven-Graphing-Api'
 BOT_GITHUB_LINK           = 'https://github.com/denzven/Denzven-Graphing-Api-Bot'
 BOT_DESCRIPTION           = 'A Graphing-Bot that uses Denzven-Graphing-Api made by Denzven#2004'
@@ -92,17 +100,10 @@ BOT_VERSION = 'v1.0.0'
 inputstatus = inputstatus
 
 COGS = [
-#----------Main API Commands--------------#                   
-        "main_api.3dgr",                  # 
-        "main_api.3dgrem",                #   
-        "main_api.fgr",                   #
-        "main_api.fgrem",                 #  
-        "main_api.pgr",                   #
-        "main_api.pgrem",                 #  
-        "main_api.examples",              #     
-        "main_api.derivatives",           #        
-        "main_api.derivative_embed",      #             
+#----------Main API Commands--------------#                    
+        "main_api.examples",              #               
         "main_api.latex",                 #             
+        "main_api.main_graph",            #             
         "main_api.kill",                  # 
 #--------------Events---------------------#                 
         "events.on_command",              #    
