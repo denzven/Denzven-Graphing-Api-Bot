@@ -43,7 +43,7 @@ class GraphingBot(commands.AutoShardedBot):
         with open("prefixes.json") as f:
             prefixes = json.load(f)
 
-        prefixes_.append(DEFAULT_PREFIX if str(message.guild.id) not in prefixes else prefixes[str(message.guild.id)])
+        prefixes_.append(prefixes.get(str(message.guild.id), DEFAULT_PREFIX))
         return prefixes_
 
 #################################################################################################################
