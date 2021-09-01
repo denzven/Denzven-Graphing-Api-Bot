@@ -62,6 +62,7 @@ EMOJI_FOR_CMDS = {
        'Polar_Graph_Embed': '🐻‍❄️',
        'Derivative_Graph' : '🐻‍❄️',
  'derivative_Graph_Embed' : '🐻‍❄️',
+                  'Latex' : '✖️',
        'Graph_Attributes' : '<:graph:868554000281239563>',
        'Bot_Info'         : '🤖',
        'Ping'             : '<a:typing:868554352141402133>',
@@ -79,8 +80,7 @@ EMOJI_FOR_CMDS = {
        'Prefix'           : '<:code:868557140036571177>',
        'Change_Log'       : '<:code:868557140036571177>',
        'Showcase'         : '✨',
-       'voters'           : '🙏',
-       'get_vote'         : '🙏',
+#       'voters'           : '🙏',
 }
 
 #################################################################################################################
