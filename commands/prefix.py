@@ -29,8 +29,11 @@ class Prefix(commands.Cog):
             )
         else:
             with open("prefixes.json", "r") as f:
-                current_prefixes = json.load(f)
-            current_prefixes[str(ctx.guild.id)] = prefix
+                current_prefixes: dict = json.load(f)
+            if prefix != DEFAULT_PREFIX:
+                current_prefixes[str(ctx.guild.id)] = prefix
+            else:
+                current_prefixes.pop(str(ctx.guild.id), 'amogus')
             with open("prefixes.json", "w") as f:
                 json.dump(current_prefixes, f)
                 await ctx.reply(f'The Prefix has been set to `{prefix}`', allowed_mentions=discord.AllowedMentions.none())
