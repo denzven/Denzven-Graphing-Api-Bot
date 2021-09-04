@@ -35,7 +35,7 @@ class VoteMsg(commands.Cog):
             channel = self.bot.get_channel(self.vote_sending_channel_id)
             await channel.send(
                 f"Thx a ton! <@{voter_id}> for voting me! {random.choice(CUTE_EMOJIS)}\nYou have a total of **{votes}** votes now! {random.choice(CUTE_EMOJIS)}"
-            )
+            ,allowed_mentions=discord.AllowedMentions(users=True))
 
         except Exception as e:
             print(e)

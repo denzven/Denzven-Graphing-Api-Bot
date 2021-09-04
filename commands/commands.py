@@ -180,6 +180,12 @@ class OtherCommands(commands.Cog):
         embed = discord.Embed(title="Vote for GraphBot", url=BOT_VOTE, description="vote me on top.gg!")
         embed.set_thumbnail(url = BOT_AVATAR)
         embed.set_footer(text=f"{ctx.guild}", icon_url=f"{ctx.guild.icon.url}")
+        async with aiohttp.ClientSession() as session:
+            async with session.get("https://top.gg/api/weekend") as r:
+                    res = await r.json()
+                    print(res['is_weekend'])
+                    if res["is_weekend"] == True:
+                        embed.add_field(name=EMPTY_CHAR, value="Double the votes today!!")
         embed.timestamp = datetime.datetime.utcnow()
         await ctx.send(embed=embed)
 
