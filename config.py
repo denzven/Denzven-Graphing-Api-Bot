@@ -32,7 +32,7 @@ FANCY_BOT_INVITE_LINK     = 'https://dsc.gg/Denzven-Graphing-Api-Bot'
 SUPPORT_SERVER_LINK       = 'https://discord.gg/EDcpV2V'
 FANCY_SUPPORT_SERVER_LINK = 'https://dsc.gg/chilly_place'
 API_COVER_PIC             = 'https://opengraph.githubassets.com/9f69f5225e6394f4d3f5213bf5d88d0442425c78f9881347da6e99da316eaed5/denzven/Denzven-Graphing-Api-Bot'
-BOT_AVATAR                = 'https://cdn.discordapp.com/avatars/851532461061308438/ebb1bb6821da8d47a8559a6a4fb95ec6.png?size=256'
+BOT_AVATAR                = 'https://cdn.discordapp.com/avatars/851532461061308438/e433f546147a5840c8910a18ebe02a70.png'
 TOTAL_CMDS                = 27
 GOOGLE_FORM               = ''
 BOT_VOTE                  = 'https://top.gg/bot/851532461061308438/vote'
