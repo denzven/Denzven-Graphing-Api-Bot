@@ -74,7 +74,7 @@ class OtherCommands(commands.Cog):
             embed.add_field(name = "**Our Website**",
                             value = f"[Click Here]({API_BASE_LINK})",
                             inline = True)
-            embed.set_footer(text=f"{ctx.guild}", icon_url=f"{ctx.guild.icon.url}")
+            embed.set_footer(text=f"{ctx.guild}", icon_url=f"{ctx.author.avatar.url}")
             embed.timestamp = datetime.datetime.utcnow()
             await ctx.send(embed = embed)
 
