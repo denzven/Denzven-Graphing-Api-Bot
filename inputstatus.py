@@ -88,4 +88,13 @@ inputstatus =   [
     "\"Which one?\", \"She did? Good for her\"", # TomSka quote "Magic Spoon", "Which one" = "Witch won"
     "ew... vegetable...",
     "Stay away from that house, they are giving healthy thing like veggie",
+    "🎃 Spooky, scary skeletons Send shivers down your spine 🎃",
+    "Playing https://www.youtube.com/watch?v=-1dSY6ZuXEY",
+    "It's that time of the year again.",
+    "sorry i was busy snorting pumpkin sauce",
+    "collecting ribs to make a xylophone",
+    "im bored of graphing all day long.. lemme trick or treat!",
+    "trick or treat?",
+    "Spooookyyy",
+    "October? more like.. Spooktober"
 ]
