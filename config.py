@@ -8,7 +8,8 @@ import os
 from inputstatus import inputstatus
 
 # Standard Variables
-MAIN_COLOR                = 0x01abe1
+#MAIN_COLOR                = 0x01abe1
+MAIN_COLOR                = 0xf56100 #halloween orange
 SECONDARY_COLOR           = 0x8ebd9d
 ERROR_COLOR               = 0xff0000
 PASS_COLOR                = 0x00ff00
@@ -32,7 +33,7 @@ FANCY_BOT_INVITE_LINK     = 'https://dsc.gg/Denzven-Graphing-Api-Bot'
 SUPPORT_SERVER_LINK       = 'https://discord.gg/EDcpV2V'
 FANCY_SUPPORT_SERVER_LINK = 'https://dsc.gg/chilly_place'
 API_COVER_PIC             = 'https://opengraph.githubassets.com/9f69f5225e6394f4d3f5213bf5d88d0442425c78f9881347da6e99da316eaed5/denzven/Denzven-Graphing-Api-Bot'
-BOT_AVATAR                = 'https://cdn.discordapp.com/avatars/851532461061308438/e433f546147a5840c8910a18ebe02a70.png'
+BOT_AVATAR                = 'https://cdn.discordapp.com/attachments/775096810963468288/893470193911734272/1.png'
 TOTAL_CMDS                = 27
 GOOGLE_FORM               = ''
 BOT_VOTE                  = 'https://top.gg/bot/851532461061308438/vote'
