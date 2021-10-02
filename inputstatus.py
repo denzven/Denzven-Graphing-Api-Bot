@@ -74,7 +74,7 @@ inputstatus =   [
     "*Insert an Halloween themed quote here*",
     "Oh no! This is an carrot cake",
     'Well, the sign said "Please take one.", so I did, I take one bowl',
-    'Today is the exception of your parents' "Don't take candy from strangers"',
+    'Today is the exception of your parents\' "Don\'t take candy from strangers"',
     "I have prepared the whole year for this day. Since the last Halloween at least...",
     "something dangerous...",
     "and choking on glucose and fructose",
