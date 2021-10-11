@@ -40,6 +40,9 @@ class GraphingBot(commands.AutoShardedBot):
     # A function to get the custom prefix if set,from a server
     async def get_custom_prefix(bot, message):
         prefixes_ = [f'<@{bot.user.id}> ', f'<@!{bot.user.id}> ']
+        if message.guild is None:
+            prefixes_.append(DEFAULT_PREFIX)
+            return prefixes_
         with open("prefixes.json") as f:
             prefixes = json.load(f)
 
