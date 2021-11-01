@@ -14,7 +14,6 @@ SECONDARY_COLOR           = 0x8ebd9d
 ERROR_COLOR               = 0xff0000
 PASS_COLOR                = 0x00ff00
 DEFAULT_PREFIX            = '>'
-BOT_TOKEN                 = os.environ['bottoken']
 VOTER_API_LINK            = 'https://top.gg/api/bots/851532461061308438/votes'
 DEFAULT_SPLITTER          = ' '
 API_BASE_LINK             = 'https://denzven.pythonanywhere.com'
@@ -46,11 +45,9 @@ THX_EMOJI                 = '🙏'
 UPVOTE_EMOJI              = '👍'
 DOWNVOTE_EMOJI            = '👎'
 PLOT_EMOJI                = '📈'
-TOPGG_TOKEN               = os.environ['topgg_token']
 VOTE_SCRAPING_CHANNEL     = 868373815393128479
 VOTE_SENDING_CHANNEL      = 869060640529088632
 
-STATSCORD_KEY = os.environ['statscord_key']
 ATTR_LINK = 'https://denzven.pythonanywhere.com/DenzGraphingApi/v1/attr'
 #################################################################################################################
 # Lists
@@ -116,7 +113,6 @@ COGS = [
         "commands.prefix",                #  
         "commands.topgg",                 # 
         "commands.vote_msg",              #    
-        "commands.statscord",             #     
 #--------------Tasks----------------------#         
         "task.status_task",               #   
 #-----------------------------------------#     
