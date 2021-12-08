@@ -49,7 +49,7 @@ Note:
     - >fgrem
 - The Formula:
     - x+y
-    > Note that this formula as the proper symbols
+    > Note that this formula has the proper symbols
 
     - What can the formula contain?
         - trignometric functions:
