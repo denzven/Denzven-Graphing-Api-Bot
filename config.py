@@ -9,7 +9,8 @@ from inputstatus import inputstatus
 
 # Standard Variables
 #MAIN_COLOR                = 0x01abe1
-MAIN_COLOR                = 0xf56100 #halloween orange
+#MAIN_COLOR                = 0xf56100 #Halloween Orange
+MAIN_COLOR                = 0x239323 #Christmas Green
 SECONDARY_COLOR           = 0x8ebd9d
 ERROR_COLOR               = 0xff0000
 PASS_COLOR                = 0x00ff00
