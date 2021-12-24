@@ -32,8 +32,8 @@ class Prefix(commands.Cog):
                 current_prefixes: dict = json.load(f)
             if prefix != DEFAULT_PREFIX:
                 current_prefixes[str(ctx.guild.id)] = prefix
-            elif prefix.startswith("@") and prefix != "@":
-                await ctx.reply(f"The Prefix of the bot cannot be sent to a mention, it is recommended not to do so.")
+                if prefix.startswith("@") and prefix != "@":
+                    await ctx.reply(f"The Prefix of the bot cannot be sent to a mention, it is recommended not to do so.")
             else:
                 current_prefixes.pop(str(ctx.guild.id), 'amogus')
             with open("prefixes.json", "w") as f:
