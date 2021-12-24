@@ -37,9 +37,12 @@ class Prefix(commands.Cog):
                     current_prefixes[str(ctx.guild.id)] = prefix
             else:
                 current_prefixes.pop(str(ctx.guild.id), 'amogus')
-            with open("prefixes.json", "w") as f:
-                json.dump(current_prefixes, f)
-                await ctx.reply(f'The Prefix has been set to `{prefix}`', allowed_mentions=discord.AllowedMentions.none())
+                if prefix.startswith("@") and prefix != "@":
+                    print("mention prefix")
+                else:
+                    with open("prefixes.json", "w") as f:
+                        json.dump(current_prefixes, f)
+                        await ctx.reply(f'The Prefix has been set to `{prefix}`', allowed_mentions=discord.AllowedMentions.none())
 
 
 def setup(bot):
