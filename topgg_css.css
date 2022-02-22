@@ -1,0 +1,24 @@
+a {
+color: #01abe1;
+}
+
+h {
+color: 0aabb0;
+}
+
+#menu {
+    background: #01abe1;
+}
+
+html, :root {
+    --brand-raw: #01abe1;
+    --brand: 1, 171, 225;
+    --top-gg-colors-brand-5: #01abe10d !important;
+    --top-gg-colors-brand-10: #01abe11a !important;
+    --top-gg-colors-brand-15: #01abe126 !important;
+    --top-gg-colors-brand-20: #01abe133 !important;
+    --top-gg-colors-brand-40: #01abe166 !important;
+    --top-gg-colors-brand-60: #01abe199 !important;
+    --top-gg-colors-brand-80: #01abe1cc !important;
+    --top-gg-colors-brand-100: #01abe1 !important;
+}
