@@ -10,114 +10,11 @@
     margin: 0
 }
 
-.highlight .w {
-    color: #d0d0d0
-}
-
-.highlight .err {
-    color: #151515;
-    background-color: #ac4142
-}
-
-.highlight .c,
-.highlight .cd,
-.highlight .cm,
-.highlight .c1,
-.highlight .cs {
-    color: #888
-}
-
-.highlight .cp {
-    color: #f4bf75
-}
-
-.highlight .o,
-.highlight .ow {
-    color: #f4bf75
-}
-
-.highlight .p,
-.highlight .pi {
-    color: #d0d0d0
-}
-
-.highlight .gi {
-    color: #90a959
-}
-
-.highlight .gd {
-    color: #ac4142
-}
-
-.highlight .gh {
-    color: #6a9fb5;
-    font-weight: bold
-}
-
-.highlight .k,
-.highlight .kn,
-.highlight .kp,
-.highlight .kr,
-.highlight .kv {
-    color: #aa759f
-}
-
-.highlight .kc,
-.highlight .kt,
-.highlight .kd {
-    color: #d28445
-}
-
-.highlight .s,
-.highlight .sb,
-.highlight .sc,
-.highlight .sd,
-.highlight .s2,
-.highlight .sh,
-.highlight .sx,
-.highlight .s1 {
-    color: #90a959
-}
-
-.highlight .sr {
-    color: #75b5aa
-}
-
-.highlight .si,
-.highlight .se {
-    color: #8f5536
-}
-
-.highlight .nt,
-.highlight .nn,
-.highlight .nc,
-.highlight .no {
-    color: #f4bf75
-}
-
-.highlight .na {
-    color: #6a9fb5
-}
-
-.highlight .m,
-.highlight .mf,
-.highlight .mh,
-.highlight .mi,
-.highlight .il,
-.highlight .mo,
-.highlight .mb,
-.highlight .mx {
-    color: #90a959
-}
-
-.highlight .ss {
-    color: #90a959
-}
 
 body {
     margin: 0;
     padding: 0;
-    background: #151515 url("../images/bkg.png") 0 0;
+    background: #151515 url("https://www.denzven.tk/Denzven-Graphing-Api-Bot/assets/images/bkg.png") 0 0;
     color: #eaeaea;
     font-size: 16px;
     line-height: 1.5;
@@ -248,12 +145,14 @@ dt {
 }
 
 ul li {
-    list-style-image: url("../images/bullet.png")
+    list-style-image: url("https://www.denzven.tk/Denzven-Graphing-Api-Bot/assets/images/bullet.png")
 }
 
 blockquote {
     color: #aaa;
     padding-left: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
     border-left: 1px dotted #666
 }
 
@@ -300,57 +199,10 @@ hr {
     color: #b5e853
 }
 
-.btn {
-    display: inline-block;
-    background: -webkit-linear-gradient(top, rgba(40, 40, 40, 0.3), rgba(35, 35, 35, 0.3) 50%, rgba(10, 10, 10, 0.3) 50%, rgba(0, 0, 0, 0.3));
-    padding: 8px 18px;
-    border-radius: 50px;
-    border: 2px solid rgba(0, 0, 0, 0.7);
-    border-bottom: 2px solid rgba(0, 0, 0, 0.7);
-    border-top: 2px solid #000;
-    color: rgba(255, 255, 255, 0.8);
-    font-family: Helvetica, Arial, sans-serif;
-    font-weight: bold;
-    font-size: 13px;
-    text-decoration: none;
-    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.75);
-    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05)
-}
-
-.btn:hover {
-    background: -webkit-linear-gradient(top, rgba(40, 40, 40, 0.6), rgba(35, 35, 35, 0.6) 50%, rgba(10, 10, 10, 0.8) 50%, rgba(0, 0, 0, 0.8))
-}
-
-.btn .icon {
-    display: inline-block;
-    width: 16px;
-    height: 16px;
-    margin: 1px 8px 0 0;
-    float: left
-}
-
-.btn-github .icon {
-    opacity: 0.6;
-    background: url("../images/blacktocat.png") 0 0 no-repeat
-}
 
 a {
     color: #63c0f5;
     text-shadow: 0 0 5px rgba(104, 182, 255, 0.5)
-}
-
-.cf:before,
-.cf:after {
-    content: "";
-    display: table
-}
-
-.cf:after {
-    clear: both
-}
-
-.cf {
-    zoom: 1
 }
 
 #a-title {
