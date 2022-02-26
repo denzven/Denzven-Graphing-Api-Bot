@@ -153,10 +153,10 @@ ul li {
 
 blockquote {
     color: #aaa;
-    padding-left: 10px;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    border-left: 1px dotted #666
+    padding-left: 10px !important;
+    padding-top: 10px !important;
+    padding-bottom: 10px !important;
+    border-left: 1px dotted #666 !important;
 }
 
 pre {
@@ -223,4 +223,5 @@ html, :root {
     --top-gg-colors-brand-60: #01abe199 !important;
     --top-gg-colors-brand-80: #01abe1cc !important;
     --top-gg-colors-brand-100: #01abe1 !important;
+    --chakra-ui-color-mode: dark !important;
 } 
