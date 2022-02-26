@@ -141,7 +141,7 @@ ul li {
     list-style-type: none;
     margin: 0;
     padding: 0;
-    list-style-image: url("https://www.denzven.tk/Denzven-Graphing-Api-Bot/assets/images/bullet.png")
+    list-style-image: url("https://i.imgur.com/gbklG45.png")
 }
 
 blockquote {
@@ -216,4 +216,27 @@ html, :root {
     --top-gg-colors-brand-60: #01abe199 !important;
     --top-gg-colors-brand-80: #01abe1cc !important;
     --top-gg-colors-brand-100: #01abe1 !important;
-    --chakra-ui-color-mode:
+    --chakra-ui-color-mode: dark;
+}
+
+.chakra-avatar__img.css-1f5ob72 {
+    animation: float 5s ease-in-out infinite;
+}
+  
+@keyframes float {
+  0% {
+    box-shadow: 0 5px 15px 0px rgba(0, 0, 0, 0.6);
+    -webkit-transform: translatey(0px);
+            transform: translatey(0px);
+  }
+  50% {
+    box-shadow: 0 25px 15px 0px rgba(0, 0, 0, 0.2);
+    -webkit-transform: translatey(-30px);
+            transform: translatey(-30px);
+  }
+  100% {
+    box-shadow: 0 5px 15px 0px rgba(0, 0, 0, 0.6);
+    -webkit-transform: translatey(0px);
+            transform: translatey(0px);
+  }
+}
