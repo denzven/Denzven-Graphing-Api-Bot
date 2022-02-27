@@ -237,10 +237,6 @@ a.chakra-button[href$="/invite"]
 }
 
 /* Bot Vote btn */
-a.chakra-button[href$="/vote"]
-{
-    animation: float 5s ease-in-out infinite;
-}
 
 .a.chakra-button[href$="/vote"] {
     width: 220px;
