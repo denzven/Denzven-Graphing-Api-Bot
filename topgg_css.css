@@ -230,12 +230,16 @@ span.chakra-avatar > img
 }
 
 /* Bot Invite btn */
-a.chakra-button[rel^="noopener noreferrer"]
+a.chakra-button[href$="/invite"]
 {
-    background-color: purple !important;
+    animation: float 5s ease-in-out infinite;
 }
 
-
+/* Bot Vote btn */
+a.chakra-button[href$="/vote"]
+{
+    animation: float 5s ease-in-out infinite;
+}
 
 @keyframes float {
   0% {
