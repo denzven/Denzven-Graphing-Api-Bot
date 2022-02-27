@@ -24,100 +24,152 @@
 <p>This is a Basic Graphing Bot and is a showcase of Denzven-Graphing-Api to plot flat,polar and 3-dimensional graphs using the input formula</p>
 
 
-# [Denzven-Graphing-Api-Bot](https://discord.com/oauth2/authorize?client_id=851532461061308438&permissions=117760&scope=bot)
-### Welcome! this is [Denzven-Graphing-Api](https://denzven.pythonanywhere.com/)
-### [Invite the bot!](https://discord.com/oauth2/authorize?client_id=851532461061308438&permissions=117760&scope=bot)
-### 1. About the Bot:
+<html>
+<style type="text/css">
+  @import url('https://cdn.jsdelivr.net/gh/denzven/Denzven-Graphing-Api-Bot@master/topgg_css.css');
 
-Denzven-Graphing-Api is my first flask project that plots graphs of formulas/Equations using python. i have also made an [Showcase Bot](https://github.com/denzven/Denzven-Graphing-Api-Bot) to show the abilties of the api 
+</style>
 
----
+<section id="main_content">
 
-### 2. How to Use the Bot?
+<h1 id="denzven-graphing-api-bot">Denzven-Graphing-Api-Bot</h1>
+<h3 id="welcome-this-is-an-example-bot-made-for-showcasing-the-abilties-of-denzven-graphing-api">Welcome! this is an Example Bot made for showcasing the abilties of <a href="https://denzven.pythonanywhere.com/">Denzven-Graphing-Api</a></h3>
 
-Using the Bot is as simple as sending >help or a cmd with some params such as the formula, grid, plot_style, x_coord, y_coord (and 15 others use >attr to see em all) and the Bot will return an image of the plotted Graph.
+<h3 id="1-about-the-api">1. About the Api:</h3>
 
-#### Example of a cmd:
+<p>Denzven-Graphing-Api is my first flask project that plots graphs of formulas/Equations using python. i have also made and <a href="https://pypi.org/project/Denzven-Graphing-Api-Wrapper">Api-Wrapper</a> (mostly for practice) to make life easy and to use this Api.</p>
 
-\>fgrem x+y grid=1 line_style=ccff00
+<hr>
 
+<h3 id="2-how-to-use-the-api">2. How to Use the Api?</h3>
 
-![Bot Showcase](https://cdn.discordapp.com/attachments/811888046910996490/885386425485389854/unknown.png)
+<p>Using the Api is as simple as sending a request to the <a href="https://denzven.pythonanywhere.com/">website</a> with some params such as the fourmula ,grid ,plot_stylee ,x_coord ,y_coord (and more params coming..) and the Api will return an image of the plotted Graph.</p>
 
-Note:
-- Base Cmd:
-    - >fgrem
-- The Formula:
-    - x+y
-    > Note that this formula has the proper symbols
+<h4 id="example-of-a-requested-url">Example of a requested url:</h4>
 
-    - What can the formula contain?
-        - trignometric functions:
-        > sin() cos() tan() 
-        - powers
-        > x**2 = x²
-        - Basic BODMAS           
-        >   ()=Brackets,   
-            /=Divide,   
-            *=Mutiply,  
-            +=Add,  
-            -=Subtract  
-        - Misc:
-        >   pi=value of the const pi,  
-            sqrt()=square root of the value,  
-            %=modulos gives the remaider of 
-the divsion  
-            - eg: 13%3 returns 1
-                  15%5 returns 0
+<blockquote>
+  <p>http://denzven.pythonanywhere.com/DenzGraphingApi/v1/flat_graph/test/plot?formula=x%2By&amp;x%2By&amp;grid=1&amp;plot_style=3&amp;x_coord=20&amp;y_coord=20</p>
+</blockquote>
 
-and much more
+<p><img src="https://cdn.discordapp.com/attachments/814689514463297538/859139715948871690/unknown.png" alt="Graph Example in Discord"></p>
 
-- The Parameters (>attr): 
-    - grid=1
-    > Grid refers to the presence of smaller grid lines, represent as boolean value with 1 is true, 0 is false
+<p>Note:</p>
+<ul>
+  <li>Base url:
+    <ul>
+      <li>http://denzven.pythonanywhere.com/DenzGraphingApi/v1/flat_graph/test/plot</li>
+    </ul>
+  </li>
+  <li>the formula:
+    <ul>
+      <li>?formula=x%2By&amp;x%2By
+        <blockquote>
+          <p>Note that this url is “urlencoded” using urllib.</p>
+        </blockquote>
+      </li>
+      <li>what can the formula contain?
+        <ul>
+          <li>trignometric functions:
+            <blockquote>
+              <p>sin() cos() tan()</p>
+            </blockquote>
+          </li>
+          <li>powers
+            <blockquote>
+              <p>x**2 = x²</p>
+            </blockquote>
+          </li>
+          <li>Basic BODMAS
+            <blockquote>
+              <p>()=Brackets, <br>
+  /=Divide, <br>
+  *=Mutiply,<br>
+  +=Add,<br>
+  -=Subtract</p>
+            </blockquote>
+          </li>
+          <li>Misc:
+            <blockquote>
+              <p>pi=value of the const pi,<br>
+  sqrt()=square root of the value,<br>
+  %=modulos gives the remaider of the divsion</p>
+            </blockquote>
+            <ul>
+              <li>eg: 2%6=0 and 2%(10)=0</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>the params:
+    <ul>
+      <li>&amp;grid=1
+        <blockquote>
+          <p>grid refers to the presence of smaller grid lines, 1 is true and 0 is false</p>
+        </blockquote>
+      </li>
+      <li>&amp;plot_style=3
+        <blockquote>
+          <p>these are a list of the default plot_styles it can range from 0-25</p>
+        </blockquote>
+      </li>
+      <li>&amp;x_coord=20
+        <blockquote>
+          <p>the value ot the x coordinate (horizontal)</p>
+        </blockquote>
+      </li>
+      <li>&amp;y_coord=20
+        <blockquote>
+          <p>the value ot the y coordinate (vertical)</p>
+        </blockquote>
+      </li>
+    </ul>
+  </li>
+</ul>
 
-    - line_style=ccff00
-    > the cmd add the graphing line to be a hexcolor of #ccff00
+<hr>
 
- 
----
+<h3 id="3-limitations-of-the-api">3. Limitations of the Api</h3>
 
-### 3. Limitations of the API
+<p>The api has several limitations in its use now, and is slowly getting patched/fixed.</p>
 
-The API has several limitations in its use now, and is slowly getting patched/fixed.
+<p>Some Known ones:</p>
+<ul>
+  <li>limitations in the formula usage: the formula must equate to zero.<br>
+like “x+y” as input will mean the graph of “x+y=0” and it must contain bot x and y in the equation.</li>
+</ul>
 
-Some known ones:
-- Limitations in the formula usage: the formula must equate to zero. Like "x+y" as input will mean the graph of "x+y=0" and it must contain both x and y in the equation.  
-- Limitations in usable functions: No Absolute function, Min, Max (yet!)
-- Currently, the API uses Python's eval() function to evaluate the equations, this will be replaced in the future for the sake of performance and stability
+<p>I dont know of any other feel free to add them in!</p>
 
----
-### 4. Contributing to the API & Bot (if you want to add changes/neaten up the code)
+<hr>
+<h3 id="4-contributing-to-the-api-if-you-want-to-add-changesneaten-up-the-code">4. Contributing to the Api (if you want to add changes/neaten up the code)</h3>
 
-- Fork the repository
+<ul>
+  <li><a href="https://github.com/denzven/Denzven-Graphing-Api-Bot/fork">Fork the repository</a></li>
+  <li>Clone your fork: <code class="language-plaintext highlighter-rouge">git clone https://github.com/denzven/Denzven-Graphing-Api-Bot.git</code></li>
+  <li>Create your feature branch: <code class="language-plaintext highlighter-rouge">git checkout -b my-new-feature</code></li>
+  <li>Commit your changes: <code class="language-plaintext highlighter-rouge">git commit -am 'Add some feature'</code></li>
+  <li>Push to the branch: <code class="language-plaintext highlighter-rouge">git push origin my-new-feature</code></li>
+  <li>Submit a pull request</li>
+</ul>
 
-> [fork the Api](https://github.com/denzven/Denzven-Graphing-Api/fork) 
-> [fork the Bot](https://github.com/denzven/Denzven-Graphing-Api-Bot/fork)
+<h3 id="5-known-bugs-and-issue-reporting">5. Known Bugs and Issue reporting</h3>
 
-- Clone your fork: `git clone https://github.com/denzven/Denzven-Graphing-Api.git` or `git clone https://github.com/denzven/Denzven-Graphing-Api-Bot.git`
-- Create your feature branch: `git checkout -b my-new-feature`
-- Commit your changes: `git commit -am 'Add some feature'`
-- Push to the branch: `git push origin my-new-feature`
-- Submit a pull request
+<ul>
+  <li>there was a bug by putting exit() or quit() in the formula that would turn off the api.. i have tried my best to patch it</li>
+</ul>
 
+<p>I dont know of any other feel free to add them in!</p>
 
-### 5. Known Bugs and Issue reporting
+<h3 id="6-about-me">6. About Me</h3>
 
-- There was a bug by putting exit() or quit() in the formula that would turn off the api.. i have tried my best to patch it
+<p>I am a 17 year old wierdo that hops on with tons of hobbies and gets bored easily. Tried out a bunch of stuff like blender3D, voxel art, making discord bots and telegram bots, basic python programs, right now i am making an Graphing API and its wrapper.
+you can find more info about me <a href="https://denzven.pythonanywhere.com">here</a></p>
 
-I dont know of any other feel free to add them in!
+<p>Thank you! Hope You can tribute much needed support and enjoy using the api as much i did making it 😁</p>
 
-### 6. About Me
+</section>
 
-I am a 17 years old wierdo that hops on with tons of hobbies and gets bored easily. Tried out a bunch of stuff like blender3D, voxel art, making discord bots and telegram bots, basic python programs, right now i am making an Graphing API and its wrapper.
-you can find more info about me [here](https://denzven.pythonanywhere.com)
-
-Thank you! Hope You can tribute much needed support and enjoy using the api as much i did making it 😁
-
-
-[![Top.gg widget of GraphingBot](https://top.gg/api/widget/851532461061308438.svg)](https://top.gg/bot/851532461061308438)
+<iframe src="https://denzven.pythonanywhere.com" width="100%" height="1250px"></iframe>
+</html>
