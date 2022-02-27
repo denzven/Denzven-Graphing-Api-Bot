@@ -223,10 +223,20 @@ html, :root {
     --chakra-ui-color-mode: dark;
 }
 
-.chakra-avatar__img.css-1f5ob72 {
-    animation: float 5s ease-in-out infinite;
+/* Bot Pfp */
+span.chakra-avatar > img
+{
+  animation: float 5s ease-in-out infinite;
 }
-  
+
+/* Bot Invite btn */
+a.chakra-button[rel^="noopener noreferrer"]
+{
+    background-color: purple !important;
+}
+
+
+
 @keyframes float {
   0% {
     box-shadow: 0 5px 15px 0px rgba(0, 0, 0, 0.6);
