@@ -1,0 +1,317 @@
+.highlight {
+    color: #d0d0d0
+}
+
+.highlight table td {
+    padding: 5px
+}
+
+.highlight table pre {
+    margin: 0
+}
+
+
+body {
+    margin: 0;
+    padding: 0;
+    background: #151515 url("https://www.denzven.tk/Denzven-Graphing-Api-Bot/assets/images/bkg.png") 0 0;
+    color: #eaeaea;
+    font-size: 16px;
+    line-height: 1.5;
+    font-family: Monaco, "Bitstream Vera Sans Mono", "Lucida Console", Terminal, monospace
+}
+
+.container {
+    width: 90%;
+    max-width: 1000px;
+    margin: 0 auto
+}
+
+section {
+    display: block;
+    margin: 0 0 20px 0
+}
+
+
+li {
+    line-height: 1.4
+}
+
+header {
+    background: rgba(0, 0, 0, 0.1);
+    width: 100%;
+    border-bottom: 1px dashed #01abe1 !important;
+    padding: 20px 0;
+    margin: 0 0 40px 0
+}
+
+header h1 {
+    font-size: 30px;
+    line-height: 1.5;
+    margin: 0 0 0 -40px;
+    font-weight: bold;
+    font-family: Monaco, "Bitstream Vera Sans Mono", "Lucida Console", Terminal, monospace;
+    color: #01abe1 !important;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.1), 0 0 5px rgba(181, 232, 83, 0.1), 0 0 10px rgba(181, 232, 83, 0.1);
+    letter-spacing: -1px;
+    -webkit-font-smoothing: antialiased
+}
+
+@media (max-width: 1000px) {
+    header h1 {
+        margin-left: 0
+    }
+}
+
+header h1:before {
+    content: "./ ";
+    font-size: 24px
+}
+
+header h2 {
+    font-size: 18px;
+    font-weight: 300;
+    color: #666
+}
+
+#downloads .btn {
+    display: inline-block;
+    text-align: center;
+    margin: 0
+}
+
+#main_content {
+    width: 100%;
+    -webkit-font-smoothing: antialiased
+}
+
+section img {
+    max-width: 100%
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin: 0 0 20px;
+    font-weight: normal;
+    font-family: Monaco, "Bitstream Vera Sans Mono", "Lucida Console", Terminal, monospace;
+    color: #01abe1 !important;
+    letter-spacing: -0.03em;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.1), 0 0 5px rgba(181, 232, 83, 0.1), 0 0 10px rgba(181, 232, 83, 0.1)
+}
+
+#main_content h1 {
+    font-size: 30px
+}
+
+#main_content h2 {
+    font-size: 24px
+}
+
+#main_content h3 {
+    font-size: 18px
+}
+
+#main_content h4 {
+    font-size: 14px
+}
+
+#main_content h5 {
+    font-size: 12px;
+    text-transform: uppercase;
+    margin: 0 0 5px 0
+}
+
+#main_content h6 {
+    font-size: 12px;
+    text-transform: uppercase;
+    color: #999;
+    margin: 0 0 5px 0
+}
+
+dt {
+    font-style: italic;
+    font-weight: bold
+}
+
+ul li {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    list-style-image: url("https://i.imgur.com/gbklG45.png");
+	color: #FFFFFF !important;
+}
+
+p {
+    color: #FFFFFF !important;
+}
+
+blockquote {
+    color: #aaa;
+    padding-left: 10px !important;
+    padding-top: 10px !important;
+    padding-bottom: 10px !important;
+    border-left: 1px dotted #666 !important;
+}
+
+pre {
+    background: rgba(0, 0, 0, 0.9);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    padding: 10px;
+    font-size: 16px;
+    color: #01abe1 !important;
+    border-radius: 2px;
+    word-wrap: normal;
+    overflow: auto;
+    overflow-y: hidden
+}
+
+code.highlighter-rouge {
+    background: rgba(0, 0, 0, 0.9);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    padding: 0px 3px;
+    margin: 0px -3px;
+    color: #aa759f;
+    border-radius: 2px
+}
+
+table {
+    width: 100%;
+    margin: 0 0 20px 0
+}
+
+th {
+    text-align: left;
+    border-bottom: 1px dashed #01abe1 !important;
+    padding: 5px 10px
+}
+
+td {
+    padding: 5px 10px
+}
+
+hr {
+    height: 0;
+    border: 0;
+    border-bottom: 1px dashed #01abe1 !important;
+    color: #01abe1 !important
+}
+
+
+a {
+    color: #63c0f5;
+    text-shadow: 0 0 5px rgba(104, 182, 255, 0.5)
+}
+
+#a-title {
+    text-decoration: none
+}
+
+html, :root {
+    --brand-raw: #01abe1;
+    --brand: 1, 171, 225;
+    --top-gg-colors-brand-5: #01abe10d !important;
+    --top-gg-colors-brand-10: #01abe11a !important;
+    --top-gg-colors-brand-15: #01abe126 !important;
+    --top-gg-colors-brand-20: #01abe133 !important;
+    --top-gg-colors-brand-40: #01abe166 !important;
+    --top-gg-colors-brand-60: #01abe199 !important;
+    --top-gg-colors-brand-80: #01abe1cc !important;
+    --top-gg-colors-brand-100: #01abe1 !important;
+    --chakra-ui-color-mode: dark;
+}
+
+/* Bot Pfp */
+span.chakra-avatar > img
+{
+  animation: float 5s ease-in-out infinite;
+}
+
+/* Bot Invite btn */
+a.chakra-button[href$="/invite"]
+{
+    animation: float 5s ease-in-out infinite;
+}
+
+/* Bot Vote btn */
+
+.a.chakra-button[href$="/vote"] {
+    width: 220px;
+    height: 50px;
+    border: none;
+    outline: none;
+    color: #fff;
+    background: #111;
+    cursor: pointer;
+    position: relative;
+    z-index: 0;
+    border-radius: 10px;
+}
+
+.a.chakra-button[href$="/vote"]:before {
+    content: '';
+    background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
+    position: absolute;
+    top: -2px;
+    left:-2px;
+    background-size: 400%;
+    z-index: -1;
+    filter: blur(5px);
+    width: calc(100% + 4px);
+    height: calc(100% + 4px);
+    animation: glowing 20s linear infinite;
+    opacity: 0;
+    transition: opacity .3s ease-in-out;
+    border-radius: 10px;
+}
+
+.a.chakra-button[href$="/vote"]:active {
+    color: #000
+}
+
+.a.chakra-button[href$="/vote"]:active:after {
+    background: transparent;
+}
+
+.a.chakra-button[href$="/vote"]:hover:before {
+    opacity: 1;
+}
+
+.a.chakra-button[href$="/vote"]:after {
+    z-index: -1;
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #111;
+    left: 0;
+    top: 0;
+    border-radius: 10px;
+}
+
+@keyframes glowing {
+    0% { background-position: 0 0; }
+    50% { background-position: 400% 0; }
+    100% { background-position: 0 0; }
+}
+
+@keyframes float {
+  0% {
+    box-shadow: 0 5px 15px 0px rgba(0, 0, 0, 0.6);
+    -webkit-transform: translatey(0px);
+            transform: translatey(0px);
+  }
+  50% {
+    box-shadow: 0 25px 15px 0px rgba(0, 0, 0, 0.2);
+    -webkit-transform: translatey(-30px);
+            transform: translatey(-30px);
+  }
+  100% {
+    box-shadow: 0 5px 15px 0px rgba(0, 0, 0, 0.6);
+    -webkit-transform: translatey(0px);
+            transform: translatey(0px);
+  }
+}
