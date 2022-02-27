@@ -141,7 +141,8 @@ ul li {
     list-style-type: none;
     margin: 0;
     padding: 0;
-    list-style-image: url("https://i.imgur.com/gbklG45.png")
+    list-style-image: url("https://i.imgur.com/gbklG45.png");
+	color: #FFF;
 }
 
 p {
