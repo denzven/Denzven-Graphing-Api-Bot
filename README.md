@@ -2,7 +2,7 @@
   <img src="https://images.discordapp.net/avatars/851532461061308438/a431ab725d2b7452993695f7f8a17e04.png?size=128" height='100px' width='100px'>
 </h2>
 
-<h1 align="center">[>]GraphBot</h1>
+<h1 align="center"><a href="https://discord.com/oauth2/authorize?client_id=851532461061308438&permissions=88047193152&scope=bot%20applications.commands" >[>] GraphingBot</h1>
 <h4 align="center">A simple Graphing Discord bot.</h4>
 
 <h1 align="center">
@@ -23,12 +23,6 @@
 
 <p>This is a Basic Graphing Bot and is a showcase of Denzven-Graphing-Api to plot flat,polar and 3-dimensional graphs using the input formula</p>
 
-
-<html>
-<style type="text/css">
-  @import url('https://cdn.jsdelivr.net/gh/denzven/Denzven-Graphing-Api-Bot@master/topgg_css.css');
-
-</style>
 
 <section id="main_content">
 
@@ -170,6 +164,3 @@ you can find more info about me <a href="https://denzven.pythonanywhere.com">her
 <p>Thank you! Hope You can tribute much needed support and enjoy using the api as much i did making it 😁</p>
 
 </section>
-
-<iframe src="https://denzven.pythonanywhere.com" width="100%" height="1250px"></iframe>
-</html>
