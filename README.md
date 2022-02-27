@@ -1,5 +1,5 @@
 <h2 align="center">
-  <img src="https://cdn.discordapp.com/attachments/775096810963468288/893470193911734272/1.png" height='100px' width='100px'>
+  <img src="https://images.discordapp.net/avatars/851532461061308438/a431ab725d2b7452993695f7f8a17e04.png?size=128" height='100px' width='100px'>
 </h2>
 
 <h1 align="center">[>]GraphBot</h1>
