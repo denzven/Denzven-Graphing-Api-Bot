@@ -18,7 +18,8 @@ body {
     color: #eaeaea;
     font-size: 16px;
     line-height: 1.5;
-    font-family: Monaco, "Bitstream Vera Sans Mono", "Lucida Console", Terminal, monospace
+    font-family: Monaco, "Bitstream Vera Sans Mono", "Lucida Console", Terminal, monospace;
+    animation: yoddle 10s ease-in-out infinite;
 }
 
 .container {
@@ -210,27 +211,17 @@ a {
     text-decoration: none
 }
 
-html, :root {
-    --brand-raw: #01abe1;
-    --brand: 1, 171, 225;
-    --top-gg-colors-brand-5: #01abe10d !important;
-    --top-gg-colors-brand-10: #01abe11a !important;
-    --top-gg-colors-brand-15: #01abe126 !important;
-    --top-gg-colors-brand-20: #01abe133 !important;
-    --top-gg-colors-brand-40: #01abe166 !important;
-    --top-gg-colors-brand-60: #01abe199 !important;
-    --top-gg-colors-brand-80: #01abe1cc !important;
-    --top-gg-colors-brand-100: #01abe1 !important;
-    --chakra-ui-color-mode: dark;
-}
 
-/* Bot Pfp */
+
+/* ------ Top.gg Custom css start ------ */
+
+/* Top.gg Bot Pfp */
 span.chakra-avatar > img
 {
   animation: float 5s ease-in-out infinite;
 }
 
-/* Bot Invite btn */
+/* Top.gg Bot Invite btn */
 a.chakra-button[href$="/invite"]
 {
   background-color: black; 
@@ -248,15 +239,16 @@ a.chakra-button[href$="/invite"]:active {
   color: white;
 }
 
-/* Bot Vote btn */
+
+/* Top.gg Bot Vote btn */
 
 a.chakra-button[href$="/vote"] {
   color: #fff;
   padding-right: 0;
   background-color: black;
   border: 2px solid #01abe1;
-  -webkit-clip-path: polygon(0% 0%, 100% 0, 100% 70%, 90% 100%, 0% 100%);
-  clip-path: polygon(0 0, 100% 0, 100% 50%, 75% 100%, 0 100%);
+  -webkit-clip-path: polygon(0% 0%, 100% 0, 100% 100%, 100% 100%, 0% 100%);
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 100% 100%, 0 100%);
 
 }
 
@@ -278,6 +270,95 @@ a.chakra-button[href$="/vote"]:hover:after {
   right: 0px;
 }
 
+/* Top.gg Bot Invite btn */
+a.chakra-button[href$="/invite"]:active {
+  background-color: #01abe1;
+  color: white;
+}
+
+/* Top.gg Brand colors */
+html, :root {
+    --brand-raw: #01abe1;
+    --brand: 1, 171, 225;
+    --top-gg-colors-brand-5: #01abe10d !important;
+    --top-gg-colors-brand-10: #01abe11a !important;
+    --top-gg-colors-brand-15: #01abe126 !important;
+    --top-gg-colors-brand-20: #01abe133 !important;
+    --top-gg-colors-brand-40: #01abe166 !important;
+    --top-gg-colors-brand-60: #01abe199 !important;
+    --top-gg-colors-brand-80: #01abe1cc !important;
+    --top-gg-colors-brand-100: #01abe1 !important;
+    --chakra-ui-color-mode: dark;
+}
+
+/* ------ Top.gg Custom css end ------ */
+
+/* ------------------------------ */
+
+/* ------ discord.bots.gg Custom css start ------ */
+
+/* discord.bots.gg Bot Pfp */
+.bot__avatar {
+    animation: float 5s ease-in-out infinite;
+}
+
+/* discord.bots.gg Bot Vote btn */
+
+/* discord.bots.gg Bot Invite btn */
+.button{
+    background-color: black;
+    border-radius: 10px !important;
+    border: 2px solid #01abe1;
+}
+
+/* discord.bots.gg Brand colors */
+/* ------ discord.bots.gg Custom css end ------ */
+
+
+
+/* ------ SBL Custom css start ------ */
+/* SBL Bot Pfp */
+
+.rounded-circle {
+    animation: float 5s ease-in-out infinite;
+}
+
+/* SBL Bot Vote btn */
+
+a.mr-4 {
+  background-color: black; 
+  color: white; 
+  border: 2px solid #01abe1;
+}
+
+a.mr-4:hover {
+  background-color: #01abe1;
+  color: white;
+}
+
+/* SBL Brand colors */
+/* ------ SBL Custom css end ------ */
+
+/* ------ Website Custom css start ------ */
+/* Website Bot Pfp */
+/* Website Bot Vote btn */
+/* Website Brand colors */
+/* ------ Website Custom css end ------ */
+
+/* ------ Keyframe Animations start ------ */
+@keyframes flip {
+  0%  {transform: rotateY(0deg);}
+  100%{transform: rotateY(360deg);}
+}
+
+@keyframes yoddle {
+    0% {transform: rotate(0deg);}
+    25% {transform: rotate(0.1deg);}
+    50% {transform: rotate(0deg);}
+    75% {transform: rotate(-0.1deg);}
+    100%{transform: rotate(0deg);
+    }
+}
 
 @keyframes float {
   0% {
@@ -296,3 +377,38 @@ a.chakra-button[href$="/vote"]:hover:after {
             transform: translatey(0px);
   }
 }
+
+@keyframes marquee-h {
+    0% { transform: translate(100%, 0); }
+    100% { transform: translate(-100%, 0); }
+}
+
+@keyframes marquee-v {
+    0% { transform: translate(0, -200%); }
+    100% { transform: translate(0, 200%); }
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+@keyframes colour {
+    0% { filter: hue-rotate(0deg); }
+    25% { filter: hue-rotate(90deg); }
+    50% { filter: hue-rotate(180deg); }
+    75% { filter: hue-rotate(270deg); }
+    100% { filter: hue-rotate(360deg); }
+}
+
+@keyframes bounce-x {
+    0% { left: 0%; }
+    100% { left: 100% }
+}
+
+@keyframes bounce-y {
+    0% { top: 0%; }
+    100% { top: 100% }
+}
+
+/* ------ Keyframe Animations end ------ */
