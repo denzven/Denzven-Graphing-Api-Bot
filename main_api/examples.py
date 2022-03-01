@@ -1,8 +1,8 @@
 # this is the cog that gives examples
 
 # Imports
-from discord.ext import commands
-import discord
+import guilded
+from guilded.ext import commands
 
 # Config
 from config import *

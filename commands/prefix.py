@@ -2,8 +2,8 @@
 # (not the best way, but works)
 
 # Imports
-from discord.ext import commands
-import discord
+import guilded
+from guilded.ext import commands
 import json
 
 # config
@@ -24,8 +24,7 @@ class Prefix(commands.Cog):
     async def prefix(self, ctx, prefix: str = None):
         if prefix is None:
             await ctx.reply(
-                f'My prefix for this server is `{self.bot.prefixes_cache.get(str(ctx.guild.id), DEFAULT_PREFIX)}`',
-                allowed_mentions=discord.AllowedMentions.none()
+                f'My prefix for this server is `{self.bot.prefixes_cache.get(str(ctx.guild.id), DEFAULT_PREFIX)}`'
             )
         else:
             with open("prefixes.json", "r") as f:

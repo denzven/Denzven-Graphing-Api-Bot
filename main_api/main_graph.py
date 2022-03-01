@@ -1,8 +1,8 @@
 # this is the cog that handles three-D graphs (without embeds)
 
 # imports
-from discord.ext import commands
-import discord
+import guilded
+from guilded.ext import commands
 import urllib
 import aiohttp
 from main_api.fetchgraph import fetchgraph
@@ -45,7 +45,7 @@ class GraphingCommand(commands.Cog):
         name = 'derivative_Graph_Embed',
         description = 'Plot derivative Graphs in Embeds with this command',
     )
-    @voter_only()
+    #@voter_only()
     async def derivative_graph_embed(self,ctx, *, input_params):
         await fetchgraph(ctx, input_params, API_BASE_LINK, API_PATH_DERIVATIVE_GRAPH, 'derivative_graph', DEFAULT_SPLITTER, WAITING_EMOJI, DONE_EMOJI, ERROR_EMOJI, MAIN_COLOR, ERROR_COLOR, True)
 
@@ -57,7 +57,7 @@ class GraphingCommand(commands.Cog):
         name = 'Derivative_Graph',
         description = 'Plot derivatives with this command',
     )
-    @voter_only()
+    #@voter_only()
     async def derivative_graph(self,ctx, *, input_params):
         await fetchgraph(ctx, input_params, API_BASE_LINK, API_PATH_DERIVATIVE_GRAPH, 'derivative_graph', DEFAULT_SPLITTER, WAITING_EMOJI, DONE_EMOJI, ERROR_EMOJI, MAIN_COLOR, ERROR_COLOR, False)
 
