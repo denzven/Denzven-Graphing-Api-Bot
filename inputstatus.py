@@ -109,7 +109,7 @@ inputstatus =   [
     
     # SUMMER
     "Is something burning?",
-    "The weather is so hot my butts are being deep fried",
+    "The weather is so hot that my butts are being deep fried",
     "YES RAIN",
     "Stay hydrated kid",
     "Water is basically light LSD, you just can't get enough of it",
@@ -162,4 +162,5 @@ inputstatus =   [
     "Stay away from fanfic, kids. Those can easily give you depression.",
     "I'm not paid enough to write these statuses, in fact I'm not paid at all lmao",
     "cool graph bro but did I ask???",
+    "the current generation is so fragle that all it takes to annoy them is burn their graph",
 ]
