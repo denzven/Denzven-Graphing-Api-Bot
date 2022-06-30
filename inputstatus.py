@@ -68,6 +68,10 @@ inputstatus =   [
     "To show you the power of this graphing bot, I kidnapped Reality",
     "Yeet",
     "I used to bad at math, then I took an equation to the knee",
+    "Derivative:tm: coming soon",
+    "a game of graphing anime waifu...",
+    "Hope you will have high score in the next exam",
+    "Graphing bot has been captured by the police for smuggling illegal equations.",
     
     # HALLOWEEN
     "Muahahahahahhahahahahhahhahahha... Hi",
@@ -97,6 +101,20 @@ inputstatus =   [
     "trick or treat?",
     "Spooookyyy",
     "October? more like.. Spooktober",
+    "Imagine numbers are... unreal",
+    "*Graphing noise*",
+    "Intrinsic is cool. It's basically free performance.",
+    "Stay tune for HLSL shader support:tm:",
+    "GPU powered graphing, except it isn't.",
+    
+    # SUMMER
+    "Is something burning?",
+    "The weather is so hot that my butts are being deep fried",
+    "YES RAIN",
+    "Stay hydrated kid",
+    "Water is basically light LSD, you just can't get enough of it",
+    "Powered by military coolant, the type for ship specifically...",
+    "Heatmap coming soon???",
     
     # CHRISTMAS
     "and warming my butt...",
@@ -116,4 +134,33 @@ inputstatus =   [
     "eating snow...",
     "*Insert an Christmas themed quote here*",
     "RP is alone again but this time he got a chainsaw",
+    
+    # Sea shanty
+    "There once was a bot that put to net. And the name of the bot was Graphing O' Bot...",
+    "WHAT DO WE DO WITH A SHUTDOWNED BOT?",
+    "Soon may the Wellerman come. To bring us numbers and graphs and curves...",
+    "One day when the graphing is done. We'll take our leave and go...",
+    "Wayhay and up she rise",
+    
+    # Some random ass song parody
+    "Out of sight and out of mind...",  # Snowblind
+    "I gaze off into the boundless axes. Graph bot plot Bezier in the sunshine...", # Fallen kingdom
+    "One minute we had it all. Next our graphs began to fall...",
+    "I draw the graph, under the sheet. And when I'm dreaming that you're here with me", # Ghost in the machine
+    "I draw my graph, keep our score stay high...",
+    "Tell me can you see me now. When I rise above Y axis...", # Nothing stopping me
+    "An equation in your eye. And I need you",  # Riptide
+    "The equation is taking another life. I caught in your function.",
+    "'Cause in a graph, 'cause in a graph full of points. I think I saw you." # A sky full of stars
+    
+    # Something something...
+    # "Minor spelling error detected, your whole point is invalid now",
+    "Extra 1 pixel detected, the whole graph is invalid now",
+    "I'm here to kick graph and draw ass, and I'm out of ass",
+    "wahhhh *die from cringe*",
+    "*die from ligma*",
+    "Stay away from fanfic, kids. Those can easily give you depression.",
+    "I'm not paid enough to write these statuses, in fact I'm not paid at all lmao",
+    "cool graph bro but did I ask???",
+    "the current generation is so fragle that all it takes to annoy them is burn their graph",
 ]
