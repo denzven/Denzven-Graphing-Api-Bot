@@ -15,7 +15,7 @@ class Prefix(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-    @commands.command(
+    @commands.hybrid_command(
         help='Set a Custom prefix for the bot in this guild',
         name='Prefix',
         description='Set a Custom prefix for the bot in this guild',

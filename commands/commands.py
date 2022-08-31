@@ -21,7 +21,7 @@ class OtherCommands(commands.Cog):
 #################################################################################################################
 
     # attr cmd
-    @commands.command(
+    @commands.hybrid_command(
         aliases = ['attr'],
         help = ('A list of all the attributes in the graphs'),
         name = 'Graph_Attributes',
@@ -49,7 +49,7 @@ class OtherCommands(commands.Cog):
 
     # Botinfo cmd
     @commands.cooldown(1, 5, commands.BucketType.user)
-    @commands.command(
+    @commands.hybrid_command(
         aliases = ['btinfo','botinfo'],
         help = ('an Embed with all the neccessary info about the bot'),
         name = 'Bot_Info',
@@ -81,7 +81,7 @@ class OtherCommands(commands.Cog):
 #################################################################################################################
 
     # The Almighty Ping cmd
-    @commands.command(
+    @commands.hybrid_command(
         help = ('Well.. the almighty ping cmd'),
         name = 'Ping',
         description = 'Check Ping of the Bot',
@@ -93,7 +93,7 @@ class OtherCommands(commands.Cog):
 #################################################################################################################
 
     # Github cmd
-    @commands.command(
+    @commands.hybrid_command(
         aliases = ['gh'],
         help = ('GitHub Repo of the Denzven-Graphing-Api'),
         name = 'GitHub',
@@ -105,7 +105,7 @@ class OtherCommands(commands.Cog):
 #################################################################################################################
 
     # Invite cmd
-    @commands.command(
+    @commands.hybrid_command(
         aliases = ['inv'],
         help = ('Invite the Bot in your Server!'),
         name = 'Invite',
@@ -117,7 +117,7 @@ class OtherCommands(commands.Cog):
 #################################################################################################################
 
     # a fancier invite
-    @commands.command(
+    @commands.hybrid_command(
         aliases = ['inv2'],
         help = ('Invite the Bot in your Server! with a fancy link!'),
         name = 'Invite2',
@@ -129,7 +129,7 @@ class OtherCommands(commands.Cog):
 #################################################################################################################
 
     # Docs cmd
-    @commands.command(
+    @commands.hybrid_command(
         help = ('Get the Docs of the Denzven-Graphing-Api'),
         name = 'Docs',
         description = 'Get the Docs of the Denzven-Graphing-Api',
@@ -140,7 +140,7 @@ class OtherCommands(commands.Cog):
 #################################################################################################################
 
     # Website cmd
-    @commands.command(
+    @commands.hybrid_command(
         aliases = ['web'],
         help = ('Visit the website of Denzven-Graphing-Api'),
         name = 'Website',
@@ -152,14 +152,14 @@ class OtherCommands(commands.Cog):
 #################################################################################################################
 
     # Pypi cmd (in process)
-    #@commands.command()
+    #@commands.hybrid_command()
     #async def pypi(self,ctx):
     #    await ctx.reply("https://pypi.org/project/Denzven-Graphing-Api-Wrapper (not currently developed)")
 
 #################################################################################################################
 
     # Github repo of bot
-    @commands.command(
+    @commands.hybrid_command(
         aliases = ['source','src'],
         help = ('Get the Source Code of the Bot'),
         name = 'Source_Code',
@@ -171,7 +171,7 @@ class OtherCommands(commands.Cog):
 #################################################################################################################
 
     # Vote cmd
-    @commands.command(
+    @commands.hybrid_command(
         help = ('Vote the Bot on top.gg!!'),
         name = 'Vote',
         description = 'Vote the Bot on top.gg!!',
@@ -192,7 +192,7 @@ class OtherCommands(commands.Cog):
 #################################################################################################################
 
     # Botlists cmd
-    @commands.command(
+    @commands.hybrid_command(
         aliases = ['bl','botlist'],
         help = ('Get the lists of the BotLists the Bot has enrolled'),
         name = 'BotLists',
@@ -215,7 +215,7 @@ class OtherCommands(commands.Cog):
 #################################################################################################################
 
     # Changelog cmd
-    @commands.command(
+    @commands.hybrid_command(
         aliases = ['cl','changelog','changelogs'],
         help = ('Get the ChangeLog of the latest update!'),
         name = 'Change_Log',
@@ -229,7 +229,7 @@ class OtherCommands(commands.Cog):
 #################################################################################################################
 
     # Suggest cmd
-    @commands.command(
+    @commands.hybrid_command(
         aliases = ['s'],
         help = ('Suggest suggestions for the Bot!'),
         name = 'Suggest',
@@ -268,7 +268,7 @@ class OtherCommands(commands.Cog):
     
 #################################################################################################################
 
-    @commands.command(
+    @commands.hybrid_command(
         help = ('add showcasable formulas'),
         name = 'Showcase',
         description = 'Set Showcasable formulas in the list',

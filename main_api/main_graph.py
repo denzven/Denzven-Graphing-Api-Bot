@@ -17,7 +17,7 @@ class GraphingCommand(commands.Cog):
 
 #################################################################################################################
 
-    @commands.command(
+    @commands.hybrid_command(
         aliases = ['threeDgraph','threeDgr','3dgraph','3dgr'],
         help = ('Plot three-dimensional graphs providing a formula with x and y (z is NOT supported)'),
         name = '3D_Graph',
@@ -28,7 +28,7 @@ class GraphingCommand(commands.Cog):
 
 #################################################################################################################
 
-    @commands.command(
+    @commands.hybrid_command(
         aliases = ['threeDgraphembed','3dgrembed','3dgraphembed','3dgrem'],
         help = ('Plot three-dimensional graphs providing a formula with x and y insude beautiful embeds (z is NOT supported)'),
         name = '3D_Graph_Embed',
@@ -39,7 +39,7 @@ class GraphingCommand(commands.Cog):
 
 #################################################################################################################
 
-    @commands.command(
+    @commands.hybrid_command(
         aliases = ['derivativegraphembed','derivativegrembed','dgraphembed','dgrem'],
         help = ('Plot derivative graphs providing a formula with x and y, inside cool looking embeds'),
         name = 'derivative_Graph_Embed',
@@ -51,7 +51,7 @@ class GraphingCommand(commands.Cog):
 
 #################################################################################################################
 
-    @commands.command(
+    @commands.hybrid_command(
         aliases = ['dgr','derivative'],
         help = ('Plot derivates of graphs providing a formula with x'),
         name = 'Derivative_Graph',
@@ -63,7 +63,7 @@ class GraphingCommand(commands.Cog):
 
 #################################################################################################################
 
-    @commands.command(
+    @commands.hybrid_command(
         aliases = ['flatgraph','flatgr','fgraph','fgr'],
         help = ('Plot Flat graphs providing a formula with x and y'),
         name = 'Flat_Graph',
@@ -75,7 +75,7 @@ class GraphingCommand(commands.Cog):
 
 #################################################################################################################
 
-    @commands.command(
+    @commands.hybrid_command(
         aliases = ['flatgraphembed','flatgrembed','fgraphembed','fgrem'],
         help = ('Plot Flat graphs providing a formula with x and y, inside cool looking embeds'),
         name = 'Flat_Graph_Embed',
@@ -87,7 +87,7 @@ class GraphingCommand(commands.Cog):
 
 #################################################################################################################
 
-    @commands.command(
+    @commands.hybrid_command(
         aliases = ['polargraph','polargr','pgraph','pgr'],
         help = ('Plot Polar graphs providing a formula with x and y'),
         name = 'Polar_Graph',
@@ -99,7 +99,7 @@ class GraphingCommand(commands.Cog):
 
 #################################################################################################################
 
-    @commands.command(
+    @commands.hybrid_command(
         aliases = ['polatgraphembed','polargrembed','pgraphembed','pgrem'],
         help = ('Plot Polar graphs providing a formula with x and y inside beautiful embeds'),
         name = 'Polar_Graph_Embed',

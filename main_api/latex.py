@@ -13,7 +13,7 @@ class Latex(commands.Cog):
     def __init__(self, bot, **kwargs):
         self.bot = bot
 
-    @commands.command(
+    @commands.hybrid_command(
         aliases = ['tex'],
         help = ('render Latex'),
         name = 'Latex',
