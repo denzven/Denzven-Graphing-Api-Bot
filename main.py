@@ -13,8 +13,8 @@
 '''
 
 #importing Modules
-import discord
-from discord.ext import commands
+import guilded
+from guilded.ext import commands
 import os
 import json
 import aiohttp
@@ -23,13 +23,12 @@ import datetime
 
 #importing the config files
 from config import *
-from utils.custom_checks import voter_only
 #from keep_alive import keep_alive
 
 #################################################################################################################
 
 # making a bot sub-class
-class GraphingBot(commands.AutoShardedBot):
+class GraphingBot(commands.Bot):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.CommandNumber = 0
@@ -37,39 +36,16 @@ class GraphingBot(commands.AutoShardedBot):
         self.ping = 0
         self.ApiBaseUrl = API_BASE_LINK
 
-    # A function to get the custom prefix if set,from a server
-    async def get_custom_prefix(bot, message):
-        prefixes_ = [f'<@{bot.user.id}> ', f'<@!{bot.user.id}> ']
-        if message.guild is None:
-            prefixes_.append(DEFAULT_PREFIX)
-            return prefixes_
-        with open("prefixes.json") as f:
-            prefixes = json.load(f)
-
-        prefixes_.append(prefixes.get(str(message.guild.id), DEFAULT_PREFIX))
-        return prefixes_
 
 #################################################################################################################
 
 # Defining the Bot
 description = BOT_DESCRIPTION
-intents = discord.Intents.default()
-intents.members = True
 bot = GraphingBot(
-    #command_prefix=commands.when_mentioned_or(DEFAULT_PREFIX),
-    command_prefix=GraphingBot.get_custom_prefix,
-    intents=intents,
-    case_insensitive=True,
-    strip_after_prefix=False,
-    allowed_mentions=discord.AllowedMentions.none())
-    
-bot.remove_command('help') #Removing the Default Help
+    command_prefix=DEFAULT_PREFIX)
 
 #################################################################################################################
 
-# Hinding and Loading Jishaku for debugging
-os.environ.setdefault("JISHAKU_HIDE", "1")
-bot.load_extension('jishaku') # pip install -U jishaku
 
 #################################################################################################################
 
@@ -92,13 +68,6 @@ async def on_connect():
 #On_ready Info
 @bot.event
 async def on_ready():
-    #on_ready logging
-    embed=discord.Embed(title=f"Bot has Connected", color=PASS_COLOR)
-    embed.timestamp = datetime.datetime.utcnow()
-    log_channel = bot.get_channel(LOG_ON_READY)
-    await log_channel.send(embed = embed)
-    pass
-
     print('+--------------------------------------------------+')
     print('|                 Bot has Started                  |')
     print('+--------------------------------------------------+')
@@ -191,4 +160,4 @@ async def on_message_edit(before,after):
 #################################################################################################################
 
 #keep_alive()	# Funtion for keeping replit alive
-bot.run(BOT_TOKEN)
+bot.run(str(os.environ['LOGIN_EMAIL']),str(os.environ['LOGIN_PASSWD']))

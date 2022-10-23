@@ -1,8 +1,8 @@
 # this is the cog that handles three-D graphs (without embeds)
 
 # imports
-from discord.ext import commands
-import discord
+import guilded
+from guilded.ext import commands
 import urllib
 import aiohttp
 
